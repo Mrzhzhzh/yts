@@ -1,0 +1,39 @@
+<!--pages/teacher/classlist/completeddetail.wxml-->
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">名称:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">小学英语</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">科目:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">英语</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">校区:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">高新幼儿园</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课时间:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">2018.5.4 13：00</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">编号:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">54454848</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">姓名:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">小美美</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课人数:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">259人</view>
+</view>
+<view style="width:100%;height:100rpx;display:flex;border-bottom:10rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx;margin-left:25rpx">上课学生表</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">查看</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">金额:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">¥235</view>
+</view>
+
+ 

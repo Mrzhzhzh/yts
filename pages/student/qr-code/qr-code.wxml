@@ -1,0 +1,21 @@
+<!--pages/student/qr-code.wxml-->
+<view style="width:100%;height:325rpx;position:relative">
+	<image src="/images/banner.png" style="width:100%;height:325rpx;" />
+</view>
+
+<view style="width:100%;height:120rpx;display:flex;position:absolute;top:60rpx;left:25rpx">
+	<image src="/images/pic-9.jpg" style="width:115rpx;height:115rpx;border-radius:50%;" />
+	<view style="position:absolute;top:10rpx;left:140rpx">
+		<view style="font-size:34rpx;color:#fff">我是小明</view>
+		<view style="font-size:30rpx;color:#fff;margin-top:10rpx">总课时：30节</view>
+	</view>
+</view>
+
+<view style="width:650rpx;height:650rpx;background:#fff;border-radius:20rpx;position:absolute;top:210rpx;left:50rpx;display:flex;align-items:center;justify-content:center">
+	<image src="/images/qrcode-ic2.png" style="width:550rpx;height:550rpx"/>
+	<image src="/images/qrcode.png" style="width:400rpx;height:400rpx;position:absolute" />
+</view>
+
+<view style="width:100%;height:200rpx;display:flex;align-items:center;justify-content:center;position:absolute;top:70%">
+	<image src="/images/qrcode-ic.png" style="width:55%;height:40rpx" />
+</view>

@@ -1,0 +1,11 @@
+<!--pages/teacher/login.wxml-->
+<view style="width:100%;height:440rpx;display:flex;align-items:center;justify-content:center">
+	<image src="/images/student-login.png" style="width:320rpx;height:320rpx" />
+</view> 
+<view class='login_box'>
+ <input type='text' placeholder-class="ph"  placeholder='请输入用户名' data-key="username" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:0 auto;font-size:15px;border-bottom:1px solid #e5e5e5"></input>
+
+ <input type='text'  placeholder-class="ph" placeholder='请输入密码' data-key="username" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:20rpx auto;font-size:15px;border-bottom:1px solid #e5e5e5"></input>
+ 
+  <button type='submit'  bindtap="check" style="font-size:15px;color:#fff;width:550rpx;margin:120rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx" data-path= "/pages/student/student"  bindtap="intoPath">登 录</button>
+ </view>

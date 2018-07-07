@@ -1,0 +1,8 @@
+/* pages/teacher/login.wxss */
+.ph{
+ /* placeholder颜色  */
+ color: #aab2bd;
+ /* placeholder字体大小  */
+ font-size: 14px;
+
+}

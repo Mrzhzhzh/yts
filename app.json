@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/teacher/teacher",
+    "pages/teacher/login/login",
+    "pages/teacher/data/data",
+    "pages/teacher/password/password",
+    "pages/teacher/classlist/classlist",
+    "pages/teacher/classlist/completeddetail/completeddetail",
+    "pages/teacher/classlist/completeddetail/namelist/namelist",
+    "pages/teacher/classlist/classdetail/classdetail",
+    "pages/teacher/message/message",
+    "pages/student/student",
+    "pages/student/login/login",
+    "pages/student/data/data",
+    "pages/student/message/message",
+    "pages/student/classnotes/classnotes",
+    "pages/student/classnotes/classdetail/classdetail",
+    "pages/student/buynotes/buynotes",
+    "pages/student/qr-code/qr-code"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFCC1A",
+    "navigationBarTitleText": "英泰斯",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "#d7d7d7",
+    "position": "bottom",
+    "selectedColor": "#FF9800",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/teacher/login/login",
+        "text": "教师",
+        "iconPath": "images/teacher.png",
+        "selectedIconPath": "images/teacher-active.png"
+      },
+      {
+        "pagePath": "pages/student/login/login",
+        "text": "学生",
+        "iconPath": "images/student.png",
+        "selectedIconPath": "images/student-active.png"
+      }
+    ]
+  }
+}

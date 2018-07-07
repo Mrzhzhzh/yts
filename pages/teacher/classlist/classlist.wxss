@@ -1,0 +1,99 @@
+/* pages/teacher/classlist.wxss */
+.int_menu{
+	width:25%;
+	line-height:45px;
+	text-align:center;
+	font-size:15px;
+	color:#2e2e2e
+	
+	
+}
+.int_menuactive{
+	width:25%;
+	line-height:45px;
+	text-align:center;
+	font-size:15px;
+	
+	color:#FFCC1A;
+	
+}
+
+.buydes-dialog-container{
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    background-color:rgba(15, 15, 26, 0.7);
+    position: fixed;
+    z-index: 999;
+}
+
+
+.volet {
+width: 250px;
+padding: 10px;
+background: #6B9A49; color: #fff;
+}
+
+.volet a.ouvrir,
+.volet a.fermer {
+padding: 10px 25px;
+background: #555;
+color: #fff;
+text-decoration: none;
+}
+
+.volet {
+position: absolute;
+left: -270px;  /* test fixed + scroll, on retire la position top */
+-webkit-transition: all .5s ease-in;
+-moz-transition: all .5s ease-in;
+transition: all .5s ease-in;
+}
+.volet a.ouvrir,
+.volet a.fermer {
+position: absolute;
+right: -88px;
+top: 150px;
+-webkit-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+-o-transform: rotate(270deg);
+-ms-transform: rotate(270deg);
+-moz-radius: 0 0 8px 8px;
+border-radius: 0 0 8px 8px;
+}
+.volet a.fermer {
+display: none;
+}
+#volet:target {
+left: 10px;
+}
+
+/* code pour la fermeture */
+
+.volet:target a.fermer {
+display: block;
+}
+.volet:target a.ouvrir {
+display: none;
+}
+.volet_clos:target #volet {
+left: -270px;
+}
+
+/* test fixed + scroll */
+.volet_clos {
+position: fixed;
+top: 55px; left: 0;
+}
+
+.buydes-dialog-container{
+    width: 100%;
+    height: 920rpx;
+    justify-content: space-between;
+    background-color:rgba(15, 15, 26, 0.7);
+    position: fixed;
+    z-index: 999;
+    bottom:0
+}
+ 
+

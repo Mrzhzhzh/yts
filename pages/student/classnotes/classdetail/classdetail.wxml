@@ -1,0 +1,22 @@
+<!--pages/student/classnotes/classdetail.wxml-->
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">名称:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">小学英语</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">科目:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">英语</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课时间:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">2018.5.4 13：00</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">课次:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">第11次</view>
+</view>
+<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">老师:</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">小美美</view>
+</view>
+

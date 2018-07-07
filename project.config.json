@@ -1,0 +1,142 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.1.1",
+	"appid": "touristappid",
+	"projectname": "yts",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": -1,
+					"name": "教师登录",
+					"pathName": "pages/teacher/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "教师首页",
+					"pathName": "pages/teacher/teacher",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "教师资料",
+					"pathName": "pages/teacher/data/data",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "修改密码",
+					"pathName": "pages/teacher/password/password",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "排课列表",
+					"pathName": "pages/teacher/classlist/classlist",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "课程详情",
+					"pathName": "pages/teacher/classlist/classdetail/classdetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的消息",
+					"pathName": "pages/teacher/message/message",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "教师上课记录",
+					"pathName": "pages/teacher/classlist/completeddetail/completeddetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "学生名单",
+					"pathName": "pages/teacher/classlist/completeddetail/namelist/namelist",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "学生登录",
+					"pathName": "pages/student/login/login",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "学生资料",
+					"pathName": "pages/student/data/data",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "学生消息",
+					"pathName": "pages/student/message/message",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "学生上课记录",
+					"pathName": "pages/student/classnotes/classnotes",
+					"query": ""
+				},
+				{
+					"id": 13,
+					"name": "学生上课详情",
+					"pathName": "pages/student/classnotes/classdetail/classdetail",
+					"query": ""
+				},
+				{
+					"id": 14,
+					"name": "学生购买记录",
+					"pathName": "pages/student/buynotes/buynotes",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "学生首页",
+					"pathName": "pages/student/student",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "学生二维码",
+					"pathName": "pages/student/qr-code/qr-code",
+					"query": ""
+				}
+			]
+		}
+	}
+}

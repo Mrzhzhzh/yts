@@ -1,0 +1,25 @@
+<!--pages/teacher/data.wxml-->
+<view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
+	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">姓名</view>
+	<view style="font-size:15px;line-height:100rpx;color:#999999;float:right">王小美</view>
+</view>
+<view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
+	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">电话</view>
+	<view style="font-size:15px;line-height:100rpx;color:#999999;float:right">1806435265</view>
+</view>
+<view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
+	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">原学校</view>
+	<view style="font-size:15px;line-height:100rpx;color:#999999;float:right">高新小学</view>
+</view>
+<view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
+	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">所属分校</view>
+	<view style="font-size:15px;line-height:100rpx;color:#999999;float:right">英泰斯高新</view>
+</view>
+<view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
+	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">总课时</view>
+	<view style="font-size:15px;line-height:100rpx;color:#999999;float:right">30</view>
+</view>
+
+<button type='submit'  bindtap="check" style="font-size:15px;color:#fff;width:550rpx;margin:200rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx">保 存</button>
+
+

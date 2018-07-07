@@ -1,0 +1,7 @@
+/* pages/student/buynotes.wxss */
+page {
+  display: block;
+  max-height: 100%;
+  background-color: #f2f2f2;
+
+}

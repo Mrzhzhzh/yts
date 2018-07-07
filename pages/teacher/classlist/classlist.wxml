@@ -1,0 +1,139 @@
+<!--pages/teacher/classlist.wxml-->
+<view style="width:100%;height:90rpx;display:flex;border-bottom:1px solid #e5e5e5">
+	<view data-num="1" class="int_menu{{num==1?'active':''}}" bindtap="menuClick" >待确认</view>
+	<view data-num="2" class="int_menu{{num==2?'active':''}}" bindtap="menuClick" >待上课</view>
+	<view data-num="3" class="int_menu{{num==3?'active':''}}" bindtap="menuClick" >已完成</view>
+	<view data-num="4" class="int_menu{{num==4?'active':''}}" bindtap="menuClick" >已取消</view>	
+</view>
+
+<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center" >
+	<view style="width:30%">
+		<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">校区</view>
+	</view>
+	<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A">高新校区</view>
+	<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A" bindtap="showModal" bindload="imageLoad">+</view>
+</view>
+
+<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center" >
+	<view style="width:30%">
+		<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">科目</view>
+	</view>
+	<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A">数学</view>
+	<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A" bindtap="btnClick">+</view>
+</view>
+
+<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center;">
+	<view style="width:30%">
+		<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">时间</view>
+	</view>
+	<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A">2018.7.6</view>
+	<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A">+</view>
+</view>
+
+<view style="height:10rpx;width:100%;background:#e5e5e5"></view>
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5" data-path= "/pages/teacher/classlist/classdetail/classdetail"  bindtap="intoPath">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:50%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:30%">
+		<view style="font-size:10px;color:#cccccc;line-height:60rpx;text-align:right;margin-right:30rpx">2017.7.5发布</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">高新幼儿小学</view>
+	</view>
+</view>		
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-4.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:50%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:30%">
+		<view style="font-size:10px;color:#cccccc;line-height:60rpx;text-align:right;margin-right:30rpx">2017.7.5发布</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">高新幼儿小学</view>
+	</view>
+</view>		
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-5.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:50%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:30%">
+		<view style="font-size:10px;color:#cccccc;line-height:60rpx;text-align:right;margin-right:30rpx">2017.7.5发布</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">高新幼儿小学</view>
+	</view>
+</view>		
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-6.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:50%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:30%">
+		<view style="font-size:10px;color:#cccccc;line-height:60rpx;text-align:right;margin-right:30rpx">2017.7.5发布</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">高新幼儿小学</view>
+	</view>
+</view>	
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-7.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:50%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:30%">
+		<view style="font-size:10px;color:#cccccc;line-height:60rpx;text-align:right;margin-right:30rpx">2017.7.5发布</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">高新幼儿小学</view>
+	</view>
+</view>	
+
+
+
+
+
+<view animation="{{animationData}}" class="container-column buydes-dialog-container" wx:if="{{showModalStatus}}">
+    <view class="buydes-dialog-container-top" bindtap="hideModal"></view>
+    
+      
+		<image src="/images/delete.png" style="width:40rpx;height:40rpx;position:absolute;top:10rpx;right:10rpx" bindtap="hideModal"/>	
+
+		<view style="width:100%;display:flex;margin-top:55rpx">
+			<view style="width:25%;height:90rpx;display:flex;justify-content:center;align-items:center"> 
+				<view style="border:1px solid #FFCC1A;width:140rpx;height:60rpx;position:absolute;color:#FFCC1A;font-size:14px;line-height:60rpx;border-radius:10rpx;text-align:center" >高新校区</view>
+			</view>	   
+
+			<view style="width:25%;height:90rpx;display:flex;justify-content:center;align-items:center"> 
+				<view style="border:1px solid #FFCC1A;width:140rpx;height:60rpx;position:absolute;color:#FFCC1A;font-size:14px;line-height:60rpx;border-radius:10rpx;text-align:center" >高新校区</view>
+			</view>	   <view style="width:25%;height:90rpx;display:flex;justify-content:center;align-items:center"> 
+				<view style="border:1px solid #FFCC1A;width:140rpx;height:60rpx;position:absolute;color:#FFCC1A;font-size:14px;line-height:60rpx;border-radius:10rpx;text-align:center" >高新校区</view>
+			</view>	   <view style="width:25%;height:90rpx;display:flex;justify-content:center;align-items:center"> 
+				<view style="border:1px solid #FFCC1A;width:140rpx;height:60rpx;position:absolute;color:#FFCC1A;font-size:14px;line-height:60rpx;border-radius:10rpx;text-align:center" >高新校区</view>
+			</view>	   
+    	</view>
+</view>
+
+
+
+
+
+

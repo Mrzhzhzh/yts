@@ -1,0 +1,7 @@
+/* pages/student/qr-code.wxss */
+page {
+  display: block;
+  max-height: 100%;
+  background-color: #ffcc1a;
+
+}

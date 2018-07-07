@@ -1,0 +1,100 @@
+<!--pages/student/classnotes.wxml-->
+
+
+<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center">
+	
+	<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">科目</view>
+	
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A;margin-left:50rpx">数学</view>
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#666666;margin-left:20rpx">语文</view>
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#666666;margin-left:20rpx">英语</view>
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#666666;margin-left:20rpx">化学</view>
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#666666;margin-left:20rpx">物理</view>
+</view>
+
+<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center;">
+	
+	<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">时间</view>
+	
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A;margin-left:50rpx">2018.7.6</view>
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#666666;margin-left:20rpx">2018.7.6</view>
+	<view style="height:100rpx;line-height:100rpx;font-size:15px;color:#666666;margin-left:20rpx">2018.7.6</view>
+	
+</view>
+
+<view style="height:10rpx;width:100%;background:#e5e5e5"></view>
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center" data-path= "/pages/student/classnotes/classdetail/classdetail"  bindtap="intoPath">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:60%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:20%;text-align:right;">
+		<view style="font-size:10px;color:red;line-height:60rpx;margin-right:30rpx">¥108.00</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;margin-right:30rpx">小美老师</view>
+	</view>
+</view>		
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center" data-path= "/pages/student/classnotes/classdetail/classdetail"  bindtap="intoPath">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:60%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:20%;text-align:right;">
+		<view style="font-size:10px;color:red;line-height:60rpx;margin-right:30rpx">¥108.00</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;margin-right:30rpx">小美老师</view>
+	</view>
+</view>	
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center" data-path= "/pages/student/classnotes/classdetail/classdetail"  bindtap="intoPath">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:60%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:20%;text-align:right;">
+		<view style="font-size:10px;color:red;line-height:60rpx;margin-right:30rpx">¥108.00</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;margin-right:30rpx">小美老师</view>
+	</view>
+</view>
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center" data-path= "/pages/student/classnotes/classdetail/classdetail"  bindtap="intoPath">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:60%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:20%;text-align:right;">
+		<view style="font-size:10px;color:red;line-height:60rpx;margin-right:30rpx">¥108.00</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;margin-right:30rpx">小美老师</view>
+	</view>
+</view>
+
+<view style="height:160rpx;width:100%;display:flex;align-items:center" data-path= "/pages/student/classnotes/classdetail/classdetail"  bindtap="intoPath">
+	<view style="width:20%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+	</view>
+	<view style="width:60%">
+		<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">小学英语教学</view>
+		<view style="color:#666666;font-size:12px;line-height:60rpx">上课：2018.7.6 13：00</view>
+	</view>
+
+	<view style="width:20%;text-align:right;">
+		<view style="font-size:10px;color:red;line-height:60rpx;margin-right:30rpx">¥108.00</view>
+		<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;margin-right:30rpx">小美老师</view>
+	</view>
+</view>	
