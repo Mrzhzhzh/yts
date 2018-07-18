@@ -1,56 +1,56 @@
 <!--pages/student/buynotes.wxml-->
-<view style="height:140rpx;width:93.4%;margin:20rpx auto;background:#fff;border-radius:10rpx">
-	<view style="width:100%;display:flex;height:70rpx;">
-		<view style="width:50%;font-size:30rpx;color:#2e2e2e;line-height:70rpx;margin-left:10rpx">暑期英语培训班</view>
-		<view style="width:50%;font-size:28rpx;color:#FFCC1A;line-height:70rpx;text-align:right;margin-right:10rpx">英语</view>
+<view class="mainCard">
+	<view class="smallCard">
+		<view class="text1">暑期英语培训班</view>
+		<view class="text2">英语</view>
 	</view>
 
-	<view style="width:100%;display:flex;height:70rpx">
-		<view style="width:50%;color:#999999;font-size:28rpx;line-height:70rpx;margin-left:10rpx">缴费金额:¥234.00</view>
-		<view style="width:50%;color:#cccccc;font-size:24rpx;line-height:70rpx;text-align:right;margin-right:10rpx">充值日期 2018.4.5</view>
+	<view class="smallCard">
+		<view class="text3">金额：233元</view>
+		<view class="text4">充值日期 2018.4.5</view>
 	</view>
 </view>		
-<view style="height:140rpx;width:93.4%;margin:20rpx auto;background:#fff;border-radius:10rpx">
-	<view style="width:100%;display:flex;height:70rpx;">
-		<view style="width:50%;font-size:30rpx;color:#2e2e2e;line-height:70rpx;margin-left:10rpx">暑期英语培训班</view>
-		<view style="width:50%;font-size:28rpx;color:#FFCC1A;line-height:70rpx;text-align:right;margin-right:10rpx">英语</view>
+<view class="mainCard">
+	<view class="smallCard">
+		<view class="text1">暑期英语培训班</view>
+		<view class="text2">英语</view>
 	</view>
 
-	<view style="width:100%;display:flex;height:70rpx">
-		<view style="width:50%;color:#999999;font-size:28rpx;line-height:70rpx;margin-left:10rpx">缴费金额:¥234.00</view>
-		<view style="width:50%;color:#cccccc;font-size:24rpx;line-height:70rpx;text-align:right;margin-right:10rpx">充值日期 2018.4.5</view>
+	<view class="smallCard">
+		<view class="text3">金额：233元</view>
+		<view class="text4">充值日期 2018.4.5</view>
 	</view>
 </view>		
-<view style="height:140rpx;width:93.4%;margin:20rpx auto;background:#fff;border-radius:10rpx">
-	<view style="width:100%;display:flex;height:70rpx;">
-		<view style="width:50%;font-size:30rpx;color:#2e2e2e;line-height:70rpx;margin-left:10rpx">暑期英语培训班</view>
-		<view style="width:50%;font-size:28rpx;color:#FFCC1A;line-height:70rpx;text-align:right;margin-right:10rpx">英语</view>
+<view class="mainCard">
+	<view class="smallCard">
+		<view class="text1">暑期英语培训班</view>
+		<view class="text2">英语</view>
 	</view>
 
-	<view style="width:100%;display:flex;height:70rpx">
-		<view style="width:50%;color:#999999;font-size:28rpx;line-height:70rpx;margin-left:10rpx">缴费金额:¥234.00</view>
-		<view style="width:50%;color:#cccccc;font-size:24rpx;line-height:70rpx;text-align:right;margin-right:10rpx">充值日期 2018.4.5</view>
+	<view class="smallCard">
+		<view class="text3">金额：233元</view>
+		<view class="text4">充值日期 2018.4.5</view>
 	</view>
 </view>		
-<view style="height:140rpx;width:93.4%;margin:20rpx auto;background:#fff;border-radius:10rpx">
-	<view style="width:100%;display:flex;height:70rpx;">
-		<view style="width:50%;font-size:30rpx;color:#2e2e2e;line-height:70rpx;margin-left:10rpx">暑期英语培训班</view>
-		<view style="width:50%;font-size:28rpx;color:#FFCC1A;line-height:70rpx;text-align:right;margin-right:10rpx">英语</view>
+<view class="mainCard">
+	<view class="smallCard">
+		<view class="text1">暑期英语培训班</view>
+		<view class="text2">英语</view>
 	</view>
 
-	<view style="width:100%;display:flex;height:70rpx">
-		<view style="width:50%;color:#999999;font-size:28rpx;line-height:70rpx;margin-left:10rpx">缴费金额:¥234.00</view>
-		<view style="width:50%;color:#cccccc;font-size:24rpx;line-height:70rpx;text-align:right;margin-right:10rpx">充值日期 2018.4.5</view>
+	<view class="smallCard">
+		<view class="text3">金额：233元</view>
+		<view class="text4">充值日期 2018.4.5</view>
 	</view>
 </view>		
-<view style="height:140rpx;width:93.4%;margin:20rpx auto;background:#fff;border-radius:10rpx">
-	<view style="width:100%;display:flex;height:70rpx;">
-		<view style="width:50%;font-size:30rpx;color:#2e2e2e;line-height:70rpx;margin-left:10rpx">暑期英语培训班</view>
-		<view style="width:50%;font-size:28rpx;color:#FFCC1A;line-height:70rpx;text-align:right;margin-right:10rpx">英语</view>
+<view class="mainCard">
+	<view class="smallCard">
+		<view class="text1">暑期英语培训班</view>
+		<view class="text2">英语</view>
 	</view>
 
-	<view style="width:100%;display:flex;height:70rpx">
-		<view style="width:50%;color:#999999;font-size:28rpx;line-height:70rpx;margin-left:10rpx">缴费金额:¥234.00</view>
-		<view style="width:50%;color:#cccccc;font-size:24rpx;line-height:70rpx;text-align:right;margin-right:10rpx">充值日期 2018.4.5</view>
+	<view class="smallCard">
+		<view class="text3">金额：233元</view>
+		<view class="text4">充值日期 2018.4.5</view>
 	</view>
 </view>		

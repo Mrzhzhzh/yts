@@ -2,6 +2,50 @@
 page {
   display: block;
   max-height: 100%;
-  background-color: #f2f2f2;
+  background-color: #f2f2f2
+}
 
+.mainCard{
+	height:140rpx;
+	width:93.4%;
+	margin:20rpx auto;
+	background:#fff;
+	border-radius:10rpx
+}
+
+.smallCard{
+	width:100%;
+	display:flex;
+	height:70rpx;
+	justify-content:space-between
+}
+.text1{
+	font-size:30rpx;
+	color:#2e2e2e;
+	line-height:70rpx;
+	margin-left:10rpx
+}
+
+
+.text2{
+	font-size:28rpx;
+	color:#FFCC1A;
+	line-height:70rpx;
+	text-align:right;
+	margin-right:10rpx
+}
+
+.text3{
+	color:#999999;
+	font-size:28rpx;
+	line-height:70rpx;
+	margin-left:10rpx	
+}
+
+.text4{
+	color:#cccccc;
+	font-size:24rpx;
+	line-height:70rpx;
+	text-align:right;
+	margin-right:10rpx
 }

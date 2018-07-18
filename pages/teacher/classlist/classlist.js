@@ -2,16 +2,29 @@
 import {Api} from '../../../utils/api.js';
 var api = new Api();
 // let animationShowHeight =100;
-// Page({
+Page({
 
 //   /**
 //    * 页面的初始数据
 //    */
-//   data: {
-//     animation: ''
+  data: {
+ 
+   open:false,
+  },
    
-//   },
-    
+
+  tap_ch: function(e){
+    const self = this;
+    if(!self.data.open){
+      self.setData({
+        open : true
+      });
+    }else{
+      self.setData({
+        open : false
+      });
+    }
+  } 
 
 //   onLoad(){
 //     const self= this;
@@ -115,84 +128,85 @@ var api = new Api();
 //     })
 //   }  
 // })
-
-let animationShowHeight = -920;
+// let animationShowHeight = -920;
  
-Page({
-  data:{
-        num:1,
-        animationData:"",
-        showModalStatus:false,
-        imageHeight:0,
-        imageWidth:0
-  },
+// Page({
+//   data:{
+//         num:1,
+//         animationData:"",
+//         showModalStatus:false,
+//         imageHeight:0,
+//         imageWidth:0
+//   },
 
-  menuClick: function (e) {
-    const self = this;
-    const num = api.getDataSet(e,'num');
-    self.setData({
-      num: num
-    });
-  },
+//   menuClick: function (e) {
+//     const self = this;
+//     const num = api.getDataSet(e,'num');
+//     self.setData({
+//       num: num
+//     });
+//   },
 
-  intoPath(e){
-     const self = this;
-     api.pathTo(api.getDataSet(e,'path'),'nav');
+//   intoPath(e){
+//      const self = this;
+//      api.pathTo(api.getDataSet(e,'path'),'nav');
 
-  },
+//   },
   
-  imageLoad: function (e) {  
-        this.setData({imageHeight:e.detail.height,imageWidth:e.detail.width});  
-  },
-  showModal: function () {
-        const self = this;
-        const animation = wx.createAnimation({
-            duration: 300,
-            timingFunction: "linear",
-            delay: 0
-        })
-        self.animation = animation
-        animation.translateY(animationShowHeight).step()
-        self.setData({
-            animationData: animation.export(),
-            showModalStatus: true
-        })
-        setTimeout(function () {
-            animation.translateY(0).step()
-            self.setData({
-                animationData: animation.export()
-            })
-        }.bind(self), 300)
-    },
-    hideModal: function () {
-        const self = this;
-        const animation = wx.createAnimation({
-            duration: 300,
-            timingFunction: "linear",
-            delay: 0
-        })
-        self.animation = animation;
-        animation.translateY(animationShowHeight).step()
-        self.setData({
-            animationData: animation.export(),
-        })
-        setTimeout(function () {
-        animation.translateY(0).step()
-        self.setData({
-            animationData: animation.export(),
-            showModalStatus: false
-        })
-        }.bind(self), 300)
-    },
-     onShow:function(){
-      const self  = this;
-         let that = self;
-         wx.getSystemInfo({
-            success: function(res) {
-                animationShowHeight = res.windowHeight;
-            }
-        })
-
-},
+//   imageLoad: function (e) {  
+//         this.setData({imageHeight:e.detail.height,imageWidth:e.detail.width});  
+//   },
+//   showModal: function () {
+//         const self = this;
+//         const animation = wx.createAnimation({
+//             duration: 300,
+//             timingFunction: "linear",
+//             delay: 0
+//         })
+//         self.animation = animation
+//         animation.translateY(animationShowHeight).step()
+//         self.setData({
+//             animationData: animation.export(),
+//             showModalStatus: true
+//         })
+//         setTimeout(function () {
+//             animation.translateY(0).step()
+//             self.setData({
+//                 animationData: animation.export()
+//             })
+//         }.bind(self), 300)
+//     },
+//     hideModal: function () {
+//         const self = this;
+//         const animation = wx.createAnimation({
+//             duration: 300,
+//             timingFunction: "linear",
+//             delay: 0
+//         })
+//         self.animation = animation;
+//         animation.translateY(animationShowHeight).step()
+//         self.setData({
+//             animationData: animation.export(),
+//         })
+//         setTimeout(function () {
+//         animation.translateY(0).step()
+//         self.setData({
+//             animationData: animation.export(),
+//             showModalStatus: false
+//         })
+//         }.bind(self), 300)
+//     },
+//      onShow:function(){
+//       const self  = this;
+//          let that = self;
+//          wx.getSystemInfo({
+//             success: function(res) {
+//                 animationShowHeight = res.windowHeight;
+//             }
+//         })
 
 })
+
+
+
+
