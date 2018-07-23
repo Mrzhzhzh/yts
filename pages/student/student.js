@@ -9,12 +9,29 @@ Page({
    */
   data: {
     
-  
+  web_show:false
   },
     
 
   onLoad(){
-  
+    const self = this;
+
+    },
+
+
+  onShow(){
+    const self = this;
+    if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type') == 0){   
+      self.setData({
+        web_show:true
+      });
+    }else{
+      setTimeout(function(){
+        api.pathTo('/pages/student/login/login','redi');
+      },500);             
+     
+    };
+    
   },
 
 
@@ -26,59 +43,5 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
   
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

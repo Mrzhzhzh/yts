@@ -2,83 +2,66 @@
 import {Api} from '../../../utils/api.js';
 var api = new Api();
 
+import {Token} from '../../../utils/token.js';
+var token = new Token();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
-  
-  },
-    
 
-  onLoad(){
-  
+    sForm:{
+      login_name:'教师',
+      password:'111111'
+    }
+    
   },
 
+
+
+  submit(){
+    const self = this;
+    wx.setStorageSync('login',self.data.sForm);
+    const callback = (res)=>{   
+      if(wx.getStorageSync('token')&&res.data.info.type == 1){
+        wx.redirectTo({
+          url: '/pages/teacher/teacher'
+        }) 
+        api.showToast('登陆成功','success')
+      }else{
+        api.showToast('用户不存在','fail')
+      }
+    }
+
+    token.getToken(callback);
+  },
+
+  bindInputChange(e){
+    const self = this;
+    api.fillChange(e,self,'sForm');
+    self.setData({
+      web_sForm:self.data.sForm,
+    });
+  },
+
+
+  check(e){
+    const self = this;
+      
+    if(api.checkComplete(self.data.sForm)){
+      self.submit();
+    }else{
+      api.showToast('请填写账号密码','fail')
+    };
+
+  },
 
 
   intoPath(e){
-
     const self = this;
-    api.pathTo(api.getDataSet(e,'path'),'nav');
+    api.pathTo(api.getDataSet(e,'path'),'tab');
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

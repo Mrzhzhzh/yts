@@ -13,19 +13,11 @@
 	line-height:45px;
 	text-align:center;
 	font-size:15px;
-	
 	color:#FFCC1A;
 	
 }
 
-.buydes-dialog-container{
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    background-color:rgba(15, 15, 26, 0.7);
-    position: fixed;
-    z-index: 999;
-}
+
 
 
 .c-state1{

@@ -11,7 +11,7 @@ class Base extends Token{
     //http 请求类, 当noRefech为true时，不做未授权重试机制
     request(params) {
         var that = this;
-        var baseRestUrl = 'https://www.funnyfit.cn/public/index.php/api/v1/';
+        var baseRestUrl = 'http://solelytech.iicp.net/yts/public/api/v1/';
         var url=baseRestUrl + params.url;
         
         
@@ -332,8 +332,73 @@ class Base extends Token{
         });
     };
 
+    checkLogin(userType){
+        const self = this;
+        if(userType){
+            if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('login').userType==userType){
+                return wx.getStorageSync('login');
+            }else{
+                setTimeout(function(){
+                    self.pathTo('/pages/user_center/login/login','redi');
+                },500);
+                
+                return false;
+            };
+        }else{
+            if(wx.getStorageSync('login')&&wx.getStorageSync('token')){
+                return wx.getStorageSync('login');
+            }else{
+                setTimeout(function(){
+                   self.pathTo('/pages/user_center/login/login','redi'); 
+                },500);
+                
+                return false;
+            };
+        };
+
+        
+        wx.hideLoading();
+
+    };
+
+
+    extend(target, source) {
+
+        for (var obj in source) {
+            target[obj] = source[obj];
+        }
+        return target;
+        
+    };
+
+
+    logOff(){
+
+        const self = this;
+        wx.removeStorageSync('login');
+        if(!wx.removeStorageSync('login')){
+            self.pathTo('/pages/user_center/login/login','redi')
+        }else{
+            self.showToast('系统故障','fail')
+        }
+
+    };
+
+
+    timeToTimestamp(format){
+    
+        var mydata=format.replace('-', '/'); 
+        mydata=mydata.replace('-', '/'); 
+        return new Date(mydata)/1000;
+        
+    }
+
 
 
 };
+
+
+
+
 
 export {Base};

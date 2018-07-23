@@ -37,13 +37,13 @@
         "selectedIconPath": "images/home-active.png"
       },
       {
-        "pagePath": "pages/teacher/login/login",
+        "pagePath": "pages/teacher/teacher",
         "text": "教师",
         "iconPath": "images/teacher.png",
         "selectedIconPath": "images/teacher-active.png"
       },
       {
-        "pagePath": "pages/student/login/login",
+        "pagePath": "pages/student/student",
         "text": "学生",
         "iconPath": "images/student.png",
         "selectedIconPath": "images/student-active.png"

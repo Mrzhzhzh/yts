@@ -1,13 +1,13 @@
 <!--index.wxml-->
-<view style="width:100%;height:370rpx">
-	<image src="/images/index-banner.png" style="width:100%;height:370rpx" />
+<view class="banner-box">
+	<image src="/images/index-banner.png" class="banner-box-image" />
 </view>
 
-<view style="display:flex;width:95%;margin:0 auto;height:80rpx;align-items:center">
-	<image src="/images/index-ic.png" style="width:40rpx;height:40rpx;" />
-	<view style="font-size:16px;color:#FFCC1A;line-height:80rpx;margin-left:10rpx">校院简介</view>
+<view class="title">
+	<image src="/images/index-ic.png" class="title-img" />
+	<view class="title-text">{{web_mainData.info.data[0].title}}</view>
 </view>
 
-<view style="font-size:16px;color:#2e2e2e;width:95%;margin:0 auto;line-height:60rpx">
-	text测试text测试text测试text测试text测试text测试text测试text测试text测试text测试text测试text测试text测试text测试text测试
+<view class="content">
+	{{web_mainData.info.data[0].content}}
 </view>

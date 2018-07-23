@@ -40,6 +40,305 @@ class Api extends Base{
   
 
 
+
+
+
+
+    labelGet(param,callback){
+        var allParams ={
+            url:'Common/Label/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    labelDelete(param,callback){
+        var allParams ={
+            url:'Common/Label/Delete',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    labelUpdate(param,callback){
+        var allParams ={
+            url:'Common/Label/update',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    labelAdd(param,callback){
+        var allParams ={
+            url:'Common/Label/add',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+
+    userInfoGet(param,callback){
+        var allParams ={
+            url:'Common/UserInfo/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    userInfoDelete(param,callback){
+        var allParams ={
+            url:'Common/UserInfo/delete',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    userInfoUpdate(param,callback){
+        var allParams ={
+            url:'Common/UserInfo/update',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    userInfoAdd(param,callback){
+        var allParams ={
+            url:'Common/UserInfo/add',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+
+
+    userGet(param,callback){
+        var allParams ={
+            url:'Base/User/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    userDelete(param,callback){
+        var allParams ={
+            url:'Base/User/delete',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    userUpdate(param,callback){
+        var allParams ={
+            url:'Base/User/update',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    userAdd(param,callback){
+        var allParams ={
+            url:'Base/User/add',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+
+    productGet(param,callback){
+        var allParams ={
+            url:'Common/Product/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    productDelete(param,callback){
+        var allParams ={
+            url:'Common/Product/delete',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    productUpdate(param,callback){
+        var allParams ={
+            url:'Common/Product/update',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+    productAdd(param,callback){
+        var allParams ={
+            url:'Common/Product/add',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+
+    skuAdd(param,callback){
+        var allParams ={
+            url:'Common/Sku/add',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+    skuGet(param,callback){
+        var allParams ={
+            url:'Common/Sku/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+
+
+    skuUpadate(param,callback){
+        var allParams ={
+            url:'Common/Sku/update',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+    articleAdd(param,callback){
+        var allParams ={
+            url:'Common/Article/add',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+    articleGet(param,callback){
+        var allParams ={
+            url:'Common/Article/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+
+
+
+    articleUpdate(param,callback){
+        var allParams ={
+            url:'Common/Article/update',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }    
+
+    
+
+
+    
+
+
+
+
     tokenGet(param,callback) {
         var allParams = {
             url:'token/user',

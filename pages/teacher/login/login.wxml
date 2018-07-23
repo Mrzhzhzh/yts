@@ -3,9 +3,13 @@
 	<image src="/images/teacher-login.png" style="width:320rpx;height:320rpx" />
 </view> 
 <view class='login_box'>
- <input type='text' placeholder-class="ph"  placeholder='请输入用户名' data-key="username" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:0 auto;font-size:16px;border-bottom:1px solid #e5e5e5"></input>
+ <input type='text' placeholder-class="ph"  placeholder='请输入用户名' data-key="login_name" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:0 auto;font-size:16px;border-bottom:1px solid #e5e5e5"></input>
 
- <input type='text'  placeholder-class="ph" placeholder='请输入密码' data-key="username" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:20rpx auto;font-size:16px;border-bottom:1px solid #e5e5e5"></input>
+ <input type='text'  placeholder-class="ph" placeholder='请输入密码' data-key="password" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:20rpx auto;font-size:16px;border-bottom:1px solid #e5e5e5"></input>
  
-  <button type='submit'  bindtap="check" style="font-size:16px;color:#fff;width:550rpx;margin:120rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx" data-path= "/pages/teacher/teacher"  bindtap="intoPath">登 录</button>
+  <button type='submit'  bindtap="check" style="font-size:16px;color:#fff;width:550rpx;margin:120rpx auto 0rpx;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx"  >登 录</button>
  </view>
+
+ <button   style="font-size:16px;color:#fff;width:550rpx;margin:20rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx" data-path="/pages/index/index"  bindtap='intoPath' >返回首页</button>
+
+ 

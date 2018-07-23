@@ -7,5 +7,8 @@
 
  <input type='text'  placeholder-class="ph" placeholder='请输入密码' data-key="username" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:20rpx auto;font-size:15px;border-bottom:1px solid #e5e5e5"></input>
  
-  <button type='submit'  bindtap="check" style="font-size:15px;color:#fff;width:550rpx;margin:120rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx" data-path= "/pages/student/student"  bindtap="intoPath">登 录</button>
+  <button type='submit'  bindtap="check" style="font-size:15px;color:#fff;width:550rpx;margin:120rpx auto 0rpx;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx">登 录</button>
  </view>
+
+ 
+  <button   style="font-size:15px;color:#fff;width:550rpx;margin:20rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx" data-path="/pages/index/index"  bindtap='intoPath' >返 回 首 页</button>

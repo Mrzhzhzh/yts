@@ -42,14 +42,15 @@ class Token {
                 success: res => {
                     if (res.authSetting['scope.userInfo']) { 
                         wx.getUserInfo({
-                            success: function(res) {
-                                 
-                                wxUserInfo = res.userInfo;
-                                self.getTokenFromServer(wxUserInfo,params,callback);
+                            success: function(res) {                     
+                                   wxUserInfo = res.userInfo;
+                                /*self.getTokenFromServer(wxUserInfo,params,callback);*/
+                                self.getToken(callback,params)
                             }
                         });
                     }else{
-                        self.getTokenFromServer(wxUserInfo,params,callback);
+                        /*self.getTokenFromServer(wxUserInfo,params,callback);*/
+                        self.getToken(callback,params)
                     }
                 },
                 fail: res=>{
@@ -65,7 +66,9 @@ class Token {
             wx.getUserInfo({
                 success: function(res) {
                     wxUserInfo = res.userInfo;
-                    self.getTokenFromServer(wxUserInfo,params,callback);   
+                    /*self.getTokenFromServer(wxUserInfo,params,callback);*/
+                    self.getToken(callback,params)   
+                    
                 }
             });
         };
@@ -76,7 +79,6 @@ class Token {
 
     getTokenFromServer(data,params,callback) {
         var self  = this;
-
         wx.login({
             success: function (res) {
                 var postData = {};
@@ -91,7 +93,7 @@ class Token {
                 };
                 postData.headimgurl = data.avatarUrl;
                 wx.request({
-                    url: 'https://www.funnyfit.cn/public/index.php/api/v1/token/user',
+                    url: 'https://solelytech.iicp.net/public/index.php/api/v1/token/user',
                     method:'POST',
                     data:postData,
                     success:function(res){
@@ -119,6 +121,62 @@ class Token {
             }
         })
         
+    }
+
+
+    getToken(callback,params){
+
+        if(wx.getStorageSync('login').login_name&&wx.getStorageSync('login').password){
+            var postData = {
+                login_name:wx.getStorageSync('login').login_name,
+                password:wx.getStorageSync('login').password,
+            }
+
+            wx.request({
+                url: 'http://solelytech.iicp.net/yts/public/api/v1/Func/Common/loginByUp',
+                method:'POST',
+                data:postData,
+                success:function(res){
+                    console.log(res)
+                    if(res.data&&res.data.token){
+                        wx.setStorageSync('token', res.data.token);
+                        var login = wx.getStorageSync('login');   
+                        wx.setStorageSync('login',login);
+                        wx.setStorageSync('type',res.data.info.type);
+                        if(params&&callback){  
+                            params.data.token = res.data.token;
+                             
+                            callback && callback(params);
+                        }else if(callback){
+                            callback && callback(res);
+                        };
+
+                        
+                    }else{
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'fail',
+                            duration: 1000,
+                            mask:true
+                        });
+                       
+                        wx.removeStorageSync('token');
+                        wx.removeStorageSync('login');
+                        wx.redirectTo({
+                            url:'/pages/teacher/login/login'
+                        })
+                    }
+                    
+                    
+                }
+            })
+        }else{
+            wx.redirectTo({
+              url: '/pages/teacher/login/login'
+            });
+        };
+        
+
     }
 }
 

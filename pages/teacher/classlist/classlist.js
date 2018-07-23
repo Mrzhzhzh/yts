@@ -1,17 +1,109 @@
 // pages/teacher/classlist.js
 import {Api} from '../../../utils/api.js';
 var api = new Api();
-// let animationShowHeight =100;
+
 Page({
 
-//   /**
-//    * 页面的初始数据
-//    */
+
   data: {
+    mainData:[],
+    num:1,
+    searchItem:{},
+    join:{},
  
    open:false,
   },
    
+  
+
+  onLoad(){
+    const self = this;
+    wx.showLoading();
+    self.data.paginate = api.cloneForm(getApp().globalData.paginate);
+    self.getMainData();
+    self.getlabelList();
+
+  },
+
+  getlabelList(){
+    const self = this;
+    const postData = {};
+    postData.searchItem = {
+      thirdapp_id:['=','70'],
+      type:['=','7'],
+    };
+    const callback = (res)=>{
+      self.data.labelData = res
+      wx.hideLoading();
+      self.setData({
+        web_labelData:self.data.labelData,
+      });
+      console.log(self.data.labelData)
+      
+    };
+    api.labelGet(postData,callback);
+  },
+
+  getMainData(isNew){
+    const self = this;
+    const postData = {};
+    postData.searchItem = {
+      thirdapp_id:['=','70']
+    };
+
+    postData.join = {
+      relation:{
+        searchItem:{
+          relation_two:['in','352']
+        },
+        s_key:'relation_one',
+        key:'product_no',
+        condition:'in'
+      },  
+    };      
+    const callback = (res)=>{
+      self.data.mainData = res
+      wx.hideLoading();
+      self.setData({
+        web_mainData:self.data.mainData,
+      });
+      console.log(self.data.mainData)
+      
+    };
+    api.productGet(postData,callback);
+  },
+
+  menuClick: function (e) {
+    const self = this;
+    const num = e.currentTarget.dataset.num;
+    self.changeSearch(num);
+  },
+
+
+  changeSearch(num){
+    const self = this;
+    this.setData({
+      num: num
+    });
+    
+    if(num=='1'){
+
+    }else if(num=='2'){
+
+    }else if(num=='3'){
+    
+      
+    }else if(num=='4'){
+
+    }
+
+    self.setData({
+      web_mainData:[],
+    });
+    self.getMainData(true);
+
+  },
+
 
   tap_ch: function(e){
     const self = this;
@@ -24,8 +116,16 @@ Page({
         open : false
       });
     }
-  } 
+  },
 
+
+  intoPath(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),'nav');
+
+  }
+
+})
 //   onLoad(){
 //     const self= this;
    
@@ -34,11 +134,7 @@ Page({
 
 
 
-//   intoPath(e){
-//     const self = this;
-//     api.pathTo(api.getDataSet(e,'path'),'nav');
 
-//   },
 
 //   /**
 //    * 生命周期函数--监听页面加载
@@ -205,7 +301,7 @@ Page({
 //             }
 //         })
 
-})
+
 
 
 

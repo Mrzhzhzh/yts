@@ -1,66 +1,94 @@
 // pages/teacher/data.js
+import {Api} from '../../../utils/api.js';
+const api = new Api();
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    sForm:{
+      name:'',
+      phone:''
+     
+    },
+    mainData:{},
+    
+
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+
+  onLoad(){
+    const self = this;
+    self.getMainData();
+
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  getMainData(){
+    const self = this;
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    const callback = (res)=>{
+      console.log(res)
+      self.data.mainData = res;
+      self.data.sForm.name = res.info.data[0].name;
+      self.data.sForm.phone = res.info.data[0].phone;
+      self.setData({
+        web_sForm:self.data.sForm,
+      });
+      wx.hideLoading();
+    };
+    api.userInfoGet(postData,callback);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  changeBind(e){
+    const self = this;
+    api.fillChange(e,self,'sForm');
+    console.log(self.data.sForm);
+    self.setData({
+      web_sForm:self.data.sForm,
+    });
+    
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  intoPath(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),'nav');
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  edit(user){
+    const self = this;
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    postData.data = {};
+    postData.data = api.cloneForm(self.data.sForm);
+
+    /*postData = {
+      searchItem:{},
+      data:{
+        status:1
+      },
+      join:{
+
+      }
+    }
+*/
+    const callback = (data)=>{
+      wx.hideLoading();
+      api.dealRes(data);
+    };
+    api.userInfoUpdate(postData,callback);
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  submit(){
+    const self = this;
+    const pass = api.checkComplete(self.data.sForm);
+    if(pass){
+      wx.showLoading();
+      const callback = (user,res) =>{
+        console.log(user,res)
+        self.edit(user);
+      };
+      api.getAuthSetting(callback);
+    }else{
+      api.showToast('请补全信息','fail');
+    };
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })
