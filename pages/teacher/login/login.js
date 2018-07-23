@@ -25,8 +25,10 @@ Page({
     const self = this;
     wx.setStorageSync('login',self.data.sForm);
     const callback = (res)=>{   
-      if(wx.getStorageSync('token')&&res.data.info.type == 1){
-        wx.redirectTo({
+      console.log(res)
+      if(res.data.info.type == 1){
+        console.log(res.data.info.type)
+        wx.reLaunch({
           url: '/pages/teacher/teacher'
         }) 
         api.showToast('登陆成功','success')

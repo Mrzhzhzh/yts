@@ -33,8 +33,8 @@ Page({
     const self = this;
     wx.setStorageSync('login',self.data.sForm);
     const callback = (res)=>{    
-      if(wx.getStorageSync('token')&&res.data.info.type == 0){
-        wx.redirectTo({
+      if(res.data.info.type == 0){
+        wx.reLaunch({
           url: '/pages/student/student'
         })
         api.showToast('登陆成功','success')
