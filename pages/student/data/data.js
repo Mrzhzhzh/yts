@@ -6,6 +6,10 @@ Page({
   data: {
     sForm:{
       name:'',
+      phone:'',
+      email:'',
+      passage1:'',
+
      
     },
     mainData:{},
@@ -28,7 +32,9 @@ Page({
       console.log(res)
       self.data.mainData = res;
       self.data.sForm.name = res.info.data[0].name;
-      /*self.data.sForm.phone = res.info.data[0].phone;*/
+      self.data.sForm.phone = res.info.data[0].phone;
+      self.data.sForm.email = res.info.data[0].email;
+      self.data.sForm.passage1 = res.info.data[0].passage1;
       self.setData({
         web_sForm:self.data.sForm,
       });

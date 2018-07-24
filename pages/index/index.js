@@ -35,6 +35,7 @@ Page({
     const callback = (res)=>{
       self.data.mainData = res
       wx.hideLoading();
+      self.data.mainData.content = api.wxParseReturn(res.info.data[0].content).nodes;
       self.setData({
         web_mainData:self.data.mainData,
       });

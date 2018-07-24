@@ -10,8 +10,7 @@ Page({
   data: {
     sForm:{
       	password:'',
-      n_password:'',
-      c_password:'',  
+
     },
 
     userData:[]
@@ -47,9 +46,8 @@ Page({
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
-    postData.searchItem = {
-    	user_no:['=','U719035760193892']
-    }
+    postData.searchItem = {};
+    postData.searchItem.user_no = self.data.userData.info.data[0].user_no;
     console.log(self.data.userData.info.data[0].user_no)
     postData.data = {};
     postData.data = api.cloneForm(self.data.sForm);
@@ -76,7 +74,7 @@ Page({
   submit(){
     const self = this;
     const pass = api.checkComplete(self.data.sForm);
-    if(pass||!pass){
+    if(pass){
       wx.showLoading();
       const callback = (user,res) =>{
         console.log(user,res)

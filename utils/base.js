@@ -377,7 +377,7 @@ class Base extends Token{
         const self = this;
         wx.removeStorageSync('login');
         if(!wx.removeStorageSync('login')){
-            self.pathTo('/pages/user_center/login/login','redi')
+            self.pathTo('/pages/teacher/login/login','redi')
         }else{
             self.showToast('系统故障','fail')
         }

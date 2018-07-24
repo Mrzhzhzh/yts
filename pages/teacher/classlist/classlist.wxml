@@ -16,13 +16,31 @@
 </block>
 
 
-
-<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center;">
-	<view style="width:30%">
-		<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">时间</view>
+<view style="display:flex;margin:10rpx 1.5%;border-top:1px solid #FFCC1A;height:50rpx">
+	<view class="section" style="width:37%">  
+	  <picker mode="date" value="{{date}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+	    <view class="picker" style="font-size:15px;color:#FFCC1A">
+	      日期：{{date}}
+	    </view>
+	  </picker>
 	</view>
-	<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A">2018.7.6</view>
-	<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A">+</view>
+
+	<view class="section" style="width:32%">  
+	  <picker mode="time" value="{{startTime}}" start="00:00" end="24:00" bindchange="bindTimeChangeStart">
+	    <view class="picker" style="font-size:15px;color:#FFCC1A">
+	      起始时间: {{startTime}}
+	    </view>
+	  </picker>
+	</view>
+
+
+	<view class="section" style="width:30%">  
+	  <picker mode="time" value="{{endTime}}" start="00:00" end="24:00" bindchange="bindTimeChangeEnd">
+	    <view class="picker" style="font-size:15px;color:#FFCC1A">
+	      结束时间: {{endTime}}
+	    </view>
+	  </picker>
+	</view>
 </view>
 
 <view style="height:10rpx;width:100%;background:#e5e5e5"></view>

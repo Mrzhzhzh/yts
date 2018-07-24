@@ -46,6 +46,7 @@ Page({
     token.getToken(callback);
   },
 
+
   bindInputChange(e){
     const self = this;
     api.fillChange(e,self,'sForm');
@@ -53,6 +54,7 @@ Page({
       web_sForm:self.data.sForm,
     });
   },
+  
 
 
   check(e){
@@ -67,9 +69,9 @@ Page({
   },
 
 
-    intoPath(e){
-      const self = this;
-      api.pathTo(api.getDataSet(e,'path'),'tab');
+  intoPath(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),'tab');
 
   },
 })

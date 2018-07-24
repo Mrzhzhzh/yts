@@ -6,8 +6,11 @@ Page({
   data: {
     sForm:{
       name:'',
-      phone:''
-     
+      phone:'',
+      idCard:'',
+      address:'',
+      passage2:'',
+    
     },
     mainData:{},
     
@@ -30,6 +33,9 @@ Page({
       self.data.mainData = res;
       self.data.sForm.name = res.info.data[0].name;
       self.data.sForm.phone = res.info.data[0].phone;
+      self.data.sForm.idCard= res.info.data[0].idCard;
+      self.data.sForm.address = res.info.data[0].address;
+      self.data.sForm.passage2 = res.info.data[0].passage2;
       self.setData({
         web_sForm:self.data.sForm,
       });
@@ -59,17 +65,6 @@ Page({
     postData.token = wx.getStorageSync('token');
     postData.data = {};
     postData.data = api.cloneForm(self.data.sForm);
-
-    /*postData = {
-      searchItem:{},
-      data:{
-        status:1
-      },
-      join:{
-
-      }
-    }
-*/
     const callback = (data)=>{
       wx.hideLoading();
       api.dealRes(data);

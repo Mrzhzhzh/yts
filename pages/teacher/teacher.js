@@ -10,14 +10,14 @@ Page({
       username:'教师',
       password:'111111'
     },
-
+    userData:[],
     web_show:false
   },
     
 
   onLoad(){
     const self = this;
-    self.getUserInfoData();
+    self.getUserData();
   },
 
 
@@ -36,7 +36,7 @@ Page({
 
 
 
-  getUserInfoData(){
+/*  getUserInfoData(){
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
@@ -50,10 +50,10 @@ Page({
       wx.hideLoading();
     };
     api.userInfoGet(postData,callback);  
-  },
+  },*/
 
 
-/*  getUserData(){
+  getUserData(){
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
@@ -61,14 +61,14 @@ Page({
       console.log(res);
       self.data.userData = res;
       self.setData({
-        web_userInfo:res,
+        web_user:res,
       });
      
       wx.hideLoading();
     };
     api.userGet(postData,callback);
     
-  },*/
+  },
   
 
   intoPath(e){

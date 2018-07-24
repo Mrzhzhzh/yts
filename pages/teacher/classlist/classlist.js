@@ -12,6 +12,9 @@ Page({
     join:{},
  
    open:false,
+   date:'2018-01-01',
+   startTime:'00.00',
+   endTime:'24.00',
   },
    
   
@@ -123,7 +126,28 @@ Page({
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
 
-  }
+  },
+
+  bindDateChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
+
+  bindTimeChangeStart: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      startTime: e.detail.value
+    })
+  },
+
+  bindTimeChangeEnd: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      endTime: e.detail.value
+    })
+  },
 
 })
 //   onLoad(){

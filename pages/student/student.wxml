@@ -1,14 +1,14 @@
 <!--pages/student.wxml-->
 <view style="width:100%;height:350rpx;position:relative">
 	<image src="/images/banner.png" style="width:100%;height:350rpx" />
-	<view   style="width:120rpx;height:120rpx;border-radius:50%;overflow:hidden;position:absolute;top:15%;left:41%;">
+	<view   style="width:120rpx;height:120rpx;border-radius:50%;overflow:hidden;position:absolute;top:15%;left:42%;">
       <image src="/images/pic-1.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
     </view>
     <view style="width:100%;position:absolute;top:50%;text-align:center;">
-       <span style="font-size:14px;color:#fff">我是小明</span>
+       <span style="font-size:14px;color:#fff">{{web_user.info.data[0].info.name}}</span>
     </view>
     <view style="width:100%;position:absolute;top:65%;text-align:center;">
-       <span style="font-size:14px;color:#2e2e2e">总课时：30节</span>
+       <span style="font-size:14px;color:#2e2e2e">总课时：{{web_user.info.data[0].info.balance}}节</span>
     </view>
 </view>
 

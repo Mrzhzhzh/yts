@@ -153,18 +153,21 @@ class Token {
 
                         
                     }else{
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'fail',
-                            duration: 1000,
-                            mask:true
-                        });
+                        setTimeout(function(){
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'fail',
+                                duration: 1000,
+                                mask:true
+                            });
+                        },500);
+
                        
                         wx.removeStorageSync('token');
                         wx.removeStorageSync('login');
-                        wx.redirectTo({
+/*                        wx.redirectTo({
                             url:'/pages/teacher/login/login'
-                        })
+                        })*/
                     }
                     
                     

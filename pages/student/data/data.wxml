@@ -5,20 +5,17 @@
 </view>
 <view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
 	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">电话</view>
-	<input type='number' style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" bindblur="changeBind" data-key="phone" value="{{web_sForm.phone}}" placeholder="请输入常用电话" >1806435265</input>
+	<input type='number' style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" bindblur="changeBind" data-key="phone" value="{{web_sForm.phone}}" placeholder="请输入常用电话" ></input>
 </view>
 <view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
 	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">原学校</view>
-	<input style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" placeholder="" >61048119942265562626</input>
+	<input style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" bindblur="changeBind" data-key="email" value="{{web_sForm.email}}" placeholder="请输入原学校" ></input>
 </view>
 <view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
 	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">所属分校</view>
-	<input style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" placeholder="" >大都荟</input>
+	<input style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" bindblur="changeBind" data-key="passage1" value="{{web_sForm.passage1}}" placeholder="请输入所属分校" ></input>
 </view>
-<view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
-	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">总课时</view>
-	<input style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" placeholder="" >语文</input>
-</view>
+
 
 <button type='submit'  open-type="getUserInfo" bindgetuserinfo="submit" style="font-size:15px;color:#fff;width:550rpx;margin:200rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx">保 存</button>
 

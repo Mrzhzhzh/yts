@@ -9,14 +9,16 @@ Page({
    */
   data: {
     
-  web_show:false
+  web_show:false,
+  userData:[]
+
   },
     
 
   onLoad(){
     const self = this;
-
-    },
+    self.getUserData()
+  },
 
 
   onShow(){
@@ -31,6 +33,23 @@ Page({
       },500);             
      
     };
+    
+  },
+
+  getUserData(){
+    const self = this;
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    const callback = (res)=>{
+      console.log(res);
+      self.data.userData = res;
+      self.setData({
+        web_user:res,
+      });
+     
+      wx.hideLoading();
+    };
+    api.userGet(postData,callback);
     
   },
 
