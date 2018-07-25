@@ -60,6 +60,32 @@ var integer= function(num){
 
 
 
+var getArrayByTarget = function(array,targetName,target){
+  var getItemsBytarget =function(array,targetName,target){
+
+    for(var i = 0;i < array.length; i++){
+      if(results.length>0){
+        return false;
+      }  
+      var item = array[i];
+      if(item[targetName] == target){  
+        results.push(item);
+      }else if(item.child&&item.child.length>0){            
+        getItemsBytarget(item.child,targetName,target);
+      }
+    };
+
+  }; 
+  var results = [];
+  getItemsBytarget(array,targetName,target);
+  return results; 
+  
+  
+};
+
+
+
+
 
 
 module.exports = {
@@ -70,5 +96,7 @@ module.exports = {
   countPrice: countPrice,
   multiply: multiply,
   integer: integer,
+  getArrayByTarget: getArrayByTarget,
+ 
  
 };

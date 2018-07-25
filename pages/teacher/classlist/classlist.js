@@ -8,13 +8,18 @@ Page({
   data: {
     mainData:[],
     num:1,
-    searchItem:{},
+    searchItem:{
+      thirdapp_id:['=','70'],
+      category_id:['=','356'],
+    },
     join:{},
  
-   open:false,
-   date:'2018-01-01',
-   startTime:'00.00',
-   endTime:'24.00',
+   
+   startTime:'',
+   endTime:'',
+   spuItem:{},
+   web_index:-1,
+   join:{}
   },
    
   
@@ -24,18 +29,17 @@ Page({
     wx.showLoading();
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
-    self.getlabelData();
+    self.getLabelData();
 
   },
 
-  getlabelData(){
+  getLabelData(){
     const self = this;
     const postData = {};
     postData.searchItem = {
       thirdapp_id:['=','70'],
       type:
         ['in',['7','8']]
-        /*parentid:['=','352']*/
     };
 
     const callback = (res)=>{
@@ -54,9 +58,9 @@ Page({
     const self = this;
     const postData = {};
     postData.paginate = self.data.paginate;
-    postData.searchItem = {
-      thirdapp_id:['=','70'],
-      category_id:['=','356']
+    postData.searchItem = api.cloneForm(self.data.searchItem);
+    if(JSON.stringify(self.data.join) != "{}"){
+      postData.join = api.cloneForm(self.data.join);
     };
     postData.joinAfter = {
       User:{
@@ -91,39 +95,75 @@ Page({
     this.setData({
       num: num
     });
-    
-    if(num=='1'){
-
-    }else if(num=='2'){
-
-    }else if(num=='3'){
-    
-      
-    }else if(num=='4'){
-
-    }
-
-    self.setData({
-      web_mainData:[],
-    });
+    self.data.searchItem.passage3 = num;
     self.getMainData(true);
+    
+
 
   },
 
 
-  tap_ch: function(e){
+  spuChange(e){
     const self = this;
     
-    console.log(e)
-    if(!self.data.open){
+    console.log(e);
+    var index = api.getDataSet(e,'index');
+    var itemId = api.getDataSet(e,'id');
+    console.log(index+'/'+itemId);
+    if(itemId){
+      
+      self.data.spuItem[self.data.web_index] = itemId;
       self.setData({
-        open : true
+        web_spuItem:self.data.spuItem
       });
-    }else{
+      var spuItem = [];
+      for (var i in self.data.spuItem) {
+        spuItem.push(self.data.spuItem[i])
+      };
+
+      
+
+      if(JSON.stringify(self.data.join) == "{}"){
+        self.data.join = {
+          relation:{
+            searchItem:{
+              relation_two:['in',spuItem]
+            },
+            s_key:'relation_one',
+            key:'product_no',
+            condition:'in',
+          },
+        };
+      }else{
+        self.data.join.relation.searchItem.relation_two[1] = spuItem;
+      };
+      console.log(self.data.join);
+      self.getMainData();
+
+    };
+
+
+
+    if(index||index==0){
+      
+      if(self.data.web_index>=0){
+        self.data.web_index = -1;
+      }else{
+        self.data.web_index = index;
+      };
       self.setData({
-        open : false
-      });
-    }
+        web_index:self.data.web_index
+      }); 
+    };
+    
+    
+
+
+    
+    
+    
+
+
   },
 
 
@@ -134,201 +174,34 @@ Page({
   },
 
   bindDateChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    const self = this;
+    self.data.date = e.detail.value;
     this.setData({
       date: e.detail.value
     })
   },
 
-  bindTimeChangeStart: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  bindTimeChange: function(e) {
+    const self = this;
+    var label = api.getDataSet(e,'type');
     this.setData({
-      startTime: e.detail.value
-    })
+      [label]: e.detail.value
+    });
+    self.data[label+'stap'] = new Date(self.data.date+' '+e.detail.value).getTime();
+    if(self.data.endTimestap&&self.data.startTimestap){
+      self.data.searchItem.deadline = ['between',[self.data.startTimestap,self.data.endTimestap]];
+    }else if(self.data.startTimestap){
+      self.data.searchItem.deadline = ['>',self.data.startTimestap];
+    }else{
+      self.data.searchItem.deadline = ['<',self.data.endTimestap];
+    };
+    self.getMainData(true);
+    
   },
 
-  bindTimeChangeEnd: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      endTime: e.detail.value
-    })
-  },
+  
 
 })
-//   onLoad(){
-//     const self= this;
-   
-
-//   },
-
-
-
-
-
-//   /**
-//    * 生命周期函数--监听页面加载
-//    */
-//   onLoad: function (options) {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面初次渲染完成
-//    */
-//   onReady: function () {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面显示
-//    */
-//   onShow: function () {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面隐藏
-//    */
-//   onHide: function () {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面卸载
-//    */
-//   onUnload: function () {
-  
-//   },
-
-//   /**
-//    * 页面相关事件处理函数--监听用户下拉动作
-//    */
-//   onPullDownRefresh: function () {
-  
-//   },
-
-//   /**
-//    * 页面上拉触底事件的处理函数
-//    */
-//   onReachBottom: function () {
-  
-//   },
-
-//   *
-//    * 用户点击右上角分享
-   
-//   onShareAppMessage: function () {
-  
-//   },
-
-  
-//   btnClick: function () {
-//     const self = this;
-//     const animation = wx.createAnimation({
-//       transformOrigin: "50% 50%",
-//       duration: 1000,
-//       timingFunction: "ease",
-//       delay: 0
-//     });
-//     self.data.animation = animation
-//     animation.translateX(animationShowHeight).step()
-//     self.setData({
-//       animation: animation.export(),
-//     });
-   
-//   },
-  
-//   btnClickTo: function () {
-//     const self =this;
-//     const animation = wx.createAnimation({
-//       transformOrigin: "50% 50%",
-//       duration: 1000,
-//       timingFunction: "ease",
-//       delay: 0
-//     })
-//     self.data.animation = animation
-//     animation.translateX(0).step()
-//     this.setData({
-//       animation: animation.export(),
-//     })
-//   }  
-// })
-// let animationShowHeight = -920;
- 
-// Page({
-//   data:{
-//         num:1,
-//         animationData:"",
-//         showModalStatus:false,
-//         imageHeight:0,
-//         imageWidth:0
-//   },
-
-//   menuClick: function (e) {
-//     const self = this;
-//     const num = api.getDataSet(e,'num');
-//     self.setData({
-//       num: num
-//     });
-//   },
-
-//   intoPath(e){
-//      const self = this;
-//      api.pathTo(api.getDataSet(e,'path'),'nav');
-
-//   },
-  
-//   imageLoad: function (e) {  
-//         this.setData({imageHeight:e.detail.height,imageWidth:e.detail.width});  
-//   },
-//   showModal: function () {
-//         const self = this;
-//         const animation = wx.createAnimation({
-//             duration: 300,
-//             timingFunction: "linear",
-//             delay: 0
-//         })
-//         self.animation = animation
-//         animation.translateY(animationShowHeight).step()
-//         self.setData({
-//             animationData: animation.export(),
-//             showModalStatus: true
-//         })
-//         setTimeout(function () {
-//             animation.translateY(0).step()
-//             self.setData({
-//                 animationData: animation.export()
-//             })
-//         }.bind(self), 300)
-//     },
-//     hideModal: function () {
-//         const self = this;
-//         const animation = wx.createAnimation({
-//             duration: 300,
-//             timingFunction: "linear",
-//             delay: 0
-//         })
-//         self.animation = animation;
-//         animation.translateY(animationShowHeight).step()
-//         self.setData({
-//             animationData: animation.export(),
-//         })
-//         setTimeout(function () {
-//         animation.translateY(0).step()
-//         self.setData({
-//             animationData: animation.export(),
-//             showModalStatus: false
-//         })
-//         }.bind(self), 300)
-//     },
-//      onShow:function(){
-//       const self  = this;
-//          let that = self;
-//          wx.getSystemInfo({
-//             success: function(res) {
-//                 animationShowHeight = res.windowHeight;
-//             }
-//         })
 
 
 
