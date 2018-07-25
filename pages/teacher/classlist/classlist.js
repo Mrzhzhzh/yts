@@ -24,17 +24,20 @@ Page({
     wx.showLoading();
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
-    self.getlabelList();
+    self.getlabelData();
 
   },
 
-  getlabelList(){
+  getlabelData(){
     const self = this;
     const postData = {};
     postData.searchItem = {
       thirdapp_id:['=','70'],
-      type:['=','7'],
+      type:
+        ['in',['7','8']]
+        /*parentid:['=','352']*/
     };
+
     const callback = (res)=>{
       self.data.labelData = res
       wx.hideLoading();
@@ -50,20 +53,20 @@ Page({
   getMainData(isNew){
     const self = this;
     const postData = {};
+    postData.paginate = self.data.paginate;
     postData.searchItem = {
-      thirdapp_id:['=','70']
+      thirdapp_id:['=','70'],
+      category_id:['=','356']
     };
-
-    postData.join = {
-      relation:{
-        searchItem:{
-          relation_two:['in','352']
-        },
-        s_key:'relation_one',
-        key:'product_no',
-        condition:'in'
-      },  
-    };      
+    postData.joinAfter = {
+      User:{
+        relation_key:'passage1',
+        relation_final_key:'user_no',
+        relation_condition:'=',
+        relation_info:['login_name']
+      }
+    };
+ 
     const callback = (res)=>{
       self.data.mainData = res
       wx.hideLoading();
@@ -110,6 +113,8 @@ Page({
 
   tap_ch: function(e){
     const self = this;
+    
+    console.log(e)
     if(!self.data.open){
       self.setData({
         open : true

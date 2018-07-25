@@ -329,7 +329,21 @@ class Api extends Base{
             }
         };
         this.request(allParams);
-    }    
+    }  
+
+    buyClassGet(param,callback){
+        var allParams ={
+            url:'Common/FlowLog/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }  
+
+
 
     
 
