@@ -142,6 +142,7 @@ class Token {
                         wx.setStorageSync('token', res.data.token);
                         var login = wx.getStorageSync('login');   
                         wx.setStorageSync('login',login);
+                        wx.setStorageSync('info',res.data.info);
                         wx.setStorageSync('type',res.data.info.type);
                         if(params&&callback){  
                             params.data.token = res.data.token;

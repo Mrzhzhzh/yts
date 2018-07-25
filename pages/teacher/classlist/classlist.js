@@ -11,6 +11,7 @@ Page({
     searchItem:{
       thirdapp_id:['=','70'],
       category_id:['=','356'],
+      passage1:wx.getStorageSync('info').user_no
     },
     join:{},
  
@@ -19,7 +20,8 @@ Page({
    endTime:'',
    spuItem:{},
    web_index:-1,
-   join:{}
+   join:{},
+ 
   },
    
   
@@ -54,26 +56,72 @@ Page({
     api.labelGet(postData,callback);
   },
 
+  onReachBottom() {
+
+    const self = this;
+    if(!self.data.isLoadAll){
+      self.data.paginate.currentPage++;
+      self.getMainData();
+    };
+
+  },
+
+
+  onPullDownRefresh:function(){
+    const self = this;
+    wx.showNavigationBarLoading(); //在标题栏中显示加载
+    delete self.data.searchItem.deadline;
+    delete self.data.join.relation;
+    self.data.spuItem = {};
+    self.data.startTime = '';
+    self.data.endTime = '';
+    self.data.searchItem = api.cloneForm(self.data.searchItem);
+    self.setData({
+       web_startTime:self.data.startTime,
+       web_endTime:self.data.endTime,
+       web_spuItem:self.data.spuItem
+      
+    })
+
+    self.getMainData(true);
+  },
+
+
   getMainData(isNew){
     const self = this;
+    if(isNew){
+      api.clearPageIndex(self);  
+    };
     const postData = {};
     postData.paginate = self.data.paginate;
     postData.searchItem = api.cloneForm(self.data.searchItem);
     if(JSON.stringify(self.data.join) != "{}"){
       postData.join = api.cloneForm(self.data.join);
     };
-    postData.joinAfter = {
-      User:{
-        relation_key:'passage1',
-        relation_final_key:'user_no',
-        relation_condition:'=',
-        relation_info:['login_name']
-      }
-    };
- 
+
     const callback = (res)=>{
-      self.data.mainData = res
+
+      if(res.info.data.length>0){
+        self.data.mainData.push.apply(self.data.mainData,res.info.data);
+      }else{
+        self.data.isLoadAll = true;
+        api.showToast('没有更多了','fail');
+      };
+      console.log(self.data.mainData)
+      self.setData({
+        web_mainData:self.data.mainData,
+      });
+
+      setTimeout(function()
+      {
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+      },300);
+
       wx.hideLoading();
+      wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading(); 
+
       self.setData({
         web_mainData:self.data.mainData,
       });
@@ -82,6 +130,8 @@ Page({
     };
     api.productGet(postData,callback);
   },
+
+
 
   menuClick: function (e) {
     const self = this;
@@ -138,7 +188,7 @@ Page({
         self.data.join.relation.searchItem.relation_two[1] = spuItem;
       };
       console.log(self.data.join);
-      self.getMainData();
+      self.getMainData(true);
 
     };
 
@@ -185,7 +235,7 @@ Page({
     const self = this;
     var label = api.getDataSet(e,'type');
     this.setData({
-      [label]: e.detail.value
+      ['web_'+label]: e.detail.value
     });
     self.data[label+'stap'] = new Date(self.data.date+' '+e.detail.value).getTime();
     if(self.data.endTimestap&&self.data.startTimestap){
