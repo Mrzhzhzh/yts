@@ -9,8 +9,9 @@ Page({
 
   data: {
     sForm:{
-      	password:'',
-
+      password1:'',
+      password:'',
+      password2:'', 
     },
 
     userData:[]
@@ -44,31 +45,41 @@ Page({
 
   passwordChange(){
     const self = this;
-    const postData = {};
-    postData.token = wx.getStorageSync('token');
-    postData.searchItem = {};
-    postData.searchItem.user_no = self.data.userData.info.data[0].user_no;
-    console.log(self.data.userData.info.data[0].user_no)
-    postData.data = {};
-    postData.data = api.cloneForm(self.data.sForm);
-    const callback = (res) => { 
-      wx.hideLoading();
-      const pass = api.dealRes(res);
-      if(pass){
-        setTimeout(function(){
-          api.logOff();
-        },500);
-        
-      }
-    };
+    if(self.data.sForm.password != self.data.sForm.password2){
+      console.log(self.data.sForm.password)
+      api.showToast('新密码不一致','fail')
+    }else if(self.data.sForm.password1 != wx.getStorageSync('login').password){
+      console.log(wx.getStorageSync('login').password)
+       api.showToast('原密码错误','fail')
+    }else{
+      const postData = {};
+      postData.token = wx.getStorageSync('token');
+      postData.searchItem = {};
+      postData.searchItem.user_no = self.data.userData.info.data[0].user_no;
+
+      postData.data = api.cloneForm(self.data.sForm.password1);
+       
+      const callback = (res) => { 
+        wx.hideLoading();
+        const pass = api.dealRes(res);
+        if(pass){
+          setTimeout(function(){
+            api.logOff();
+          },500);
+          
+        }
+      };
     api.userUpdate(postData,callback);
+    }
   },
+
 
 
   changeBind(e){
     const self = this;
     api.fillChange(e,self,'sForm');
   },
+
 
 
   submit(){
@@ -85,5 +96,6 @@ Page({
       api.showToast('请补全信息','fail');
     };
   },
+  
 
 })

@@ -29,8 +29,7 @@ Page({
     postData.paginate = api.cloneForm(self.data.paginate);
     postData.token = wx.getStorageSync('token');
     postData.searchItem = {
-      type:'2',
-      
+      type:'2',   
     }
     postData.order = {
       create_time:'desc'
@@ -53,6 +52,7 @@ Page({
     api.buyClassGet(postData,callback);
   },
 
+
   onReachBottom() {
     const self = this;
     if(!self.data.isLoadAll){
@@ -60,7 +60,6 @@ Page({
       self.getMainData();
     };
   },
-
 
  
 })

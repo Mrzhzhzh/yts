@@ -1,66 +1,56 @@
 // pages/teacher/message.js
+import {Api} from '../../../utils/api.js';
+const api = new Api();
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    paginate: {
+        count: 0,
+        currentPage:1,
+        pagesize:10,
+        is_page:true,
+    },
+    mainData:{},
+
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+
+  onLoad(){
+    const self = this;
+    self.getMainData();  
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+
+  getMainData(){
+    const self = this;
+    const postData = api.cloneForm(self.data.paginate);
+    postData.token = wx.getStorageSync('token');
+    postData.searchItem = {
+      menu_id:'365',
+      thirdapp_id:'70'
+    }
+    postData.order = {
+      create_time:'desc'
+    }
+    const callback = (res)=>{
+      console.log(res)
+      self.data.mainData = res;
+      self.setData({
+        web_mainData:self.data.mainData,
+      });
+      wx.hideLoading();
+    };
+    api.articleGet(postData,callback);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
   
+
+  onReachBottom() {
+    const self = this;
+    if(!self.data.isLoadAll){
+      self.data.paginate.currentPage++;
+      self.getMainData();
+    };
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

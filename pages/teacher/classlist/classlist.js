@@ -16,12 +16,12 @@ Page({
     join:{},
  
    
-   startTime:'',
-   endTime:'',
-   spuItem:{},
-   web_index:-1,
-   join:{},
- 
+    startTime:'',
+    endTime:'',
+    spuItem:{},
+    web_index:-1,
+    join:{},
+    time:'' 
   },
    
   
@@ -100,7 +100,8 @@ Page({
     };
 
     const callback = (res)=>{
-
+      self.data.time = parseInt(res.info.data.deadline);
+      console.log(res.info.data.deadline)
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
       }else{
@@ -110,6 +111,7 @@ Page({
       console.log(self.data.mainData)
       self.setData({
         web_mainData:self.data.mainData,
+        web_time:self.data.time
       });
 
       setTimeout(function()
@@ -147,15 +149,11 @@ Page({
     });
     self.data.searchItem.passage3 = num;
     self.getMainData(true);
-    
-
-
   },
 
 
   spuChange(e){
-    const self = this;
-    
+    const self = this;   
     console.log(e);
     var index = api.getDataSet(e,'index');
     var itemId = api.getDataSet(e,'id');
@@ -170,9 +168,6 @@ Page({
       for (var i in self.data.spuItem) {
         spuItem.push(self.data.spuItem[i])
       };
-
-      
-
       if(JSON.stringify(self.data.join) == "{}"){
         self.data.join = {
           relation:{
@@ -189,13 +184,9 @@ Page({
       };
       console.log(self.data.join);
       self.getMainData(true);
-
     };
 
-
-
     if(index||index==0){
-      
       if(self.data.web_index>=0){
         self.data.web_index = -1;
       }else{
@@ -204,15 +195,7 @@ Page({
       self.setData({
         web_index:self.data.web_index
       }); 
-    };
-    
-    
-
-
-    
-    
-    
-
+    };     
 
   },
 
@@ -220,16 +203,9 @@ Page({
   intoPath(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
-
   },
 
-  bindDateChange: function(e) {
-    const self = this;
-    self.data.date = e.detail.value;
-    this.setData({
-      date: e.detail.value
-    })
-  },
+
 
   bindTimeChange: function(e) {
     const self = this;
@@ -245,8 +221,7 @@ Page({
     }else{
       self.data.searchItem.deadline = ['<',self.data.endTimestap];
     };
-    self.getMainData(true);
-    
+    self.getMainData(true);   
   },
 
   

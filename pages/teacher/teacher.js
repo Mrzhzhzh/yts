@@ -35,24 +35,6 @@ Page({
   },
 
 
-
-/*  getUserInfoData(){
-    const self = this;
-    const postData = {};
-    postData.token = wx.getStorageSync('token');
-    const callback = (res)=>{
-      console.log(res);
-      self.setData({
-        web_userInfo:res,
-      });
-      
-     
-      wx.hideLoading();
-    };
-    api.userInfoGet(postData,callback);  
-  },*/
-
-
   getUserData(){
     const self = this;
     const postData = {};
@@ -66,16 +48,13 @@ Page({
      
       wx.hideLoading();
     };
-    api.userGet(postData,callback);
-    
+    api.userGet(postData,callback);   
   },
   
 
   intoPath(e){
-
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
-
   },
  
 

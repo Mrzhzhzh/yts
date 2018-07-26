@@ -44,20 +44,22 @@ Page({
     api.userInfoGet(postData,callback);
   },
 
+
   changeBind(e){
     const self = this;
     api.fillChange(e,self,'sForm');
     console.log(self.data.sForm);
     self.setData({
       web_sForm:self.data.sForm,
-    });
-    
+    });    
   },
+
 
   intoPath(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
+
 
   edit(user){
     const self = this;
@@ -71,6 +73,7 @@ Page({
     };
     api.userInfoUpdate(postData,callback);
   },
+
 
   submit(){
     const self = this;
@@ -86,4 +89,5 @@ Page({
       api.showToast('请补全信息','fail');
     };
   },
+  
 })

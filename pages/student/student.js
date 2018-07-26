@@ -9,8 +9,8 @@ Page({
    */
   data: {
     
-  web_show:false,
-  userData:[]
+    web_show:false,
+    userData:[]
 
   },
     
@@ -31,10 +31,9 @@ Page({
       setTimeout(function(){
         api.pathTo('/pages/student/login/login','redi');
       },500);             
-     
-    };
-    
+    };   
   },
+
 
   getUserData(){
     const self = this;
@@ -56,10 +55,8 @@ Page({
 
 
   intoPath(e){
-
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
-
   },
 
   

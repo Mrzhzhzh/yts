@@ -24,8 +24,8 @@ Page({
   submit(){
     const self = this;
     wx.setStorageSync('login',self.data.sForm);
-    const callback = (res)=>{   
-      console.log(res)
+    const callback = (res)=>{
+    wx.setStorageSync('info',res.data.info);
       if(res.data.info.type == 1){
         console.log(res.data.info.type)
         wx.reLaunch({
@@ -36,9 +36,9 @@ Page({
         api.showToast('用户不存在','fail')
       }
     }
-
     token.getToken(callback);
   },
+
 
   bindInputChange(e){
     const self = this;
@@ -49,21 +49,20 @@ Page({
   },
 
 
+
   check(e){
-    const self = this;
-      
+    const self = this;   
     if(api.checkComplete(self.data.sForm)){
       self.submit();
     }else{
       api.showToast('请填写账号密码','fail')
     };
-
   },
 
 
   intoPath(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'tab');
-
   },
+  
 })

@@ -25,14 +25,12 @@ Page({
   },
 
   
-  onReady: function () {
-  
-  },
 
   submit(){
     const self = this;
     wx.setStorageSync('login',self.data.sForm);
-    const callback = (res)=>{    
+    const callback = (res)=>{  
+    wx.setStorageSync('info',res.data.info);  
       if(res.data.info.type == 0){
         wx.reLaunch({
           url: '/pages/student/student'
@@ -65,13 +63,13 @@ Page({
     }else{
       api.showToast('请填写账号密码','fail')
     };
-
   },
 
 
   intoPath(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'tab');
-
   },
+
+  
 })

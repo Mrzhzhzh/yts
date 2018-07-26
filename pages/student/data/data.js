@@ -8,21 +8,19 @@ Page({
       name:'',
       phone:'',
       email:'',
-      passage1:'',
-
-     
+      passage1:'',    
     },
+
     mainData:{},
     
-
   },
 
 
   onLoad(){
     const self = this;
     self.getMainData();
-    /*self.userInforAdd();*/
   },
+
 
   getMainData(){
     const self = this;
@@ -43,19 +41,6 @@ Page({
     api.userInfoGet(postData,callback);
   },
 
-/*  userInforAdd(){
-    const self = this;
-    const postData = {};
-    postData.token = wx.getStorageSync('token');
-    postData.data = {
-      name:111
-    }
-    const callback = (res)=>{
-   
-      wx.hideLoading();
-    };
-    api.userInfoAdd(postData,callback);
-  },*/
 
   changeBind(e){
     const self = this;
@@ -63,14 +48,15 @@ Page({
     console.log(self.data.sForm);
     self.setData({
       web_sForm:self.data.sForm,
-    });
-    
+    });  
   },
+
 
   intoPath(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
+
 
   edit(user){
     const self = this;
@@ -84,6 +70,7 @@ Page({
     };
     api.userInfoUpdate(postData,callback);
   },
+
 
   submit(){
     const self = this;
@@ -99,4 +86,6 @@ Page({
       api.showToast('请补全信息','fail');
     };
   },
+
+  
 })

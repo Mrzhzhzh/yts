@@ -11,16 +11,15 @@ Page({
         is_page:true,
     },
     mainData:{},
-    
 
   },
 
 
   onLoad(){
     const self = this;
-    self.getMainData();
-   
+    self.getMainData();  
   },
+
 
   getMainData(){
     const self = this;
@@ -43,6 +42,8 @@ Page({
     };
     api.articleGet(postData,callback);
   },
+
+  
 
   onReachBottom() {
     const self = this;

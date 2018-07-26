@@ -1,5 +1,6 @@
 
 var timestampToTime = function(timestamp) {
+    
 
     var format = getDate(timestamp).getFullYear()+'/'+(getDate(timestamp).getMonth()+1)+'/'+getDate(timestamp).getDate()+'  ';
 
@@ -68,20 +69,27 @@ var getArrayByTarget = function(array,targetName,target){
         return false;
       }  
       var item = array[i];
-      if(item[targetName] == target){  
-        results.push(item);
-      }else if(item.child&&item.child.length>0){            
-        getItemsBytarget(item.child,targetName,target);
+      for(var c_i=0;c_i<target.length;c_i++){
+        if(item[targetName] == target[c_i]){  
+          results.push(item);
+        }else if(item.child&&item.child.length>0){            
+          getItemsBytarget(item.child,targetName,target);
+        }
       }
     };
 
   }; 
   var results = [];
   getItemsBytarget(array,targetName,target);
-  return results; 
-  
+  return results;   
   
 };
+
+
+
+
+
+
 
 
 
@@ -97,6 +105,7 @@ module.exports = {
   multiply: multiply,
   integer: integer,
   getArrayByTarget: getArrayByTarget,
+
  
  
 };
