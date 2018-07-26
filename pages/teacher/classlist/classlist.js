@@ -27,6 +27,7 @@ Page({
   
 
   onLoad(){
+
     const self = this;
     wx.showLoading();
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
@@ -50,10 +51,10 @@ Page({
       self.setData({
         web_labelData:self.data.labelData,
       });
-      console.log(self.data.labelData)
-      
     };
+
     api.labelGet(postData,callback);
+    
   },
 
   onReachBottom() {

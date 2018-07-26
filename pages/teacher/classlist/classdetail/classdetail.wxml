@@ -39,6 +39,13 @@
 	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].passage2}}</view>
 </view>
 
- <button type='submit'bindtap="check"style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">确 认</button>
+
+
+
+ <button type='submit'  data-passage="2"   bindtap="changeCourseStatus"   style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">确 认</button>
+ <button type='submit'  data-passage="4"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">拒绝</button>
+ <button type='submit'  bindtap="scan" style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">扫码</button>
+ <button type='submit'  data-passage="3"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">已结课</button>
+ 
 
 

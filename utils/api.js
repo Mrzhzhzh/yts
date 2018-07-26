@@ -54,6 +54,19 @@ class Api extends Base{
             }
         };
         this.request(allParams);
+    }
+
+
+    changeCourseStatus(param,callback){
+        var allParams ={
+            url:'Project/Yts/changeCourseStatus',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
     }    
 
 
@@ -331,9 +344,45 @@ class Api extends Base{
         this.request(allParams);
     }  
 
-    buyClassGet(param,callback){
+    flowLogGet(param,callback){
         var allParams ={
             url:'Common/FlowLog/get',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+    flowLogUpdate(param,callback){
+        var allParams ={
+            url:'Common/FlowLog/update',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+    flowLogAdd(param,callback){
+        var allParams ={
+            url:'Common/FlowLog/add',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
+    flowLogCompute(param,callback){
+        var allParams ={
+            url:'Common/FlowLog/compute',
             type:'post',
             data:param,
             sCallback: function(data) {

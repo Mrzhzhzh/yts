@@ -17,6 +17,7 @@ Page({
 
   onLoad(){
     const self = this;
+    
     self.getUserData();
   },
 

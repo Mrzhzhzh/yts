@@ -175,7 +175,7 @@ class Token {
             })
         }else{
             wx.redirectTo({
-              url: '/pages/teacher/login/login'
+              url: '/pages/index/index'
             });
         };
         

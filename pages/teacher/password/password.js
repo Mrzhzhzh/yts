@@ -8,10 +8,10 @@ var api = new Api();
 Page({
 
   data: {
-    sForm:{
-      password1:'',
+    submitData:{
       password:'',
-      password2:'', 
+      password_new:'',
+      password_new_copy:'', 
     },
 
     userData:[]
@@ -23,41 +23,25 @@ Page({
 
   onLoad(){
     const self = this;
-    self.getMainData();
+    
   },
 
 
-  getMainData(){
-    const self = this;
-    const postData = {};
-    postData.token = wx.getStorageSync('token');
-    const callback = (res)=>{
-      console.log(res.info.data[0].user_no)
-      self.data.userData = res;
-      self.setData({
-        web_userData:self.data.userData,
-      });
-      wx.hideLoading();
-    };
-    api.userInfoGet(postData,callback);
-  },
 
 
-  passwordChange(){
+  passwordUpdate(){
     const self = this;
-    if(self.data.sForm.password != self.data.sForm.password2){
-      console.log(self.data.sForm.password)
-      api.showToast('新密码不一致','fail')
-    }else if(self.data.sForm.password1 != wx.getStorageSync('login').password){
-      console.log(wx.getStorageSync('login').password)
-       api.showToast('原密码错误','fail')
-    }else{
+    
       const postData = {};
       postData.token = wx.getStorageSync('token');
-      postData.searchItem = {};
-      postData.searchItem.user_no = self.data.userData.info.data[0].user_no;
-
-      postData.data = api.cloneForm(self.data.sForm.password1);
+      postData.searchItem = {
+        user_no:wx.getStorageSync('info').user_no,
+      };
+      
+      postData.data = {
+        password:self.data.submitData.password_new,
+      };
+      
        
       const callback = (res) => { 
         wx.hideLoading();
@@ -70,28 +54,45 @@ Page({
         }
       };
     api.userUpdate(postData,callback);
-    }
+    
   },
 
 
 
   changeBind(e){
     const self = this;
-    api.fillChange(e,self,'sForm');
+    api.fillChange(e,self,'submitData');
+
+    if(self.data.submitData.password_new&&self.data.submitData.password_new_copy){
+      if(self.data.submitData.password_new!=self.data.submitData.password_new_copy){
+        api.showToast('新密码不一致','fail');
+      };
+    };
+
+    self.setData({
+      web_submitData:self.data.submitData
+    });
+
   },
 
 
 
   submit(){
     const self = this;
-    const pass = api.checkComplete(self.data.sForm);
+    const pass = api.checkComplete(self.data.submitData);
+
+
+    /*if(self.data.submitData.password != wx.getStorageSync('login').password){
+       api.showToast('原密码错误','fail');
+       return;
+    };*/
+
+
     if(pass){
       wx.showLoading();
-      const callback = (user,res) =>{
-        console.log(user,res)
-        self.passwordChange(user);
-      };
-      api.getAuthSetting(callback);
+      
+      self.passwordUpdate();
+      
     }else{
       api.showToast('请补全信息','fail');
     };

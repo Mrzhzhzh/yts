@@ -50,7 +50,7 @@
 		</view>
 		<view style="width:40%">
 			<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">{{item.title}}</view>
-			<view style="color:#666666;font-size:12px;line-height:60rpx">上课：{{func.timestampToTime(web_time)}}</view>
+			<view style="color:#666666;font-size:12px;line-height:60rpx">上课：{{func.timestampToTime(item.deadline)}}</view>
 		</view>
 
 		<view style="width:40%">

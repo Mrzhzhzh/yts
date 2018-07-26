@@ -1,7 +1,8 @@
 
 var timestampToTime = function(timestamp) {
     
-
+    timestamp = parseInt(timestamp);
+    
     var format = getDate(timestamp).getFullYear()+'/'+(getDate(timestamp).getMonth()+1)+'/'+getDate(timestamp).getDate()+'  ';
 
     if(getDate(timestamp).getHours()<10){
