@@ -262,7 +262,7 @@ class Base extends Token{
 
 
     checkComplete(obj){
-        
+
         var pass = true;
         for(var key in obj){
           if(!obj[key]){
@@ -332,6 +332,39 @@ class Base extends Token{
         });
     };
 
+    checkTokenLogin(){
+        const self = this;
+        if(wx.getStorageSync('token')){   
+           return wx.getStorageSync('login');
+        }else{
+          setTimeout(function(){
+            self.pathTo('/pages/teacher/login/login','redi');
+          },500);                
+        }; 
+    };
+
+    checkTeacherLogin(){
+        const self = this;
+        if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==1){   
+           return wx.getStorageSync('login');
+        }else{
+          setTimeout(function(){
+            self.pathTo('/pages/teacher/login/login','redi');
+          },500);                
+        }; 
+    };
+
+    checkStudentLogin(){
+        const self = this;
+        if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==0){   
+           return wx.getStorageSync('login');
+        }else{
+          setTimeout(function(){
+            self.pathTo('/pages/student/login/login','redi');
+          },500);                
+        }; 
+    };
+
     checkLogin(userType){
         const self = this;
         if(userType){
@@ -373,11 +406,10 @@ class Base extends Token{
 
 
     logOff(){
-
         const self = this;
         wx.removeStorageSync('login');
         if(!wx.removeStorageSync('login')){
-            self.pathTo('/pages/teacher/login/login','redi')
+            self.pathTo('/pages/index/index','redi')
         }else{
             self.showToast('系统故障','fail')
         }

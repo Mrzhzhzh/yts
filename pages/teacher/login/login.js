@@ -14,7 +14,7 @@ Page({
 
     sForm:{
       login_name:'教师',
-      password:'111111'
+      password:'333333'
     }
     
   },

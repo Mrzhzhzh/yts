@@ -12,12 +12,19 @@ Page({
     },
 
     mainData:{},
+    web_show:false
     
   },
 
 
   onLoad(){
     const self = this;
+    const pass = api.checkStudentLogin();
+    if(pass){
+      self.setData({
+        web_show:true
+      })
+    };
     self.getMainData();
   },
 
@@ -81,7 +88,6 @@ Page({
         console.log(user,res)
         self.edit(user);
       };
-      api.getAuthSetting(callback);
     }else{
       api.showToast('请补全信息','fail');
     };

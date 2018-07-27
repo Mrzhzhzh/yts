@@ -20,19 +20,20 @@ Page({
     self.getUserData()
   },
 
+  
 
   onShow(){
     const self = this;
-    if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type') == 0){   
+    const pass = api.checkStudentLogin();
+    if(pass){
       self.setData({
         web_show:true
-      });
-    }else{
-      setTimeout(function(){
-        api.pathTo('/pages/student/login/login','redi');
-      },500);             
-    };   
+      })
+    };
   },
+
+
+
 
 
   getUserData(){

@@ -16,7 +16,7 @@
 </view>
 <view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课时间:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{func.timestampToTime(web_time)}}</view>
+	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{func.timestampToTime(web_mainData.info.data[0].deadline)}}</view>
 </view>
 <view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课人数:</view>
@@ -41,11 +41,14 @@
 
 
 
+<view style="display:flex" wx:if="{{web_mainData.info.data[0].passage3=='1'}}">
+	 <button type='submit'  data-passage="2"   bindtap="changeCourseStatus"   style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">确 认</button>
+	 <button type='submit'  data-passage="4"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">拒绝</button>
+ </view>
 
- <button type='submit'  data-passage="2"   bindtap="changeCourseStatus"   style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">确 认</button>
- <button type='submit'  data-passage="4"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">拒绝</button>
- <button type='submit'  bindtap="scan" style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">扫码</button>
- <button type='submit'  data-passage="3"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">已结课</button>
+ <button type='submit'  bindtap="scan" style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx" wx:if="{{web_mainData.info.data[0].passage3=='2'}}">扫码</button>
+
+ <button type='submit'  data-passage="3"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx" wx:if="{{web_mainData.info.data[0].passage3=='3'}}">已结课</button>
  
 
 

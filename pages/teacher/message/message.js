@@ -4,25 +4,30 @@ const api = new Api();
 
 Page({
   data: {
-    paginate: {
-        count: 0,
-        currentPage:1,
-        pagesize:10,
-        is_page:true,
-    },
-    mainData:{},
 
+    mainData:{},
+    web_show:false
   },
 
 
   onLoad(){
     const self = this;
+    const pass = api.checkTeacherLogin();
+      if(pass){
+        self.setData({
+          web_show:true
+        })
+    };
+    self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();  
   },
 
 
-  getMainData(){
+  getMainData(isNew){
     const self = this;
+    if(isNew){
+      api.clearPageIndex(self);  
+    };
     const postData = api.cloneForm(self.data.paginate);
     postData.token = wx.getStorageSync('token');
     postData.searchItem = {

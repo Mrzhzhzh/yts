@@ -4,27 +4,32 @@ const api = new Api();
 
 Page({
   data: {
-    paginate: {
-        count: 0,
-        currentPage:1,
-        pagesize:10,
-        is_page:true,
-    },
+
     mainData:{},
-    
+    web_show:false
 
   },
 
 
   onLoad(){
     const self = this;
+    const pass = api.checkStudentLogin();
+    if(pass){
+      self.setData({
+        web_show:true
+      })
+    };
     wx.showLoading();
+    self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
    
   },
 
-  getMainData(){
+  getMainData(isNew){
     const self = this;
+    if(isNew){
+      api.clearPageIndex(self);  
+    };
     const postData = {};
     postData.paginate = api.cloneForm(self.data.paginate);
     postData.token = wx.getStorageSync('token');
@@ -37,7 +42,7 @@ Page({
     const callback = (res)=>{
       self.data.mainData = res;
       if(res.info.length>0){
-        self.data.mainData.push.apply(self.data.mainData,res.data);
+        self.data.mainData.push.apply(self.data.mainData,res.info.data);
       }else{
         self.data.isLoadAll = true;
         api.showToast('没有更多了','fail');
@@ -49,7 +54,7 @@ Page({
       });
       wx.hideLoading();
     };
-    api.buyClassGet(postData,callback);
+    api.flowLogGet(postData,callback);
   },
 
 

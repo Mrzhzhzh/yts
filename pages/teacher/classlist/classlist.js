@@ -21,7 +21,9 @@ Page({
     spuItem:{},
     web_index:-1,
     join:{},
-    time:'' 
+    time:'',
+    web_show:false,
+  
   },
    
   
@@ -30,6 +32,12 @@ Page({
 
     const self = this;
     wx.showLoading();
+    const pass = api.checkTeacherLogin();
+      if(pass){
+        self.setData({
+          web_show:true
+        })
+    };
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
     self.getLabelData();
@@ -70,7 +78,7 @@ Page({
 
   onPullDownRefresh:function(){
     const self = this;
-    wx.showNavigationBarLoading(); //在标题栏中显示加载
+    wx.showNavigationBarLoading();
     delete self.data.searchItem.deadline;
     delete self.data.join.relation;
     self.data.spuItem = {};
@@ -94,15 +102,13 @@ Page({
       api.clearPageIndex(self);  
     };
     const postData = {};
-    postData.paginate = self.data.paginate;
+    postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
     if(JSON.stringify(self.data.join) != "{}"){
       postData.join = api.cloneForm(self.data.join);
     };
 
     const callback = (res)=>{
-      self.data.time = parseInt(res.info.data.deadline);
-      console.log(res.info.data.deadline)
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
       }else{
@@ -112,7 +118,7 @@ Page({
       console.log(self.data.mainData)
       self.setData({
         web_mainData:self.data.mainData,
-        web_time:self.data.time
+        
       });
 
       setTimeout(function()

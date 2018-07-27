@@ -17,22 +17,17 @@ Page({
 
   onLoad(){
     const self = this;
-    
     self.getUserData();
   },
 
-
   onShow(){
     const self = this;
-    if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==1){   
+    const pass = api.checkStudentLogin();
+    if(pass){
       self.setData({
         web_show:true
-      });
-    }else{
-      setTimeout(function(){
-        api.pathTo('/pages/teacher/login/login','redi');
-      },500);                
-    }; 
+      })
+    };
   },
 
 

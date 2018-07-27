@@ -10,13 +10,28 @@ Page({
   data: {
     searchItem:{
       thirdapp_id:70
-    }
-  
+    },
+   
+ 
+   
+    startTime:'',
+    endTime:'',
+    spuItem:{},
+    web_index:-1,
+    join:{},
+    time:'',
+    web_show:false,
   },
     
 
   onLoad(){
     const self = this;
+    const pass = api.checkStudentLogin();
+    if(pass){
+      self.setData({
+        web_show:true
+      })
+    };
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getLabelData();
     self.getMainData();
@@ -25,11 +40,10 @@ Page({
 
 
   intoPath(e){
-
     const self = this;
-
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
+
 
   getLabelData(){
     const self = this;
@@ -39,7 +53,6 @@ Page({
       type:
         ['in',['7','8']]
     };
-
     const callback = (res)=>{
       self.data.labelData = res
       wx.hideLoading();
@@ -51,6 +64,7 @@ Page({
     };
     api.labelGet(postData,callback);
   },
+
 
 
   spuChange(e){
@@ -108,6 +122,8 @@ Page({
       api.clearPageIndex(self);  
     };
     const postData = {};
+    postData.paginate = api.cloneForm(self.data.paginate);
+    postData.searchItem = api.cloneForm(self.data.searchItem);
     postData.join = {
       FlowLog:{
         searchItem:{
@@ -127,11 +143,6 @@ Page({
         condition:'in',
       },
     };
-    postData.paginate = api.cloneForm(self.data.paginate);
-    postData.searchItem = api.cloneForm(self.data.searchItem);
-    /*if(JSON.stringify(self.data.join) != "{}"){
-      postData.join = api.cloneForm(self.data.join);
-    };*/
     postData.joinAfter = {
       userInfo:{
         relation_key:'passage1',
@@ -140,10 +151,7 @@ Page({
         relation_info:['name']
       }
     };
-
     const callback = (res)=>{
-      self.data.time = parseInt(res.info.data.deadline);
-      console.log(res.info.data.deadline)
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
       }else{
@@ -153,7 +161,6 @@ Page({
       console.log(self.data.mainData)
       self.setData({
         web_mainData:self.data.mainData,
-        web_time:self.data.time
       });
 
       setTimeout(function()
@@ -174,6 +181,54 @@ Page({
     };
     api.productGet(postData,callback);
   },
+
+
+  onReachBottom() {
+    const self = this;
+    if(!self.data.isLoadAll){
+      self.data.paginate.currentPage++;
+      self.getMainData();
+    };
+  },
+
+
+  bindTimeChange: function(e) {
+    const self = this;
+    var label = api.getDataSet(e,'type');
+    this.setData({
+      ['web_'+label]: e.detail.value
+    });
+    self.data[label+'stap'] = new Date(self.data.date+' '+e.detail.value).getTime();
+    if(self.data.endTimestap&&self.data.startTimestap){
+      self.data.searchItem.deadline = ['between',[self.data.startTimestap,self.data.endTimestap]];
+    }else if(self.data.startTimestap){
+      self.data.searchItem.deadline = ['>',self.data.startTimestap];
+    }else{
+      self.data.searchItem.deadline = ['<',self.data.endTimestap];
+    };
+    self.getMainData(true);   
+  },
+
+
+  onPullDownRefresh:function(){
+    const self = this;
+    wx.showNavigationBarLoading();
+    delete self.data.searchItem.deadline;
+    delete self.data.join.relation;
+    self.data.spuItem = {};
+    self.data.startTime = '';
+    self.data.endTime = '';
+    self.data.searchItem = api.cloneForm(self.data.searchItem);
+    self.setData({
+       web_startTime:self.data.startTime,
+       web_endTime:self.data.endTime,
+       web_spuItem:self.data.spuItem
+      
+    })
+
+    self.getMainData(true);
+  },
+
 
 
 

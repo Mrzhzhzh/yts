@@ -1,56 +1,15 @@
 <!--pages/student/buynotes.wxml-->
-<view class="mainCard">
-	<view class="smallCard">
-		<view class="text1">暑期英语培训班</view>
-		<view class="text2">英语</view>
-	</view>
+<block wx:for="{{web_mainData}}" wx:key="id">
+	<view class="mainCard">
+		<view class="smallCard">
+			<view class="text1"></view>
+			<view class="text2">英语</view>
+		</view>
 
-	<view class="smallCard">
-		<view class="text3">金额：233元</view>
-		<view class="text4">充值日期 2018.4.5</view>
+		<view class="smallCard">
+			<view class="text3">金额：233元</view>
+			<view class="text4">充值日期 2018.4.5</view>
+		</view>
 	</view>
-</view>		
-<view class="mainCard">
-	<view class="smallCard">
-		<view class="text1">暑期英语培训班</view>
-		<view class="text2">英语</view>
-	</view>
+</block>		
 
-	<view class="smallCard">
-		<view class="text3">金额：233元</view>
-		<view class="text4">充值日期 2018.4.5</view>
-	</view>
-</view>		
-<view class="mainCard">
-	<view class="smallCard">
-		<view class="text1">暑期英语培训班</view>
-		<view class="text2">英语</view>
-	</view>
-
-	<view class="smallCard">
-		<view class="text3">金额：233元</view>
-		<view class="text4">充值日期 2018.4.5</view>
-	</view>
-</view>		
-<view class="mainCard">
-	<view class="smallCard">
-		<view class="text1">暑期英语培训班</view>
-		<view class="text2">英语</view>
-	</view>
-
-	<view class="smallCard">
-		<view class="text3">金额：233元</view>
-		<view class="text4">充值日期 2018.4.5</view>
-	</view>
-</view>		
-<view class="mainCard">
-	<view class="smallCard">
-		<view class="text1">暑期英语培训班</view>
-		<view class="text2">英语</view>
-	</view>
-
-	<view class="smallCard">
-		<view class="text3">金额：233元</view>
-		<view class="text4">充值日期 2018.4.5</view>
-	</view>
-</view>		

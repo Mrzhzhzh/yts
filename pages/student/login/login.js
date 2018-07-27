@@ -14,15 +14,11 @@ Page({
 
     sForm:{
       login_name:'学员',
-      password:'111111'
+      password:'222222'
     }
     
   },
 
-
-  onLoad: function (options) {
-  
-  },
 
   
 

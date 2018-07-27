@@ -14,8 +14,8 @@ Page({
       password_new_copy:'', 
     },
 
-    userData:[]
-  
+    userData:[],
+    web_show:false
   },
 
 
@@ -23,7 +23,12 @@ Page({
 
   onLoad(){
     const self = this;
-    
+    const pass = api.checkTokenLogin();
+    if(pass){
+      self.setData({
+        web_show:true
+      })
+    };
   },
 
 
@@ -31,26 +36,19 @@ Page({
 
   passwordUpdate(){
     const self = this;
-    
       const postData = {};
       postData.token = wx.getStorageSync('token');
       postData.searchItem = {
         user_no:wx.getStorageSync('info').user_no,
       };
-      
       postData.data = {
         password:self.data.submitData.password_new,
-      };
-      
-       
+      }; 
       const callback = (res) => { 
         wx.hideLoading();
         const pass = api.dealRes(res);
         if(pass){
-          setTimeout(function(){
-            api.logOff();
-          },500);
-          
+          api.logOff();         
         }
       };
     api.userUpdate(postData,callback);
@@ -62,41 +60,36 @@ Page({
   changeBind(e){
     const self = this;
     api.fillChange(e,self,'submitData');
-
     if(self.data.submitData.password_new&&self.data.submitData.password_new_copy){
       if(self.data.submitData.password_new!=self.data.submitData.password_new_copy){
-        api.showToast('新密码不一致','fail');
+        api.showToast('新密码不一致','fail');   
       };
-    };
 
-    self.setData({
-      web_submitData:self.data.submitData
-    });
-
+      delete self.data.submitData.password_new_copy   
+    }; 
+        self.setData({
+        web_submitData:self.data.submitData
+      });
   },
 
 
 
   submit(){
     const self = this;
+    if(self.data.submitData.password != wx.getStorageSync('login').password){
+      api.showToast('原密码错误','fail');
+      return;
+    };
     const pass = api.checkComplete(self.data.submitData);
-
-
-    /*if(self.data.submitData.password != wx.getStorageSync('login').password){
-       api.showToast('原密码错误','fail');
-       return;
-    };*/
-
-
     if(pass){
       wx.showLoading();
-      
+
       self.passwordUpdate();
       
     }else{
       api.showToast('请补全信息','fail');
-    };
+    };   
   },
   
 
-})
+})    
