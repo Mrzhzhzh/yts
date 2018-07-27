@@ -22,7 +22,7 @@ Page({
 
   onShow(){
     const self = this;
-    const pass = api.checkStudentLogin();
+    const pass = api.checkTeacherLogin();
     if(pass){
       self.setData({
         web_show:true

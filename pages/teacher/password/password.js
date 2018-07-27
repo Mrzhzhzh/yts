@@ -65,9 +65,9 @@ Page({
         api.showToast('新密码不一致','fail');   
       };
 
-      delete self.data.submitData.password_new_copy   
+      self.data.submitData.password_new_copy = '' 
     }; 
-        self.setData({
+      self.setData({
         web_submitData:self.data.submitData
       });
   },
