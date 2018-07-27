@@ -5,7 +5,7 @@ const api = new Api();
 Page({
   data: {
 
-    mainData:{},
+    mainData:[],
     web_show:false
 
   },
@@ -35,20 +35,17 @@ Page({
     postData.token = wx.getStorageSync('token');
     postData.searchItem = {
       type:'2',   
-    }
+    };
     postData.order = {
-      create_time:'desc'
-    }
+      create_time:'desc',
+    };
     const callback = (res)=>{
-      self.data.mainData = res;
-      if(res.info.length>0){
+      if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
       }else{
         self.data.isLoadAll = true;
         api.showToast('没有更多了','fail');
       };
-      console.log(res)
-    
       self.setData({
         web_mainData:self.data.mainData,
       });

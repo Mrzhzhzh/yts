@@ -9,9 +9,24 @@
 		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A">{{func.getArrayByTarget(item.child,'id',[web_spuItem[index]])[0]['title']}}</view>
 
 		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A"  data-index="{{index}}"    bindtap="spuChange" >+</view>
-
 	</view>
 </block>
+
+<view  class="c-state1 {{web_index>=0 ? 'c-state2' : ''}}"  >
+	<view style="width:100%;height:920rpx;background:black;opacity:0.5;position:absolute;bottom:0">
+		<image src="/images/close.png"  style="width:40rpx;height:40rpx;position:absolute;top:10rpx;right:10rpx;" data-index="10" bindtap="spuChange" />
+		<block wx:for="{{web_labelData.info.data[web_index].child}}" wx:key="id">
+			<view style="width:140rpx;height:60rpx;border:2rpx solid #FFCC1A;border-radius:10rpx;text-align:center;line-height:60rpx;color:#FFCC1A;font-size:30rpx;float:left;margin:40rpx 20rpx" data-id="{{item.id}}" bindtap="spuChange">{{item.title}}</view>
+		</block>
+	</view>
+</view>
+
+
+
+
+
+
+
 
 <view style="display:flex;border-top:1px solid #FFCC1A;height:50rpx">
 
@@ -67,11 +82,4 @@
 	</view>
 </block>
 
-<view  class="c-state1 {{web_index>=0 ? 'c-state2' : ''}}"  >
-	<view style="width:100%;height:920rpx;background:black;opacity:0.5;position:absolute;bottom:0">
-		<image src="/images/close.png"  style="width:40rpx;height:40rpx;position:absolute;top:10rpx;right:10rpx;" data-index="10" bindtap="spuChange" />
-		<block wx:for="{{web_labelData.info.data[web_index].child}}" wx:key="id">
-			<view style="width:140rpx;height:60rpx;border:2rpx solid #FFCC1A;border-radius:10rpx;text-align:center;line-height:60rpx;color:#FFCC1A;font-size:30rpx;float:left;margin:40rpx 20rpx" data-id="{{item.id}}" bindtap="spuChange">{{item.title}}</view>
-		</block>
-	</view>
-</view>
+

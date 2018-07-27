@@ -11,9 +11,8 @@ Page({
     searchItem:{
       thirdapp_id:70
     },
-   
- 
-   
+
+    mainData:[],
     startTime:'',
     endTime:'',
     spuItem:{},
@@ -76,6 +75,7 @@ Page({
     if(itemId){
       
       self.data.spuItem[self.data.web_index] = itemId;
+      console.log(self.data.spuItem);
       self.setData({
         web_spuItem:self.data.spuItem
       });
@@ -112,6 +112,7 @@ Page({
       }); 
     };     
 
+
   },
 
 
@@ -120,6 +121,9 @@ Page({
     console.log(wx.getStorageSync('info').user_no);
     if(isNew){
       api.clearPageIndex(self);  
+      self.setData({
+        web_mainData:self.data.mainData
+      });
     };
     const postData = {};
     postData.paginate = api.cloneForm(self.data.paginate);
@@ -134,15 +138,11 @@ Page({
         key:'product_no',
         condition:'in',
       },
-      relation:{
-        searchItem:{
-          relation_two:['in',[353]]
-        },
-        s_key:'relation_one',
-        key:'product_no',
-        condition:'in',
-      },
     };
+    if(JSON.stringify(self.data.join) != "{}"){
+      postData.join.relation = self.data.join.relation
+    };
+    
     postData.joinAfter = {
       userInfo:{
         relation_key:'passage1',
@@ -153,16 +153,13 @@ Page({
     };
     const callback = (res)=>{
       if(res.info.data.length>0){
+        console.log(self.data.mainData);
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
       }else{
         self.data.isLoadAll = true;
         api.showToast('没有更多了','fail');
       };
-      console.log(self.data.mainData)
-      self.setData({
-        web_mainData:self.data.mainData,
-      });
-
+      
       setTimeout(function()
       {
         wx.hideNavigationBarLoading();

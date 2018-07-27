@@ -11,7 +11,7 @@ Page({
     searchItem:{
       thirdapp_id:['=','70'],
       category_id:['=','356'],
-      passage1:wx.getStorageSync('info').user_no
+      
     },
     join:{},
  
@@ -104,6 +104,7 @@ Page({
     const postData = {};
     postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
+    postData.searchItem.passage1 = wx.getStorageSync('info').user_no;
     if(JSON.stringify(self.data.join) != "{}"){
       postData.join = api.cloneForm(self.data.join);
     };
