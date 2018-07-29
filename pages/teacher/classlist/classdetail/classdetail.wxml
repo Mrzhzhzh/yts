@@ -1,54 +1,102 @@
 <!--pages/teacher/classnotes.wxml-->
 
 <wxs src="../../../../utils/func.wxs"  module="func" />
+<view wx:if="{{web_mainData.info.data[0].passage3=='2'||web_mainData.info.data[0].passage3=='1'||web_mainData.info.data[0].passage3=='4'}}">
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">科目:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].title}}</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">校区:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].label[352].child[0].title}}</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">课次:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].description}}</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课时间:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{func.timestampToTime(web_mainData.info.data[0].deadline)}}</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课人数:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].FlowLog.totalCount}}人</view>
+	</view>
+	<view style="width:100%;height:100rpx;display:flex;;border-bottom:10rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx;margin-left:25rpx">发布时间:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].create_time}}</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">金额:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].price}}元</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">是否住宿:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].passage4}}</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">是否专车接送:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].passage2}}</view>
+	</view>
+</view>
 
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">科目:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].title}}</view>
-</view>
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">校区:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">太华校区</view>
-</view>
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">课次:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].description}}</view>
-</view>
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课时间:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{func.timestampToTime(web_mainData.info.data[0].deadline)}}</view>
-</view>
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课人数:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">35人</view>
-</view>
-<view style="width:100%;height:100rpx;display:flex;;border-bottom:10rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx;margin-left:25rpx">发布时间:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].create_time}}</view>
-</view>
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">金额:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].price}}元</view>
-</view>
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">是否住宿:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].passage1}}</view>
-</view>
-<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
-	<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">是否专车接送:</view>
-	<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].passage2}}</view>
+<view wx:if="{{web_mainData.info.data[0].passage3=='3'}}">
+		<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">名称:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].title}}</view>
+	</view>
+
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">科目:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].label[354].child[0].title}}</view>
+	</view>
+
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">校区:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].label[352].child[0].title}}</view>
+	</view>
+	
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课时间:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{func.timestampToTime(web_mainData.info.data[0].deadline)}}</view>
+	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">编号:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].product_no}}</view>
+	</view>
+
+
+
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">上课人数:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].FlowLog.totalCount}}人</view>
+	</view>
+
+	<view style="width:100%;height:100rpx;display:flex;;border-bottom:10rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx;margin-left:25rpx">上课学生表:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx" data-path="/pages/teacher/classlist/classdetail/namelist/namelist?product_no={{web_mainData.info.data[0].product_no}}" bindtap="intoPath">点击查看</view>
+	</view>
+
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">金额:</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].price}}元</view>
+	</view>
 </view>
 
 
 
-<view style="display:flex" wx:if="{{web_mainData.info.data[0].passage3=='1'}}">
-	 <button type='submit'  data-passage="2"   bindtap="changeCourseStatus"   style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">确 认</button>
-	 <button type='submit'  data-passage="4"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx">拒绝</button>
+<view style="display:flex;position:absolute;bottom:0;width:100%" wx:if="{{web_mainData.info.data[0].passage3=='1'}}">
+	 <button type='submit'  data-passage="2"   bindtap="changeCourseStatus"   style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;">确 认</button>
+	 <button type='submit'  data-passage="4"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;">拒绝</button>
  </view>
+<view style="display:flex;position:absolute;bottom:0;width:100%" wx:if="{{web_mainData.info.data[0].passage3=='2'}}">
+ 	<button type='submit'  bindtap="scan" style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;" >扫码</button>
+ 	<button type='submit'  data-passage="3"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:50%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;">已完成</button>
+</view>
 
- <button type='submit'  bindtap="scan" style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx" wx:if="{{web_mainData.info.data[0].passage3=='2'}}">扫码</button>
+ <button type='submit' style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;;position:absolute;bottom:0" wx:if="{{web_mainData.info.data[0].passage3=='3'}}">已结课</button>
 
- <button type='submit'  data-passage="3"  bindtap="changeCourseStatus"style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;margin-top:190rpx" wx:if="{{web_mainData.info.data[0].passage3=='3'}}">已结课</button>
+ <button type='submit'  style="font-size:16px;color:#fff;width:100%;background:#ffa11a;border-radius:0;height:90rpx;line-height:90rpx;;position:absolute;bottom:0" wx:if="{{web_mainData.info.data[0].passage3=='4'}}">已取消</button>
  
 
 

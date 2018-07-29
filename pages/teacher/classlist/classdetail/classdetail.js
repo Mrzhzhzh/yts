@@ -12,8 +12,6 @@ Page({
     searchItem:{
       thirdapp_id:['=','70'],
       category_id:['=','356'],
-      passage1:wx.getStorageSync('info').user_no,
-      id:''
     },
     time:'',
     user_no:'U719050804405287',
@@ -31,7 +29,7 @@ Page({
         })
     };
     self.data.paginate = api.cloneForm(getApp().globalData.paginate)
-    self.data.searchItem.id = options.id;
+    self.data.id = options.id;
     self.getMainData();
   },
 
@@ -45,6 +43,8 @@ Page({
     const postData = {};
     postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
+    postData.searchItem.passage1 = wx.getStorageSync('info').user_no;
+    postData.searchItem.id = self.data.id;
     if(JSON.stringify(self.data.join) != "{}"){
       postData.join = api.cloneForm(self.data.join);
     };
@@ -125,7 +125,7 @@ Page({
         };
         self.getComputeData(res.result,callback);     
       }
-    })   
+    })  
   },
 
 
@@ -143,6 +143,11 @@ Page({
 
     api.changeCourseStatus(postData,callback);
     
+  },
+
+  intoPath(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),'nav');
   },
 
 
