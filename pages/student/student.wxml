@@ -8,7 +8,7 @@
        <span style="font-size:14px;color:#fff">{{web_user.info.data[0].info.name}}</span>
     </view>
     <view style="width:100%;position:absolute;top:65%;text-align:center;">
-       <span style="font-size:14px;color:#2e2e2e">总课时：{{web_user.info.data[0].info.balance}}节</span>
+       <span style="font-size:14px;color:#2e2e2e">总课时：{{web_computeData.info.FlowLog.countsum}}节</span>
     </view>
 </view>
 

@@ -110,7 +110,7 @@ Page({
       self.setData({
         web_index:self.data.web_index
       }); 
-    };     
+    };      
 
 
   },
@@ -118,7 +118,6 @@ Page({
 
   getMainData(isNew){
     const self = this;
-    console.log(wx.getStorageSync('info').user_no);
     if(isNew){
       api.clearPageIndex(self);  
       self.setData({

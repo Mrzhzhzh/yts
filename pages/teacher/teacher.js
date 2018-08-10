@@ -6,10 +6,7 @@ Page({
 
 
   data: {
-    sForm:{
-      username:'教师',
-      password:'111111'
-    },
+
     userData:[],
     web_show:false
   },
@@ -22,6 +19,7 @@ Page({
 
   onShow(){
     const self = this;
+    self.getUserData();
     const pass = api.checkTeacherLogin();
     if(pass){
       self.setData({

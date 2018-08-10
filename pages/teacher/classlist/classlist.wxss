@@ -1,6 +1,6 @@
 /* pages/teacher/classlist.wxss */
 .int_menu{
-	width:25%;
+	width:20%;
 	line-height:45px;
 	text-align:center;
 	font-size:15px;
@@ -9,7 +9,7 @@
 	
 }
 .int_menuactive{
-	width:25%;
+	width:20%;
 	line-height:45px;
 	text-align:center;
 	font-size:15px;

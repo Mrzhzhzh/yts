@@ -62,14 +62,14 @@ Page({
     api.fillChange(e,self,'submitData');
     if(self.data.submitData.password_new&&self.data.submitData.password_new_copy){
       if(self.data.submitData.password_new!=self.data.submitData.password_new_copy){
-        api.showToast('新密码不一致','fail');   
-      };
-
-      self.data.submitData.password_new_copy = '' 
+        api.showToast('新密码不一致','fail'); 
+        self.data.submitData.password_new_copy = ''   
+      };  
     }; 
       self.setData({
         web_submitData:self.data.submitData
       });
+      console.log(self.data.submitData);  
   },
 
 

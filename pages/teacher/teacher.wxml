@@ -39,7 +39,7 @@
 			</view>
 		</view>
 
-		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/teacher/classlist/classlist" bindtap="intoPath">
+		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/teacher/classlist/classlist?num=3" bindtap="intoPath">
 			<view style="width:10%;display:flex;align-items:center;">
 				<image src="/images/mine-order.png" style="width:34rpx;height:40rpx"></image>
 			</view>

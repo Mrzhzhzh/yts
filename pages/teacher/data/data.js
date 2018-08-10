@@ -37,17 +37,17 @@ Page({
     const callback = (res)=>{
       console.log(res)
       self.data.mainData = res;
-      self.data.sForm.name = res.info.data[0].name;
-      self.data.sForm.phone = res.info.data[0].phone;
-      self.data.sForm.idCard= res.info.data[0].idCard;
-      self.data.sForm.address = res.info.data[0].address;
-      self.data.sForm.passage2 = res.info.data[0].passage2;
+      self.data.sForm.name = res.info.data[0].info.name;
+      self.data.sForm.phone = res.info.data[0].info.phone;
+      self.data.sForm.idCard= res.info.data[0].info.idCard;
+      self.data.sForm.address = res.info.data[0].info.address;
+      self.data.sForm.passage2 = res.info.data[0].info.passage2;
       self.setData({
         web_sForm:self.data.sForm,
       });
       wx.hideLoading();
     };
-    api.userInfoGet(postData,callback);
+    api.userGet(postData,callback);
   },
 
 
@@ -66,8 +66,7 @@ Page({
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
 
-
-  edit(user){
+  userInfoUpdate(){
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
@@ -81,15 +80,44 @@ Page({
   },
 
 
+  userInfoAdd(){
+    const self = this;
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    postData.data = {};
+    postData.data = api.cloneForm(self.data.sForm);
+    const callback = (data)=>{
+      wx.hideLoading();
+      api.dealRes(data);
+    };
+    api.userInfoAdd(postData,callback);
+  },
+
+
   submit(){
     const self = this;
+    var phone = self.data.sForm.phone;
+    var idCard = self.data.sForm.idCard;
     const pass = api.checkComplete(self.data.sForm);
     if(pass){
-      wx.showLoading();
-      const callback = (user,res) =>{
-        console.log(user,res)
-        self.edit(user);
-      };
+      if(!idCard || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|[xX])$/.test(idCard)){
+        api.showToast('身份证格式错误','fail')
+      }else{
+        if(phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)){
+          api.showToast('手机格式错误','fail')
+        }else{
+          if(JSON.stringify(wx.getStorageSync('info').info)=='[]'){
+            wx.showLoading();
+            self.userInfoAdd();
+          }else{
+            wx.showLoading();
+            self.userInfoUpdate();
+          }
+            setTimeout(function(){
+            api.pathTo('/pages/teacher/teacher','tab')
+          },1000);  
+        }
+      }
     }else{
       api.showToast('请补全信息','fail');
     };

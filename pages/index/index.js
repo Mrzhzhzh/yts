@@ -30,7 +30,8 @@ Page({
     const self = this;
     const postData = {};
     postData.searchItem = {
-      thirdapp_id:['=','70']
+      thirdapp_id:['=','70'],
+      menu_id:['=','351']
     } 
     const callback = (res)=>{
       self.data.mainData = res

@@ -7,7 +7,7 @@
 	<view style="width:115rpx;height:115rpx;border-radius:50%;overflow:hidden"><open-data  type="userAvatarUrl"></open-data></view>
 	<view style="position:absolute;top:10rpx;left:140rpx">
 		<view style="font-size:34rpx;color:#fff">{{web_userData.info.data[0].info.name}}</view>
-		<view style="font-size:30rpx;color:#fff;margin-top:10rpx">总课时：{{web_userData.info.data[0].info.balance}}节</view>
+		<view style="font-size:30rpx;color:#fff;margin-top:10rpx">总课时：{{web_computeData.info.FlowLog.countsum}}节</view>
 	</view>
 </view>
 

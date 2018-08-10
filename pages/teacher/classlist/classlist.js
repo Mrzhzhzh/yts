@@ -7,7 +7,7 @@ Page({
 
   data: {
     mainData:[],
-    num:1,
+    num:0,
     searchItem:{
       thirdapp_id:['=','70'],
       category_id:['=','356'],
@@ -28,9 +28,15 @@ Page({
    
   
 
-  onLoad(){
-
+  onLoad(options){
     const self = this;
+    console.log(options.num)
+    if(options.num){
+      this.setData({
+        num: options.num
+      });
+      self.data.searchItem.passage3 = options.num
+    };
     wx.showLoading();
     const pass = api.checkTeacherLogin();
       if(pass){
@@ -135,7 +141,6 @@ Page({
       self.setData({
         web_mainData:self.data.mainData,
       });
-      console.log(self.data.mainData)
       
     };
     api.productGet(postData,callback);

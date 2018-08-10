@@ -36,16 +36,16 @@ Page({
     const callback = (res)=>{
       console.log(res)
       self.data.mainData = res;
-      self.data.sForm.name = res.info.data[0].name;
-      self.data.sForm.phone = res.info.data[0].phone;
-      self.data.sForm.email = res.info.data[0].email;
-      self.data.sForm.passage1 = res.info.data[0].passage1;
+      self.data.sForm.name = res.info.data[0].info.name;
+      self.data.sForm.phone = res.info.data[0].info.phone;
+      self.data.sForm.email = res.info.data[0].info.email;
+      self.data.sForm.passage1 = res.info.data[0].info.passage1;
       self.setData({
         web_sForm:self.data.sForm,
       });
       wx.hideLoading();
     };
-    api.userInfoGet(postData,callback);
+    api.userGet(postData,callback);
   },
 
 
@@ -65,7 +65,7 @@ Page({
   },
 
 
-  edit(user){
+  userInfoUpdate(){
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
@@ -78,16 +78,39 @@ Page({
     api.userInfoUpdate(postData,callback);
   },
 
+  userInfoAdd(){
+    const self = this;
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    postData.data = {};
+    postData.data = api.cloneForm(self.data.sForm);
+    const callback = (data)=>{
+      wx.hideLoading();
+      api.dealRes(data);
+    };
+    api.userInfoAdd(postData,callback);
+  },
+
 
   submit(){
     const self = this;
+    var phone = self.data.sForm.phone;
     const pass = api.checkComplete(self.data.sForm);
     if(pass){
-      wx.showLoading();
-      const callback = (user,res) =>{
-        console.log(user,res)
-        self.edit(user);
-      };
+      if(phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)){
+          api.showToast('手机格式错误','fail')
+        }else{
+          if(JSON.stringify(wx.getStorageSync('info').info)=='[]'){
+            wx.showLoading();
+            self.userInfoAdd();
+          }else{
+            wx.showLoading();
+            self.userInfoUpdate();
+          }
+          setTimeout(function(){
+            api.pathTo('/pages/student/student','tab')
+          },1000); 
+        }
     }else{
       api.showToast('请补全信息','fail');
     };

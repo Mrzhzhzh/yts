@@ -3,19 +3,21 @@
 <wxs src="../../../utils/func.wxs"  module="func" />
 
 <view style="width:100%;height:90rpx;display:flex;border-bottom:1px solid #e5e5e5">
+	<view data-num="0" class="int_menu{{num==0?'active':''}}" bindtap="menuClick" >全部</view>
 	<view data-num="1" class="int_menu{{num==1?'active':''}}" bindtap="menuClick" >待确认</view>
 	<view data-num="2" class="int_menu{{num==2?'active':''}}" bindtap="menuClick" >待上课</view>
 	<view data-num="3" class="int_menu{{num==3?'active':''}}" bindtap="menuClick" >已完成</view>
 	<view data-num="4" class="int_menu{{num==4?'active':''}}" bindtap="menuClick" >已取消</view>	
 </view>
 <block wx:for="{{web_labelData.info.data}}" wx:key="id">
-	<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center" >
+	<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center" data-index="{{index}}"    bindtap="spuChange">
 		<view style="width:30%">
 			<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">{{item.title}}</view>
 		</view>
-		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A">{{func.getArrayByTarget(item.child,'id',[web_spuItem[index]])[0]['title']}}</view>
+		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:if="{{func.getArrayByTarget(item.child,'id',[web_spuItem[index]])[0]['title']}}">{{func.getArrayByTarget(item.child,'id',[web_spuItem[index]])[0]['title']}}</view>
+		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:else>选择校区及科目以筛选</view>
 
-		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A"  data-index="{{index}}"    bindtap="spuChange" >+</view>
+		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A"  >+</view>
 
 	</view>
 </block>
@@ -68,7 +70,7 @@
 	<view style="width:100%;height:auto;background:black;opacity:0.5;position:absolute;bottom:0">
 		<image src="/images/close.png"  style="width:40rpx;height:40rpx;position:absolute;top:10rpx;right:10rpx;" data-index="10" bindtap="spuChange" />
 		<block wx:for="{{web_labelData.info.data[web_index].child}}" wx:key="id">
-			<view style="width:140rpx;height:60rpx;border:2rpx solid #FFCC1A;border-radius:10rpx;text-align:center;line-height:60rpx;color:#FFCC1A;font-size:30rpx;float:left;margin:10rpx 15rpx 10rpx" data-id="{{item.id}}" bindtap="spuChange">{{item.title}}</view>
+			<view style="width:140rpx;height:60rpx;border:2rpx solid #FFCC1A;border-radius:10rpx;text-align:center;line-height:60rpx;color:#FFCC1A;font-size:30rpx;float:left;margin:10rpx 15rpx" data-id="{{item.id}}" bindtap="spuChange">{{item.title}}</view>
 		</block>
 	</view>
 </view>
