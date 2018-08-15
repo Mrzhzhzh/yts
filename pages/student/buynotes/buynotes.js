@@ -1,8 +1,8 @@
-// pages/student/buynotes.js
 import {Api} from '../../../utils/api.js';
 const api = new Api();
 
 Page({
+
   data: {
 
     mainData:[],
@@ -21,9 +21,10 @@ Page({
     };
     wx.showLoading();
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
-    self.getMainData();
-   
-  },
+    self.getMainData(); 
+  }, 
+  
+
 
   getMainData(isNew){
     const self = this;

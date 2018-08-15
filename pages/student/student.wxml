@@ -12,62 +12,64 @@
     </view>
 </view>
 
-		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/student/data/data"  bindtap="intoPath">
-			<view style="width:10%;display:flex;align-items:center;">
-				<image src="/images/mine-data.png" style="width:34rpx;height:40rpx"></image>
-			</view>
-			<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">完善资料</view>
-			<view style="width:10%;display:flex;align-items:center;justify-content:center">
-				<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
-			</view>
-		</view>
+<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/student/data/data"  bindtap="intoPath">
+	<view style="width:10%;display:flex;align-items:center;">
+		<image src="/images/mine-data.png" style="width:34rpx;height:40rpx"></image>
+	</view>
+	<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">完善资料</view>
+	<view style="width:10%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
+	</view>
+</view>
 
-		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/student/qr-code/qr-code"  bindtap="intoPath">
-			<view style="width:10%;display:flex;align-items:center;">
-				<image src="/images/mine-qrcode.png" style="width:34rpx;height:40rpx"></image>
-			</view>
-			<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">二维码</view>
-			<view style="width:10%;display:flex;align-items:center;justify-content:center">
-				<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
-			</view>
-		</view>
+<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/student/qr-code/qr-code"  bindtap="intoPath">
+	<view style="width:10%;display:flex;align-items:center;">
+		<image src="/images/mine-qrcode.png" style="width:34rpx;height:40rpx"></image>
+	</view>
+	<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">二维码</view>
+	<view style="width:10%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
+	</view>
+</view>
 
-		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/student/classnotes/classnotes"  bindtap="intoPath">
-			<view style="width:10%;display:flex;align-items:center;">
-				<image src="/images/mine-class.png" style="width:34rpx;height:40rpx"></image>
-			</view>
-			<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">上课记录</view>
-			<view style="width:10%;display:flex;align-items:center;justify-content:center">
-				<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
-			</view>
-		</view>
+<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/student/classnotes/classnotes"  bindtap="intoPath">
+	<view style="width:10%;display:flex;align-items:center;">
+		<image src="/images/mine-class.png" style="width:34rpx;height:40rpx"></image>
+	</view>
+	<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">上课记录</view>
+	<view style="width:10%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
+	</view>
+</view>
 
-		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2"  data-path= "/pages/student/buynotes/buynotes"  bindtap="intoPath">
-			<view style="width:10%;display:flex;align-items:center;">
-				<image src="/images/mine-buy.png" style="width:34rpx;height:40rpx"></image>
-			</view>
-			<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">购买记录</view>
-			<view style="width:10%;display:flex;align-items:center;justify-content:center">
-				<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"  ></image>
-			</view>
-		</view>
+<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2"  data-path= "/pages/student/buynotes/buynotes"  bindtap="intoPath">
+	<view style="width:10%;display:flex;align-items:center;">
+		<image src="/images/mine-buy.png" style="width:34rpx;height:40rpx"></image>
+	</view>
+	<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">购买记录</view>
+	<view style="width:10%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"  ></image>
+	</view>
+</view>
 
-		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path="/pages/student/message/message"  bindtap="intoPath">
-			<view style="width:10%;display:flex;align-items:center;">
-				<image src="/images/mine-message.png" style="width:34rpx;height:40rpx"></image>
-			</view>
-			<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">我的消息</view>
-			<view style="width:10%;display:flex;align-items:center;justify-content:center">
-				<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
-			</view>
-		</view>
+<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path="/pages/student/message/message"  bindtap="intoPath">
+	<view style="width:10%;display:flex;align-items:center;">
+		<image src="/images/mine-message.png" style="width:34rpx;height:40rpx"></image>
+	</view>
+	<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">我的消息</view>
+	<view style="width:10%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
+	</view>
+</view>
 
-		<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/teacher/password/password"  bindtap="intoPath">
-			<view style="width:10%;display:flex;align-items:center;">
-				<image src="/images/mine-password.png" style="width:34rpx;height:40rpx"></image>
-			</view>
-			<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">修改密码</view>
-			<view style="width:10%;display:flex;align-items:center;justify-content:center">
-				<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
-			</view>
-		</view>
+<view style="width:93.4%;height:45px;margin:0 auto;display:flex;border-bottom:1px solid #e2e2e2" data-path= "/pages/teacher/password/password"  bindtap="intoPath">
+	<view style="width:10%;display:flex;align-items:center;">
+		<image src="/images/mine-password.png" style="width:34rpx;height:40rpx"></image>
+	</view>
+	<view style="width:80%;line-height:45px;font-size:15px;color:#2e2e2e">修改密码</view>
+	<view style="width:10%;display:flex;align-items:center;justify-content:center">
+		<image src="/images/mine-ic.png" style="width:20rpx;height:30rpx"></image>
+	</view>
+</view>
+
+<button style="font-size:15px;color:#fff;width:550rpx;margin:50rpx auto;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx" bindtap='removeStorageSync'>退 出 登 录</button>

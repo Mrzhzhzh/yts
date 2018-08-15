@@ -1,18 +1,13 @@
 /* pages/student/classnotes.wxss */
 
 .c-state1{
-
-   display:block;
-   
+   display:block;  
    width:100%;height:auto;background:#2e2e2e;position:fixed; bottom:0rpx;opacity: 0;
    transition: all .3s ease-in .1s;
-   transform: translateY(200px);
-   
+   transform: translateY(200px);   
  }  
 
  .c-state2{
-
    transform: translateY(0px);
-   opacity: 1;
-   
+   opacity: 1;  
  }  

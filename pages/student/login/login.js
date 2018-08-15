@@ -14,7 +14,7 @@ Page({
 
     sForm:{
       login_name:'学员',
-      password:'222222'
+      password:'111111'
     }
     
   },
@@ -27,8 +27,8 @@ Page({
     wx.setStorageSync('login',self.data.sForm);
     const callback = (res)=>{  
     wx.setStorageSync('info',res.data.info);  
-      if(res.data.info.type == 0){
-        wx.reLaunch({
+      if(res.data.info.user_type == 0){
+        wx.switchTab({
           url: '/pages/student/student'
         })
         api.showToast('登陆成功','success')
@@ -36,7 +36,6 @@ Page({
         api.showToast('用户不存在','fail')
       }
     }
-
     token.getToken(callback);
   },
 
@@ -53,7 +52,6 @@ Page({
 
   check(e){
     const self = this;
-    console.log(self.data.sForm);
     if(api.checkComplete(self.data.sForm)){
       self.submit();
     }else{

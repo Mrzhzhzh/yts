@@ -1,4 +1,4 @@
-// pages/teacher.js
+
 import {Api} from '../../utils/api.js';
 var api = new Api();
 
@@ -17,6 +17,7 @@ Page({
     self.getUserData();
   },
 
+
   onShow(){
     const self = this;
     self.getUserData();
@@ -34,15 +35,18 @@ Page({
     const postData = {};
     postData.token = wx.getStorageSync('token');
     const callback = (res)=>{
-      console.log(res);
       self.data.userData = res;
       self.setData({
         web_user:res,
-      });
-     
+      });   
       wx.hideLoading();
     };
     api.userGet(postData,callback);   
+  },
+
+  removeStorageSync(){
+    const self = this;
+    api.logOff();
   },
   
 

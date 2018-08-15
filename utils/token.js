@@ -93,7 +93,7 @@ class Token {
                 };
                 postData.headimgurl = data.avatarUrl;
                 wx.request({
-                    url: 'https://solelytech.iicp.net/public/index.php/api/v1/token/user',
+                    url: 'https://www.intest365.cn/public/index.php/api/v1/token/user',
                     method:'POST',
                     data:postData,
                     success:function(res){
@@ -133,7 +133,7 @@ class Token {
             }
 
             wx.request({
-                url: 'http://solelytech.iicp.net/yts/public/api/v1/Func/Common/loginByUp',
+                url: 'https://www.intest365.cn/public/index.php/api/v1/Func/Common/loginByUp',
                 method:'POST',
                 data:postData,
                 success:function(res){
@@ -142,7 +142,7 @@ class Token {
                         wx.setStorageSync('token', res.data.token);
                         var login = wx.getStorageSync('login');   
                         wx.setStorageSync('login',login);
-                        wx.setStorageSync('type',res.data.info.type);
+                        wx.setStorageSync('type',res.data.info.user_type);
                         if(params&&callback){  
                             params.data.token = res.data.token;
                              

@@ -124,10 +124,8 @@ Page({
       };
       console.log(self.data.mainData)
       self.setData({
-        web_mainData:self.data.mainData,
-        
+        web_mainData:self.data.mainData, 
       });
-
       setTimeout(function()
       {
         wx.hideNavigationBarLoading();
@@ -140,8 +138,7 @@ Page({
 
       self.setData({
         web_mainData:self.data.mainData,
-      });
-      
+      });     
     };
     api.productGet(postData,callback);
   },
@@ -171,8 +168,7 @@ Page({
     var index = api.getDataSet(e,'index');
     var itemId = api.getDataSet(e,'id');
     console.log(index+'/'+itemId);
-    if(itemId){
-      
+    if(itemId){    
       self.data.spuItem[self.data.web_index] = itemId;
       self.setData({
         web_spuItem:self.data.spuItem
@@ -195,7 +191,6 @@ Page({
       }else{
         self.data.join.relation.searchItem.relation_two[1] = spuItem;
       };
-      console.log(self.data.join);
       self.getMainData(true);
     };
 

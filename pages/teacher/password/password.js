@@ -1,4 +1,3 @@
-// pages/teacher/password.js
 import {Api} from '../../../utils/api.js';
 var api = new Api();
 
@@ -32,8 +31,6 @@ Page({
   },
 
 
-
-
   passwordUpdate(){
     const self = this;
       const postData = {};
@@ -51,8 +48,7 @@ Page({
           api.logOff();         
         }
       };
-    api.userUpdate(postData,callback);
-    
+    api.userUpdate(postData,callback);    
   },
 
 
@@ -69,7 +65,6 @@ Page({
       self.setData({
         web_submitData:self.data.submitData
       });
-      console.log(self.data.submitData);  
   },
 
 
@@ -83,9 +78,7 @@ Page({
     const pass = api.checkComplete(self.data.submitData);
     if(pass){
       wx.showLoading();
-
-      self.passwordUpdate();
-      
+      self.passwordUpdate();      
     }else{
       api.showToast('请补全信息','fail');
     };   

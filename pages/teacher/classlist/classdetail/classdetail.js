@@ -88,9 +88,7 @@ Page({
     };
     
     const child_callback = (res)=>{
-
-      callback&&callback(res);
-      
+      callback&&callback(res);    
     };
     api.flowLogCompute(postData,child_callback);
   },

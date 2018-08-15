@@ -1,4 +1,3 @@
-// pages/student/qr-code.js
 import {Api} from '../../../utils/api.js';
 const api = new Api();
 
@@ -32,13 +31,12 @@ Page({
       self.data.userData = res;
       self.setData({
         web_userData:self.data.userData,
-      });
-
-     
+      });   
       wx.hideLoading();
     };
     api.userGet(postData,callback);   
   },
+  
 
   getComputeData(){
     const self = this;

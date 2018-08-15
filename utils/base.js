@@ -11,7 +11,7 @@ class Base extends Token{
     //http 请求类, 当noRefech为true时，不做未授权重试机制
     request(params) {
         var that = this;
-        var baseRestUrl = 'http://solelytech.iicp.net/yts/public/api/v1/';
+        var baseRestUrl = 'https://www.intest365.cn/public/index.php/api/v1/';
         var url=baseRestUrl + params.url;
         
         
@@ -412,7 +412,7 @@ class Base extends Token{
         const self = this;
         wx.removeStorageSync('login');
         if(!wx.removeStorageSync('login')){
-            self.pathTo('/pages/index/index','redi')
+            self.pathTo('/pages/index/index','tab')
         }else{
             self.showToast('系统故障','fail')
         }

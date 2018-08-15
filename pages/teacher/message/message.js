@@ -1,4 +1,4 @@
-// pages/teacher/message.js
+
 import {Api} from '../../../utils/api.js';
 const api = new Api();
 
@@ -38,8 +38,12 @@ Page({
       create_time:'desc'
     }
     const callback = (res)=>{
-      console.log(res)
-      self.data.mainData = res;
+      if(res.info.data.length>0){
+        self.data.mainData.push.apply(self.data.mainData,res.info.data);
+      }else{
+        self.data.isLoadAll = true;
+        api.showToast('没有更多了','fail');
+      };
       self.setData({
         web_mainData:self.data.mainData,
       });

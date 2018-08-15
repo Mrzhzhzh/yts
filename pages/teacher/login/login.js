@@ -1,4 +1,4 @@
-// pages/teacher/login.js
+
 import {Api} from '../../../utils/api.js';
 var api = new Api();
 
@@ -26,9 +26,8 @@ Page({
     wx.setStorageSync('login',self.data.sForm);
     const callback = (res)=>{
     wx.setStorageSync('info',res.data.info);
-      if(res.data.info.type == 1){
-        console.log(res.data.info.type)
-        wx.reLaunch({
+      if(res.data.info.user_type == 1){
+        wx.switchTab({
           url: '/pages/teacher/teacher'
         }) 
         api.showToast('登陆成功','success')

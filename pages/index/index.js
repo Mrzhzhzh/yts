@@ -1,5 +1,3 @@
-//index.js
-//获取应用实例
 import {Api} from '../../utils/api.js';
 const api = new Api();
 
@@ -22,9 +20,9 @@ Page({
     wx.showLoading();
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
-
-
   },
+  
+
 
   getMainData(isNew){
     const self = this;
@@ -39,9 +37,7 @@ Page({
       self.data.mainData.content = api.wxParseReturn(res.info.data[0].content).nodes;
       self.setData({
         web_mainData:self.data.mainData,
-      });
-      console.log(self.data.mainData)
-      
+      });    
     };
     api.articleGet(postData,callback);
   }

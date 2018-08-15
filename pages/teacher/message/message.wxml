@@ -1,5 +1,5 @@
 <!--pages/teacher/message.wxml-->
-<block wx:for="{{web_mainData.info.data}}" wx:key="id">
+<block wx:for="{{web_mainData}}" wx:key="id">
 	<view style="height:195rpx;width:93.4%;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx">{{item.title}}</view>
 		<view style="font-size:30rpx;color:#b0b0b0">{{item.description}}</view>

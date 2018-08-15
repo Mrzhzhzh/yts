@@ -1,13 +1,10 @@
-// pages/student/classnotes.js
 import {Api} from '../../../utils/api.js';
 var api = new Api();
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+
     searchItem:{
       thirdapp_id:70
     },
@@ -57,9 +54,7 @@ Page({
       wx.hideLoading();
       self.setData({
         web_labelData:self.data.labelData,
-      });
-      console.log(self.data.labelData)
-      
+      });    
     };
     api.labelGet(postData,callback);
   },
@@ -71,9 +66,7 @@ Page({
     console.log(e);
     var index = api.getDataSet(e,'index');
     var itemId = api.getDataSet(e,'id');
-    console.log(index+'/'+itemId);
-    if(itemId){
-      
+    if(itemId){     
       self.data.spuItem[self.data.web_index] = itemId;
       console.log(self.data.spuItem);
       self.setData({
@@ -97,7 +90,6 @@ Page({
       }else{
         self.data.join.relation.searchItem.relation_two[1] = spuItem;
       };
-      console.log(self.data.join);
       self.getMainData(true);
     };
 
@@ -111,9 +103,9 @@ Page({
         web_index:self.data.web_index
       }); 
     };      
-
-
   },
+
+
 
 
   getMainData(isNew){
@@ -140,25 +132,27 @@ Page({
     };
     if(JSON.stringify(self.data.join) != "{}"){
       postData.join.relation = self.data.join.relation
-    };
-    
-    postData.joinAfter = {
+    };   
+    postData.getAfter = {
       userInfo:{
-        relation_key:'passage1',
-        relation_final_key:'user_no',
-        relation_condition:'=',
-        relation_info:['name']
+        tableName:'userInfo',
+        middleKey:'passage1',
+        key:'user_no',
+        condition:'=',
+        searchItem:{
+          status:1
+        },
+        info:['name']
       }
     };
     const callback = (res)=>{
       if(res.info.data.length>0){
-        console.log(self.data.mainData);
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
       }else{
         self.data.isLoadAll = true;
         api.showToast('没有更多了','fail');
       };
-      
+
       setTimeout(function()
       {
         wx.hideNavigationBarLoading();
@@ -171,9 +165,7 @@ Page({
 
       self.setData({
         web_mainData:self.data.mainData,
-      });
-      console.log(self.data.mainData)
-      
+      });     
     };
     api.productGet(postData,callback);
   },
@@ -218,10 +210,8 @@ Page({
     self.setData({
        web_startTime:self.data.startTime,
        web_endTime:self.data.endTime,
-       web_spuItem:self.data.spuItem
-      
+       web_spuItem:self.data.spuItem      
     })
-
     self.getMainData(true);
   },
 

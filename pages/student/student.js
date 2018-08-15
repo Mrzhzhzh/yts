@@ -1,4 +1,3 @@
-// pages/student.js
 import {Api} from '../../utils/api.js';
 var api = new Api();
 
@@ -8,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     computeData:[],
     web_show:false,
     userData:[]
@@ -51,6 +51,7 @@ Page({
     api.userGet(postData,callback);   
   },
 
+
   getComputeData(){
     const self = this;
     const postData = {};
@@ -67,7 +68,6 @@ Page({
       }
     };
     const callback = (res)=>{
-      console.log(res);
       self.data.computeData = res;
       self.setData({
         web_computeData:self.data.computeData,
@@ -77,9 +77,10 @@ Page({
     api.flowLogCompute(postData,callback);
   },
 
-
-
-
+  removeStorageSync(){
+    const self = this;
+    api.logOff();
+  },
 
 
   intoPath(e){

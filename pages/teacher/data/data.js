@@ -9,7 +9,7 @@ Page({
       phone:'',
       idCard:'',
       address:'',
-      passage2:'',
+      passage2:''
     
     },
     mainData:{},
@@ -27,8 +27,8 @@ Page({
         })
     };
     self.getMainData();
-
   },
+
 
   getMainData(){
     const self = this;
@@ -65,6 +65,7 @@ Page({
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
+  
 
   userInfoUpdate(){
     const self = this;

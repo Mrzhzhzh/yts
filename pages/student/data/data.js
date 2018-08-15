@@ -4,6 +4,7 @@ const api = new Api();
 
 Page({
   data: {
+
     sForm:{
       name:'',
       phone:'',
@@ -12,8 +13,7 @@ Page({
     },
 
     mainData:{},
-    web_show:false
-    
+    web_show:false    
   },
 
 
@@ -25,11 +25,11 @@ Page({
         web_show:true
       })
     };
-    self.getMainData();
+    self.getUserData();
   },
 
 
-  getMainData(){
+  getUserData(){
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
@@ -52,7 +52,6 @@ Page({
   changeBind(e){
     const self = this;
     api.fillChange(e,self,'sForm');
-    console.log(self.data.sForm);
     self.setData({
       web_sForm:self.data.sForm,
     });  
@@ -77,6 +76,7 @@ Page({
     };
     api.userInfoUpdate(postData,callback);
   },
+
 
   userInfoAdd(){
     const self = this;
@@ -114,7 +114,7 @@ Page({
     }else{
       api.showToast('请补全信息','fail');
     };
-  },
+  }
 
   
 })

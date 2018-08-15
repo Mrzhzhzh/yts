@@ -9,6 +9,7 @@
 	<view data-num="3" class="int_menu{{num==3?'active':''}}" bindtap="menuClick" >已完成</view>
 	<view data-num="4" class="int_menu{{num==4?'active':''}}" bindtap="menuClick" >已取消</view>	
 </view>
+
 <block wx:for="{{web_labelData.info.data}}" wx:key="id">
 	<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center" data-index="{{index}}"    bindtap="spuChange">
 		<view style="width:30%">
@@ -16,15 +17,12 @@
 		</view>
 		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:if="{{func.getArrayByTarget(item.child,'id',[web_spuItem[index]])[0]['title']}}">{{func.getArrayByTarget(item.child,'id',[web_spuItem[index]])[0]['title']}}</view>
 		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:else>选择校区及科目以筛选</view>
-
 		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A"  >+</view>
-
 	</view>
 </block>
 
 
 <view style="display:flex;border-top:1px solid #FFCC1A;height:50rpx">
-
 	<view class="section" style="width:50%;border-right:1px solid #FFCC1A">   
 	  <picker mode="date" value="{{web_startTime}}" data-type="startTime" bindchange="bindTimeChange" >
 	    <view class="picker" style="font-size:15px;color:#FFCC1A;text-align:center">
