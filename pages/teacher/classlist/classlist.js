@@ -90,10 +90,13 @@ Page({
     delete self.data.searchItem.discount;
     self.data.startTime = '';
     self.data.endTime = '';
-    self.data.searchItem = api.cloneForm(self.data.searchItem);
+    
+    
     self.setData({
        web_startTime:self.data.startTime,
-       web_endTime:self.data.endTime,  
+       web_endTime:self.data.endTime, 
+       web_areaId:'',
+       web_subjectId:''
     })
 
     self.getMainData(true);
