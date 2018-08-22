@@ -45,18 +45,26 @@ Page({
     if(JSON.stringify(self.data.join) != "{}"){
       postData.join = api.cloneForm(self.data.join);
     };
-    postData.joinAfter = {
+    postData.getAfter = {
       FlowLog:{
-        relation_key:'product_no',
-        relation_final_key:'product_no',
-        relation_condition:'=',
-        
-        relation_compute:{
-          All:'count',
+        tableName:'FlowLog',
+        middleKey:'product_no',
+        key:'product_no',
+        searchItem:{
+          status:1
         },
-      }
-      
-    };
+        condition:'=',
+        compute:{
+          pCount:[
+            'count',
+            'any',
+            {
+              status:1
+            }
+          ]         
+        }   
+      },
+    }
     const callback = (res)=>{
       self.data.mainData = res;
       self.setData({

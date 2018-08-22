@@ -7,18 +7,18 @@ Page({
 
   data: {
     mainData:[],
-    num:0,
+    num:'',
     searchItem:{
       thirdapp_id:['=','70'],
-      category_id:['=','356'],
-      
+      category_id:['=','356'],  
     },
     join:{},
  
    
     startTime:'',
     endTime:'',
-    spuItem:{},
+    web_areaId:{},
+    web_subjectId:{},
     web_index:-1,
     join:{},
     time:'',
@@ -55,8 +55,8 @@ Page({
     const postData = {};
     postData.searchItem = {
       thirdapp_id:['=','70'],
-      type:
-        ['in',['7','8']]
+      type:['in',['7','8']],
+
     };
 
     const callback = (res)=>{
@@ -86,16 +86,14 @@ Page({
     const self = this;
     wx.showNavigationBarLoading();
     delete self.data.searchItem.deadline;
-    delete self.data.join.relation;
-    self.data.spuItem = {};
+    delete self.data.searchItem.view_count;
+    delete self.data.searchItem.discount;
     self.data.startTime = '';
     self.data.endTime = '';
     self.data.searchItem = api.cloneForm(self.data.searchItem);
     self.setData({
        web_startTime:self.data.startTime,
-       web_endTime:self.data.endTime,
-       web_spuItem:self.data.spuItem
-      
+       web_endTime:self.data.endTime,  
     })
 
     self.getMainData(true);
@@ -111,10 +109,6 @@ Page({
     postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
     postData.searchItem.passage1 = wx.getStorageSync('info').user_no;
-    if(JSON.stringify(self.data.join) != "{}"){
-      postData.join = api.cloneForm(self.data.join);
-    };
-
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
@@ -131,11 +125,7 @@ Page({
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
       },300);
-
       wx.hideLoading();
-      wx.stopPullDownRefresh();
-      wx.hideNavigationBarLoading(); 
-
       self.setData({
         web_mainData:self.data.mainData,
       });     
@@ -154,46 +144,42 @@ Page({
 
   changeSearch(num){
     const self = this;
-    this.setData({
+    self.setData({
       num: num
     });
-    self.data.searchItem.passage3 = num;
+    if(num==0){
+      self.data.searchItem={
+        thirdapp_id:['=','70'],
+        category_id:['=','356'],  
+      }
+    }else{
+      self.data.searchItem.passage3 = num;
+    }
     self.getMainData(true);
   },
 
 
-  spuChange(e){
+  searchItemChange(e){
     const self = this;   
     console.log(e);
     var index = api.getDataSet(e,'index');
     var itemId = api.getDataSet(e,'id');
     console.log(index+'/'+itemId);
-    if(itemId){    
-      self.data.spuItem[self.data.web_index] = itemId;
-      self.setData({
-        web_spuItem:self.data.spuItem
-      });
-      var spuItem = [];
-      for (var i in self.data.spuItem) {
-        spuItem.push(self.data.spuItem[i])
-      };
-      if(JSON.stringify(self.data.join) == "{}"){
-        self.data.join = {
-          relation:{
-            searchItem:{
-              relation_two:['in',spuItem]
-            },
-            s_key:'relation_one',
-            key:'product_no',
-            condition:'in',
-          },
-        };
+    if(itemId){
+      console.log(666)
+      if(index==0){
+        self.data.searchItem.view_count = itemId
+        self.setData({
+          web_areaId:self.data.searchItem.view_count
+        })  
       }else{
-        self.data.join.relation.searchItem.relation_two[1] = spuItem;
-      };
-      self.getMainData(true);
+        self.data.searchItem.discount = itemId
+        self.setData({
+          web_subjectId:self.data.searchItem.discount
+        })  
+      }
+      self.getMainData(true)
     };
-
     if(index||index==0){
       if(self.data.web_index>=0){
         self.data.web_index = -1;

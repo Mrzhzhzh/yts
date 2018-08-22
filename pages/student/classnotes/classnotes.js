@@ -66,9 +66,27 @@ Page({
     console.log(e);
     var index = api.getDataSet(e,'index');
     var itemId = api.getDataSet(e,'id');
-    if(itemId){     
+    console.log(index+'/'+itemId);
+    if(itemId){
+      console.log(666)
+      if(index==0){
+        self.data.searchItem.view_count = itemId
+        self.setData({
+          web_areaId:self.data.searchItem.view_count
+        })  
+      }else{
+        self.data.searchItem.discount = itemId
+        self.setData({
+          web_subjectId:self.data.searchItem.discount
+        })  
+      }
+      self.getMainData(true)
+    };
+     
+    
+
+/*    if(itemId){    
       self.data.spuItem[self.data.web_index] = itemId;
-      console.log(self.data.spuItem);
       self.setData({
         web_spuItem:self.data.spuItem
       });
@@ -91,7 +109,7 @@ Page({
         self.data.join.relation.searchItem.relation_two[1] = spuItem;
       };
       self.getMainData(true);
-    };
+    };*/
 
     if(index||index==0){
       if(self.data.web_index>=0){
@@ -102,7 +120,8 @@ Page({
       self.setData({
         web_index:self.data.web_index
       }); 
-    };      
+    };     
+
   },
 
 
@@ -119,20 +138,18 @@ Page({
     const postData = {};
     postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
-    postData.join = {
+    postData.getBefore = {
       FlowLog:{
+        tableName:'FlowLog',
         searchItem:{
           user_no:['=',[wx.getStorageSync('info').user_no]],
           type:['=',[6]]
         },
-        s_key:'product_no',
+        middleKey:'product_no',
         key:'product_no',
         condition:'in',
       },
     };
-    if(JSON.stringify(self.data.join) != "{}"){
-      postData.join.relation = self.data.join.relation
-    };   
     postData.getAfter = {
       userInfo:{
         tableName:'userInfo',
@@ -160,8 +177,6 @@ Page({
       },300);
 
       wx.hideLoading();
-      wx.stopPullDownRefresh();
-      wx.hideNavigationBarLoading(); 
 
       self.setData({
         web_mainData:self.data.mainData,
@@ -202,15 +217,15 @@ Page({
     const self = this;
     wx.showNavigationBarLoading();
     delete self.data.searchItem.deadline;
-    delete self.data.join.relation;
-    self.data.spuItem = {};
+    delete self.data.searchItem.view_count;
+    delete self.data.searchItem.discount;
+    
     self.data.startTime = '';
     self.data.endTime = '';
     self.data.searchItem = api.cloneForm(self.data.searchItem);
     self.setData({
        web_startTime:self.data.startTime,
-       web_endTime:self.data.endTime,
-       web_spuItem:self.data.spuItem      
+       web_endTime:self.data.endTime,    
     })
     self.getMainData(true);
   },

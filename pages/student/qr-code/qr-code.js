@@ -5,7 +5,7 @@ Page({
 
 
   data: {
-    userData:[],
+    QrData:[],
     web_show:false
   },
 
@@ -18,23 +18,28 @@ Page({
         web_show:true
       })
     };
-    self.getUserData();
+    self.getQrData();
     self.getComputeData()
   },
 
 
-  getUserData(){
+  getQrData(){
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
+    postData.param = wx.getStorageSync('info').user_no;
+    postData.output = 'url';
+    postData.ext = 'png';
     const callback = (res)=>{
-      self.data.userData = res;
+      console.log(res);
+      self.data.QrData = res;
       self.setData({
-        web_userData:self.data.userData,
-      });   
+        web_QrData:self.data.QrData,
+      });
+     
       wx.hideLoading();
     };
-    api.userGet(postData,callback);   
+    api.getQrCommonCode(postData,callback);
   },
   
 

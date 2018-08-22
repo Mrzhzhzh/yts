@@ -52,6 +52,31 @@ class Api extends Base{
         this.request(allParams);
     }
 
+    getQrProgramCode(param,callback){
+        var allParams ={
+            url:'Base/Qr/ProgramQrGet',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    } 
+
+
+    getQrCommonCode(param,callback){
+        var allParams ={
+            url:'Base/Qr/CommonQrGet',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }  
+
 
     changeCourseStatus(param,callback){
         var allParams ={

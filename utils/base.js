@@ -36,7 +36,7 @@ class Base extends Token{
                     if(wx.getStorageSync('token')&&params.data.token == wx.getStorageSync('token')){
                         that.logOff();
                     }else{
-                       that.getUserInfo(params,callback); 
+                       token.getUserInfo(params,callback); 
                     };
                                         
                 } else {
