@@ -7,7 +7,6 @@ Page({
 
 
   data: {
-    join:{},
     mainData:[],
     searchItem:{
       thirdapp_id:['=','70'],
@@ -38,13 +37,9 @@ Page({
   getMainData(isNew){
     const self = this;
     const postData = {};
-    postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
     postData.searchItem.passage1 = wx.getStorageSync('info').user_no;
     postData.searchItem.id = self.data.id;
-    if(JSON.stringify(self.data.join) != "{}"){
-      postData.join = api.cloneForm(self.data.join);
-    };
     postData.getAfter = {
       FlowLog:{
         tableName:'FlowLog',
@@ -122,7 +117,8 @@ Page({
             }
           };
           const callback = (res)=>{
-            api.dealRes(res);
+            api.showToast('扫码成功','fail');
+            self.getMainData(true)
           };
           api.flowLogAdd(postData,callback)
         };
