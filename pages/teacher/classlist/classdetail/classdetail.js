@@ -13,7 +13,7 @@ Page({
       category_id:['=','356'],
     },
     time:'',
-    user_no:'U719050804405287',
+    user_no:'',
     web_show:false
   },
 
@@ -41,6 +41,7 @@ Page({
     postData.searchItem.passage1 = wx.getStorageSync('info').user_no;
     postData.searchItem.id = self.data.id;
     postData.getAfter = {
+      
       FlowLog:{
         tableName:'FlowLog',
         middleKey:'product_no',
@@ -50,7 +51,7 @@ Page({
         },
         condition:'=',
         compute:{
-          pCount:[
+          totalCount:[
             'count',
             'any',
             {
@@ -59,6 +60,28 @@ Page({
           ]         
         }   
       },
+
+      spuOne:{
+        tableName:'label',
+        middleKey:'view_count',
+        key:'id',
+        condition:'=',
+        searchItem:{
+          status:1
+        },
+        info:['title']
+      },
+
+      spuTwo:{
+        tableName:'label',
+        middleKey:'discount',
+        key:'id',
+        condition:'=',
+        searchItem:{
+          status:1
+        },
+        info:['title']
+      }
     }
     const callback = (res)=>{
       self.data.mainData = res;

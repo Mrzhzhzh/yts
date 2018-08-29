@@ -17,21 +17,23 @@ Page({
 
   onLoad(){
     const self = this;
-    self.getUserData();
-    self.getComputeData()
+
   },
 
   
 
   onShow(){
     const self = this;
-    self.getUserData();
+    wx.showLoading();
     const pass = api.checkStudentLogin();
     if(pass){
       self.setData({
         web_show:true
-      })
+      });
+      self.getUserData();
+      self.getComputeData()
     };
+    
   },
 
 

@@ -13,8 +13,8 @@ Page({
   data: {
 
     sForm:{
-      login_name:'学员',
-      password:'111111'
+      login_name:'',
+      password:''
     }
     
   },
@@ -23,12 +23,12 @@ Page({
   
 
   submit(){
-    const self = this;
+    const self = this; 
     wx.setStorageSync('login',self.data.sForm);
-    const callback = (res)=>{  
-    wx.setStorageSync('info',res.data.info);  
+    const callback = (res)=>{    
       if(res.data.info.user_type == 0){
-        wx.switchTab({
+        wx.setStorageSync('info',res.data.info); 
+        wx.reLaunch({
           url: '/pages/student/student'
         })
         api.showToast('登陆成功','success')

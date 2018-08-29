@@ -4,11 +4,11 @@
 <view wx:if="{{web_mainData.info.data[0].passage3=='2'||web_mainData.info.data[0].passage3=='1'||web_mainData.info.data[0].passage3=='4'}}">
 	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">科目:</view>
-		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].title}}</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].spuOne.title}}</view>
 	</view>
 	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">校区:</view>
-		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].label[352].child[0].title}}</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].spuTwo.title}}</view>
 	</view>
 	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">课次:</view>
@@ -48,12 +48,12 @@
 
 	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">科目:</view>
-		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].label[354].child[0].title}}</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].spuOne.title}}</view>
 	</view>
 
 	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
 		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">校区:</view>
-		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].label[352].child[0].title}}</view>
+		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].spuTwo.title}}</view>
 	</view>
 	
 	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">

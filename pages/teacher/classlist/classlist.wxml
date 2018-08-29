@@ -17,12 +17,9 @@
 			<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">{{item.title}}</view>
 		</view>
 
-		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:if="{{index==0}}">{{func.getArrayByTarget(item.child,'id',[web_areaId])[0]['title']?func.getArrayByTarget(item.child,'id',[web_areaId])[0]['title']:'请选择校区'}}</view><view 
+		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:if="{{index==0}}">{{func.getArrayByTarget(item.child,'id',[web_areaId])[0]['title']?func.getArrayByTarget(item.child,'id',[web_areaId])[0]['title']:'请选择校区'}}</view>
 
-		style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:else >{{func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']?func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']:'请选择科目'}}</view>
-
-		
-		
+		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:else >{{func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']?func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']:'请选择科目'}}</view>
 
 		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A"  >+</view>
 	</view>
@@ -53,7 +50,7 @@
 <block wx:for="{{web_mainData}}" wx:key="id">
 	<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5" data-path= "/pages/teacher/classlist/classdetail/classdetail?id={{item.id}}"  bindtap="intoPath">
 		<view style="width:20%;display:flex;align-items:center;justify-content:center">
-			<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+			<image src="{{item.mainImg[0].url}}" style="width:120rpx;height:120rpx;border-radius:50%" />
 		</view>
 		<view style="width:40%">
 			<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">{{item.title}}</view>
@@ -62,7 +59,7 @@
 
 		<view style="width:40%">
 			<view style="font-size:10px;color:#cccccc;line-height:60rpx;text-align:right;margin-right:30rpx">{{item.create_time}}发布</view>
-			<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">高新幼儿小学</view>
+			<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">{{item.spuTwo.title}}</view>
 		</view>
 	</view>
 </block>		

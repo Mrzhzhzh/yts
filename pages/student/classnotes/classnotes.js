@@ -61,7 +61,7 @@ Page({
 
 
 
-  spuChange(e){
+  searchItemChange(e){
     const self = this;   
     console.log(e);
     var index = api.getDataSet(e,'index');
@@ -70,47 +70,18 @@ Page({
     if(itemId){
       console.log(666)
       if(index==0){
-        self.data.searchItem.view_count = itemId
-        self.setData({
-          web_areaId:self.data.searchItem.view_count
-        })  
-      }else{
         self.data.searchItem.discount = itemId
         self.setData({
-          web_subjectId:self.data.searchItem.discount
+          web_areaId:self.data.searchItem.discount
+        })  
+      }else{
+        self.data.searchItem.view_count = itemId
+        self.setData({
+          web_subjectId:self.data.searchItem.view_count
         })  
       }
       self.getMainData(true)
     };
-     
-    
-
-/*    if(itemId){    
-      self.data.spuItem[self.data.web_index] = itemId;
-      self.setData({
-        web_spuItem:self.data.spuItem
-      });
-      var spuItem = [];
-      for (var i in self.data.spuItem) {
-        spuItem.push(self.data.spuItem[i])
-      };
-      if(JSON.stringify(self.data.join) == "{}"){
-        self.data.join = {
-          relation:{
-            searchItem:{
-              relation_two:['in',spuItem]
-            },
-            s_key:'relation_one',
-            key:'product_no',
-            condition:'in',
-          },
-        };
-      }else{
-        self.data.join.relation.searchItem.relation_two[1] = spuItem;
-      };
-      self.getMainData(true);
-    };*/
-
     if(index||index==0){
       if(self.data.web_index>=0){
         self.data.web_index = -1;

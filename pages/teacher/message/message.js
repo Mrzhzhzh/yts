@@ -5,7 +5,7 @@ const api = new Api();
 Page({
   data: {
 
-    mainData:{},
+    mainData:[],
     web_show:false
   },
 

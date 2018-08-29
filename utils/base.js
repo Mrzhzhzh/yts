@@ -348,23 +348,27 @@ class Base extends Token{
 
     checkTeacherLogin(){
         const self = this;
-        if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==1){   
+        if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==1){
+            wx.hideLoading();  
            return wx.getStorageSync('login');
         }else{
           setTimeout(function(){
-            self.pathTo('/pages/teacher/login/login','redi');
-          },500);                
+            wx.hideLoading();
+            self.pathTo('/pages/teacher/login/login','rela');
+          },300);                
         }; 
     };
 
     checkStudentLogin(){
         const self = this;
-        if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==0){   
+        if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==0){ 
+            wx.hideLoading();  
            return wx.getStorageSync('login');
-        }else{
+        }else{ 
           setTimeout(function(){
-            self.pathTo('/pages/student/login/login','redi');
-          },500);                
+            wx.hideLoading();
+            self.pathTo('/pages/student/login/login','rela');
+          },300);                
         }; 
     };
 

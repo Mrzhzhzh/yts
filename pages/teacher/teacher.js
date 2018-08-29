@@ -14,18 +14,19 @@ Page({
 
   onLoad(){
     const self = this;
-    self.getUserData();
+    
   },
 
 
   onShow(){
     const self = this;
-    self.getUserData();
+    wx.showLoading();
     const pass = api.checkTeacherLogin();
     if(pass){
       self.setData({
         web_show:true
       })
+      self.getUserData();
     };
   },
 

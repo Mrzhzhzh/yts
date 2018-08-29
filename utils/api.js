@@ -80,7 +80,7 @@ class Api extends Base{
 
     changeCourseStatus(param,callback){
         var allParams ={
-            url:'Project/Yts/changeCourseStatus',
+            url:'Project/Jzyz/changeCourseStatus',
             type:'post',
             data:param,
             sCallback: function(data) {

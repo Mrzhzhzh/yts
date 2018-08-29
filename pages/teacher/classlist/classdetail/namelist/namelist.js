@@ -48,25 +48,23 @@ Page({
     postData.order = {
       create_time:'desc',
     }; 
-    if(JSON.stringify(self.data.join) != "{}"){
-      postData.join = api.cloneForm(self.data.join);
-    };
-    postData.joinAfter = {
+    postData.getAfter = {
       user_info:{
-        relation_key:'user_no',
-        relation_final_key:'user_no',
-        relation_condition:'=',
-        relation_info:['name']      
+        tableName:'user_info',
+        middleKey:'user_no',
+        key:'user_no',
+        condition:'=',
+        info:['name']      
       },
 
       product:{
-        relation_key:'product_no',
-        relation_final_key:'product_no',
-        relation_condition:'=',
-        relation_info:['title']      
+        tableName:'product',
+        middleKey:'product_no',
+        key:'product_no',
+        condition:'=',
+        info:['title']
       }
     };
-
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
@@ -80,7 +78,6 @@ Page({
       console.log(self.data.mainData)
       wx.hideLoading();
     };
- 
     api.flowLogGet(postData,callback);
   },
 

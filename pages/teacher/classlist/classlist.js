@@ -11,6 +11,7 @@ Page({
     searchItem:{
       thirdapp_id:['=','70'],
       category_id:['=','356'],  
+      
     },
     join:{},
  
@@ -58,7 +59,6 @@ Page({
       type:['in',['7','8']],
 
     };
-
     const callback = (res)=>{
       self.data.labelData = res
       wx.hideLoading();
@@ -112,6 +112,29 @@ Page({
     postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
     postData.searchItem.passage1 = wx.getStorageSync('info').user_no;
+    postData.getAfter = {
+      spuOne:{
+        tableName:'label',
+        middleKey:'view_count',
+        key:'id',
+        condition:'=',
+        searchItem:{
+          status:1
+        },
+        info:['title']
+      },
+    
+      spuTwo:{
+        tableName:'label',
+        middleKey:'discount',
+        key:'id',
+        condition:'=',
+        searchItem:{
+          status:1
+        },
+        info:['title']
+      }
+    };
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
@@ -171,14 +194,14 @@ Page({
     if(itemId){
       console.log(666)
       if(index==0){
-        self.data.searchItem.view_count = itemId
-        self.setData({
-          web_areaId:self.data.searchItem.view_count
-        })  
-      }else{
         self.data.searchItem.discount = itemId
         self.setData({
-          web_subjectId:self.data.searchItem.discount
+          web_areaId:self.data.searchItem.discount
+        })  
+      }else{
+        self.data.searchItem.view_count = itemId
+        self.setData({
+          web_subjectId:self.data.searchItem.view_count
         })  
       }
       self.getMainData(true)
