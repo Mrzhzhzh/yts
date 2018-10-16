@@ -38,6 +38,10 @@
 		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">是否专车接送:</view>
 		<view style="font-size:30rpx;color:#2e2e2e;line-height:100rpx;margin-left:20rpx">{{web_mainData.info.data[0].passage2}}</view>
 	</view>
+	<view style="width:93.4%;height:100rpx;display:flex;margin:0 auto;border-bottom:2rpx solid #e5e5e5">
+		<view style="font-size:30rpx;color:#FFCC1A;line-height:100rpx">补助金额:</view>
+		<input style="font-size:30rpx;color:#2e2e2e;height:100rpx;line-height:100rpx;margin-left:20rpx" placeholder="请填写补助金额" data-key="allowance" value="{{web_sForm.allowance}}" bindinput="changeBind"></input>
+	</view>
 </view>
 
 <view wx:if="{{web_mainData.info.data[0].passage3=='3'}}">

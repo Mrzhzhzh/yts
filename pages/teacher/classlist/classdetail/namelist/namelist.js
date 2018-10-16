@@ -11,8 +11,9 @@ Page({
     join:{},
     mainData:[],
     searchItem:{
-      thirdapp_id:['=','70'],
-      type:['=','6']
+      thirdapp_id:70,
+      type:['=','6'],
+      user_type:0
     },
     web_show:false
   },
@@ -49,7 +50,7 @@ Page({
       create_time:'desc',
     }; 
     postData.getAfter = {
-      user_info:{
+      userInfo:{
         tableName:'user_info',
         middleKey:'user_no',
         key:'user_no',

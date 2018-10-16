@@ -42,10 +42,12 @@ Page({
         password:self.data.submitData.password_new,
       }; 
       const callback = (res) => { 
-        wx.hideLoading();
         const pass = api.dealRes(res);
+        wx.hideLoading();
         if(pass){
-          api.logOff();         
+          setTimeout(function(){
+            api.logOff(); 
+          },800)         
         }
       };
     api.userUpdate(postData,callback);    
@@ -58,7 +60,7 @@ Page({
     api.fillChange(e,self,'submitData');
     if(self.data.submitData.password_new&&self.data.submitData.password_new_copy){
       if(self.data.submitData.password_new!=self.data.submitData.password_new_copy){
-        api.showToast('新密码不一致','fail'); 
+        api.showToast('新密码不一致','none'); 
         self.data.submitData.password_new_copy = ''   
       };  
     }; 
@@ -72,7 +74,7 @@ Page({
   submit(){
     const self = this;
     if(self.data.submitData.password != wx.getStorageSync('login').password){
-      api.showToast('原密码错误','fail');
+      api.showToast('原密码错误','none');
       return;
     };
     const pass = api.checkComplete(self.data.submitData);
@@ -80,7 +82,7 @@ Page({
       wx.showLoading();
       self.passwordUpdate();      
     }else{
-      api.showToast('请补全信息','fail');
+      api.showToast('请补全信息','none');
     };   
   },
   

@@ -6,7 +6,7 @@
 <view class='login_box'>
  	<input type='text' placeholder-class="ph"  placeholder='请输入用户名'  value="{{web_sFome.login_name}}" data-key="login_name" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:0 auto;font-size:15px;border-bottom:1px solid #e5e5e5"></input>
 
- 	<input type='text'  placeholder-class="ph" placeholder='请输入密码' data-key="password" value="{{web_sFome.password}}" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:20rpx auto;font-size:15px;border-bottom:1px solid #e5e5e5"></input>
+ 	<input type='password'  placeholder-class="ph" placeholder='请输入密码' data-key="password" value="{{web_sFome.password}}" bindchange="bindInputChange" style="width:75%;height:65rpx;margin:20rpx auto;font-size:15px;border-bottom:1px solid #e5e5e5"></input>
  
   	<button type='submit'  bindtap="check" style="font-size:15px;color:#fff;width:550rpx;margin:120rpx auto 0rpx;background:#FFCC1A;border-radius:50rpx;height:90rpx;line-height:90rpx">登 录</button>
  </view>

@@ -14,7 +14,11 @@ Page({
     },
     time:'',
     user_no:'',
-    web_show:false
+    web_show:false,
+    FlowLogData:[],
+    sForm:{
+      allowance:''
+    }
   },
 
 
@@ -30,6 +34,7 @@ Page({
     self.data.paginate = api.cloneForm(getApp().globalData.paginate)
     self.data.id = options.id;
     self.getMainData();
+
   },
 
 
@@ -124,31 +129,73 @@ Page({
     const self = this;
     wx.scanCode({
       success: (res) => {
+        self.getFlowLogData(res.result)
+     
         console.log(res.result);
-        const callback = (child_res)=>{
-          
+            
+      }
+    })  
+  },
+
+  changeBind(e){
+    const self = this;
+    api.fillChange(e,self,'sForm');
+    console.log(self.data.sForm)
+    self.setData({
+      web_sForm:self.data.sForm,
+    });  
+  },
+
+  getFlowLogData(result){
+    const self = this;
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    postData.searchItem = {
+      type:'6',   
+      user_type:0,
+      user_no:result,
+      product_no:self.data.mainData.info.data[0].product_no,
+    };
+    const callback = (res)=>{
+      self.data.FlowLogData = res;
+      if(self.data.FlowLogData.info.data.length>0){
+          api.showToast('该学生已上课','none');
+          return
+        };
+        const c_callback = (child_res)=>{       
           var price = child_res.info.FlowLog.pricesum/child_res.info.FlowLog.countsum;
           const postData = {
             token:wx.getStorageSync('token'),
             data:{
-              user_no:res.result,
+              user_no:result,
               type:6,
               price:price,
               count:-1,
               trade_info:'已上课',
-              product_no:self.data.mainData.info.data[0].product_no
+              product_no:self.data.mainData.info.data[0].product_no,
+            
+            },
+            searchItem:{
+              user_type:0
             }
           };
-          const callback = (res)=>{
-            api.showToast('扫码成功','fail');
-            self.getMainData(true)
-          };
-          api.flowLogAdd(postData,callback)
+          const cc_callback = (res)=>{
+            console.log(res)
+            if(res.solely_code==100000){
+              api.showToast('扫码成功','none');
+              self.getMainData(true)
+            }else{
+              api.showToast('未知错误','none');
+            } 
+          }               
+          api.flowLogAdd(postData,cc_callback)
         };
-        self.getComputeData(res.result,callback);     
-      }
-    })  
+        self.getComputeData(res.result,c_callback); 
+      };
+    api.flowLogGet(postData,callback);
   },
+
+
 
 
   changeCourseStatus(e){
@@ -156,15 +203,14 @@ Page({
     const postData = {
       token:wx.getStorageSync('token'),
       passage3:api.getDataSet(e,'passage'),
-      product_no:self.data.mainData.info.data[0].product_no
+      product_no:self.data.mainData.info.data[0].product_no,
+      allowance:self.data.sForm.allowance
     };
     const callback = (res)=>{
       api.dealRes(res);
       self.getMainData(true)
     };
-
-    api.changeCourseStatus(postData,callback);
-    
+    api.changeCourseStatus(postData,callback);  
   },
 
   intoPath(e){
