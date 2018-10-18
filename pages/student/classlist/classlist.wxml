@@ -1,0 +1,90 @@
+<!--pages/teacher/classlist.wxml-->
+
+<wxs src="../../../utils/func.wxs"  module="func" />
+
+<!--<view style="width:100%;height:90rpx;display:flex;border-bottom:1px solid #e5e5e5">
+	<view data-num="0" class="int_menu{{num==0?'active':''}}" bindtap="menuClick" >全部</view>
+	<view data-num="1" class="int_menu{{num==1?'active':''}}" bindtap="menuClick" >待确认</view>
+	<view data-num="2" class="int_menu{{num==2?'active':''}}" bindtap="menuClick" >待上课</view>
+	<view data-num="3" class="int_menu{{num==3?'active':''}}" bindtap="menuClick" >已完成</view>
+	<view data-num="4" class="int_menu{{num==4?'active':''}}" bindtap="menuClick" >已取消</view>	
+</view>-->
+
+<block wx:for="{{web_labelData.info.data}}" wx:key="id">
+	<view style="width:93.4%;height:100rpx;margin:0 auto;display:flex;align-items:center" data-index="{{index}}"    bindtap="searchItemChange">
+
+		<view style="width:30%">
+			<view style="width:125rpx;height:50rpx;border-radius:20rpx;border:2rpx solid #FFCC1A;line-height:50rpx;text-align:center;font-size:15px;color:#FFCC1A">{{item.title}}</view>
+		</view>
+
+		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:if="{{index==0}}">{{func.getArrayByTarget(item.child,'id',[web_areaId])[0]['title']?func.getArrayByTarget(item.child,'id',[web_areaId])[0]['title']:'请选择校区'}}</view>
+
+		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:else >{{func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']?func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']:'请选择科目'}}</view>
+
+		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A"  >+</view>
+	</view>
+</block>
+
+
+<view style="display:flex;border-top:1px solid #FFCC1A;height:50rpx">
+	<view class="section" style="width:50%;border-right:1px solid #FFCC1A">   
+	  <picker mode="date" value="{{web_startTime}}" data-type="startTime" bindchange="bindTimeChange" >
+	    <view class="picker" style="font-size:15px;color:#FFCC1A;text-align:center">
+	      {{web_startTime?web_startTime:'选择起始时间'}}
+	    </view>
+	  </picker>
+	</view>
+
+
+	<view class="section" style="width:50%">  
+	  <picker mode="date" value="{{web_endTime}}" data-type="endTime" bindchange="bindTimeChange">
+	    <view class="picker" style="font-size:15px;color:#FFCC1A;text-align:center">
+	      {{web_endTime?web_endTime:'选择结束时间'}}
+	    </view>
+	  </picker>
+	</view>
+</view>
+
+<view style="height:10rpx;width:100%;background:#e5e5e5"></view>
+
+<block wx:for="{{web_mainData}}" wx:key="id">
+	<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5" data-path= "/pages/teacher/classlist/classdetail/classdetail?id={{item.id}}"  bindtap="intoPath">
+		<view style="width:20%;display:flex;align-items:center;justify-content:center">
+			<image src="{{item.mainImg[0].url}}" style="width:120rpx;height:120rpx;border-radius:50%" />
+		</view>
+		<view style="width:40%">
+			<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">{{item.title}}</view>
+			<view style="color:#666666;font-size:12px;line-height:60rpx">上课：{{func.timestampToTime(item.deadline)}}</view>
+		</view>
+
+		<view style="width:40%">
+			<view style="font-size:10px;color:#cccccc;line-height:60rpx;text-align:right;margin-right:30rpx">{{item.create_time}}发布</view>
+			<view style="color:#FFCC1A;font-size:15px;line-height:60rpx;text-align:right;margin-right:30rpx">{{item.spuTwo.title}}</view>
+		</view>
+	</view>
+</block>		
+
+
+
+
+
+<view  class="c-state1 {{web_index>=0 ? 'c-state2' : ''}}"  >
+	<view style="width:100%;min-height:425px;background:black;opacity:0.7;position:absolute;bottom:0">
+		<image src="/images/close.png"  style="width:40rpx;height:40rpx;position:absolute;top:10rpx;right:10rpx;" data-index="10" bindtap="searchItemChange" />
+		<block wx:for="{{web_labelData.info.data[web_index].child}}" wx:key="id">
+			<view style="width:140rpx;height:60rpx;border:2rpx solid #FFCC1A;border-radius:10rpx;text-align:center;line-height:60rpx;color:#FFCC1A;font-size:30rpx;float:left;margin:10rpx 15rpx" data-id="{{item.id}}" data-index="{{web_index}}" bindtap="searchItemChange">{{item.title}}</view>
+		</block>
+	</view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
