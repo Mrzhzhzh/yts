@@ -27,7 +27,7 @@ Page({
     const callback = (res)=>{
     wx.setStorageSync('info',res.data.info);
       if(res.data.info.user_type == 1){
-        wx.switchTab({
+        wx.reLaunch({
           url: '/pages/teacher/teacher'
         }) 
         api.showToast('登陆成功','success')
@@ -61,7 +61,7 @@ Page({
 
   intoPath(e){
     const self = this;
-    api.pathTo(api.getDataSet(e,'path'),'tab');
+    api.pathTo(api.getDataSet(e,'path'),'redi');
   },
   
 })

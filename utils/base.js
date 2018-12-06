@@ -349,13 +349,11 @@ class Base extends Token{
     checkTeacherLogin(){
         const self = this;
         if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==1){
-            wx.hideLoading();  
-           return wx.getStorageSync('login');
+           wx.hideLoading();  
+           return true;
         }else{
-          setTimeout(function(){
-            wx.hideLoading();
-            self.pathTo('/pages/teacher/login/login','rela');
-          },300);                
+           wx.hideLoading();  
+           return false;                  
         }; 
     };
 
@@ -363,12 +361,10 @@ class Base extends Token{
         const self = this;
         if(wx.getStorageSync('login')&&wx.getStorageSync('token')&&wx.getStorageSync('type')==0){ 
             wx.hideLoading();  
-           return wx.getStorageSync('login');
+           return true;
         }else{ 
-          setTimeout(function(){
-            wx.hideLoading();
-            self.pathTo('/pages/student/login/login','rela');
-          },300);                
+            wx.hideLoading();  
+           return false;          
         }; 
     };
 
@@ -415,8 +411,11 @@ class Base extends Token{
     logOff(){
         const self = this;
         wx.removeStorageSync('login');
+        wx.removeStorageSync('type');
+        wx.removeStorageSync('token');
+        wx.removeStorageSync('info');
         if(!wx.removeStorageSync('login')){
-            self.pathTo('/pages/index/index','tab')
+            self.pathTo('/pages/index/index','redi')
         }else{
             self.showToast('系统故障','fail')
         }

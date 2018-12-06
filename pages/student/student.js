@@ -25,14 +25,9 @@ Page({
   onShow(){
     const self = this;
     wx.showLoading();
-    const pass = api.checkStudentLogin();
-    if(pass){
-      self.setData({
-        web_show:true
-      });
-      self.getUserData();
-      self.getComputeData()
-    };
+    self.getUserData();
+    self.getComputeData()
+  
     
   },
 
@@ -42,8 +37,12 @@ Page({
     const postData = {};
     postData.token = wx.getStorageSync('token');
     const callback = (res)=>{
-      console.log(res);
-      self.data.userData = res;
+      if(res.info.data.length>0){
+        self.data.userData = res;
+      }else{
+        api.showToast('网络故障')
+      }
+      
       self.setData({
         web_user:self.data.userData,
       });
@@ -88,6 +87,40 @@ Page({
   intoPath(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
+  },
+
+  intoPathRediIndex(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),'redi');
+  },
+
+  intoPathRedi(e){
+    const self = this;
+    var id = api.getDataSet(e,'id')
+    console.log(id)
+    if(id==1){
+      var pass = api.checkTeacherLogin();
+      if(pass){
+        wx.redirectTo({
+          url:'/pages/teacher/teacher'
+        });
+      }else{
+        wx.redirectTo({
+          url:'/pages/teacher/login/login'
+        });
+      }
+    }else if(id==2){
+      var pass = api.checkStudentLogin();
+        if(pass){
+        wx.redirectTo({
+          url:'/pages/student/student'
+        });
+      }else{
+        wx.redirectTo({
+          url:'/pages/student/login/login'
+        });
+      }
+    }    
   },
 
   

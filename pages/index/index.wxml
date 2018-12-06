@@ -1,7 +1,7 @@
 <!--index.wxml-->
 
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width:100%;height:185px">
- 	<block  wx:for="{{web_mainData.info.data[0].bannerImg}}" wx:key="id">
+ 	<block  wx:for="{{web_mainData.bannerImg}}" wx:key="id">
     	<swiper-item>
       		<image src="{{item.url}}" style="width:100%;height:185px" />
     	</swiper-item>
@@ -10,11 +10,32 @@
 
 <view class="title">
 	<image src="/images/index-ic.png" class="title-img" />
-	<view class="title-text">{{web_mainData.info.data[0].title}}</view>
+	<view class="title-text">{{web_mainData.title}}</view>
 </view>
 
 
 <view class="content ql-editor">
 	<import src="../../wxParse/wxParse.wxml"/>
 	<template is="wxParse" data="{{wxParseData:web_mainData.content}}"/>
+</view>
+<view style="height:120rpx;width:100%;"></view>
+<view class="navbar">
+    <view class="navbar_item">
+        <view class="nav_img">
+          <image src="/images/home-active.png" style="width:44rpx;height:44rpx;"></image>
+        </view>
+        <view class="text this-text" style="font-size:24rpx">首页</view>
+    </view>
+    <view class="navbar_item"  bindtap="intoPathRedi" data-id="1">  
+        <view class="nav_img">
+           <image src="/images/teacher.png" style="width:44rpx;height:44rpx;"></image>
+        </view>
+        <view class="text" style="font-size:24rpx">教师</view>    
+    </view> 
+    <view class="navbar_item"  bindtap="intoPathRedi" data-id="2">
+        <view class="nav_img">
+            <image src="/images/student.png" style="width:44rpx;height:44rpx;"></image>
+        </view>
+        <view class="text" style="font-size:24rpx">学生</view>
+    </view>
 </view>

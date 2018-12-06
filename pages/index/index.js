@@ -32,7 +32,11 @@ Page({
       menu_id:['=','351']
     } 
     const callback = (res)=>{
-      self.data.mainData = res
+      if(res.info.data.length>0){
+          self.data.mainData = res.info.data[0]
+      } else{
+        api.showToast('文章已被删除！','none')
+      }
       wx.hideLoading();
       self.data.mainData.content = api.wxParseReturn(res.info.data[0].content).nodes;
       self.setData({
@@ -40,6 +44,37 @@ Page({
       });    
     };
     api.articleGet(postData,callback);
-  }
+  },
+
+  intoPathRedi(e){
+    const self = this;
+    var id = api.getDataSet(e,'id')
+    console.log(id)
+    if(id==1){
+      var pass = api.checkTeacherLogin();
+      if(pass){
+        wx.redirectTo({
+          url:'/pages/teacher/teacher'
+        });
+      }else{
+        wx.redirectTo({
+          url:'/pages/teacher/login/login'
+        });
+      }
+    }else if(id==2){
+      var pass = api.checkStudentLogin();
+        if(pass){
+        wx.redirectTo({
+          url:'/pages/student/student'
+        });
+      }else{
+        wx.redirectTo({
+          url:'/pages/student/login/login'
+        });
+      }
+    }
+    
+    
+  },
 
 })

@@ -17,6 +17,10 @@ Page({
         self.setData({
           web_show:true
         })
+    }else{
+      wx.reLaunch({
+        url:'/pages/teacher/login/login'
+      });
     };
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();  

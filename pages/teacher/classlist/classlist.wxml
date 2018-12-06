@@ -21,7 +21,7 @@
 
 		<view style="width:60%;height:100rpx;line-height:100rpx;font-size:15px;color:#FFCC1A" wx:else >{{func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']?func.getArrayByTarget(item.child,'id',[web_subjectId])[0]['title']:'请选择科目'}}</view>
 
-		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A"  >+</view>
+		<view style="width:10%;height:100rpx;line-height:100rpx;font-size:30px;color:#FFCC1A" >+</view>
 	</view>
 </block>
 

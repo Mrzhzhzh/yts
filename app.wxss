@@ -8,3 +8,37 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+/***********navbar***********/
+.navbar{
+	height:110rpx;
+	width:100%;
+	position:fixed;
+	bottom:0rpx;
+	z-index:999;
+	background:#fff;
+	display:flex;
+	justify-content:center;
+	border-top:solid 1px #dbdbdb;
+	align-items:center;
+	box-shadow:5rpx 0 15rpx #84ddf3;
+}
+.nav_img image{
+	width:46rpx;
+	height:46rpx;
+}
+.navbar_item{
+	width:33.3%;
+	text-align:center;
+
+}
+.navbar .text{
+	color:#b3b3b3;
+	font-size:24rpx;
+}
+.navbar .this-text{
+	color:#FF9800;
+}
+.navigator-hover {
+	background:none;
+	color:#00baf1;
+}

@@ -21,13 +21,9 @@ Page({
   onShow(){
     const self = this;
     wx.showLoading();
-    const pass = api.checkTeacherLogin();
-    if(pass){
-      self.setData({
-        web_show:true
-      })
-      self.getUserData();
-    };
+   
+    self.getUserData();
+   
   },
 
 
@@ -55,6 +51,41 @@ Page({
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
+
+  intoPathRediIndex(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),'redi');
+  },
+
+  intoPathRedi(e){
+    const self = this;
+    var id = api.getDataSet(e,'id')
+    console.log(id)
+    if(id==1){
+      var pass = api.checkTeacherLogin();
+      if(pass){
+        wx.redirectTo({
+          url:'/pages/teacher/teacher'
+        });
+      }else{
+        wx.redirectTo({
+          url:'/pages/teacher/login/login'
+        });
+      }
+    }else if(id==2){
+      var pass = api.checkStudentLogin();
+        if(pass){
+        wx.redirectTo({
+          url:'/pages/student/student'
+        });
+      }else{
+        wx.redirectTo({
+          url:'/pages/student/login/login'
+        });
+      }
+    }    
+  },
+
  
 
 

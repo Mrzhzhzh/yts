@@ -40,10 +40,14 @@ Page({
     };
     wx.showLoading();
     const pass = api.checkTeacherLogin();
-      if(pass){
+    if(pass){
         self.setData({
           web_show:true
         })
+    }else{
+      wx.reLaunch({
+        url:'/pages/teacher/login/login'
+      });
     };
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
