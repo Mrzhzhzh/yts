@@ -12,6 +12,7 @@
     "pages/student/student",
     "pages/student/login/login",
     "pages/student/data/data",
+    "pages/student/classlist/classlist",
     "pages/student/message/message",
     "pages/student/classnotes/classnotes",
     "pages/student/buynotes/buynotes",

@@ -69,7 +69,6 @@ Page({
           ]         
         }   
       },
-
       spuOne:{
         tableName:'label',
         middleKey:'view_count',
@@ -80,7 +79,6 @@ Page({
         },
         info:['title']
       },
-
       spuTwo:{
         tableName:'label',
         middleKey:'discount',
@@ -94,13 +92,15 @@ Page({
     }
     const callback = (res)=>{
       self.data.mainData = res;
+      self.data.sForm.allowance = res.info.data[0].allowance;
       self.setData({
         web_mainData:self.data.mainData,
+        web_sForm:self.data.sForm,
       });
       console.log(self.data.mainData)
-      
     };
     api.productGet(postData,callback);
+
   },
 
 
@@ -113,7 +113,6 @@ Page({
           price:'sum',
           count:'sum',
         },
-        
         searchItem:{
           user_no:user_no,
           type:2,
@@ -126,17 +125,19 @@ Page({
       callback&&callback(res);    
     };
     api.flowLogCompute(postData,child_callback);
-  },
 
+  },
 
   scan(){
     const self = this;
     wx.scanCode({
       success: (res) => {
-        self.getFlowLogData(res.result)
-     
         console.log(res.result);
-            
+        if(res.result){
+          self.getFlowLogData(res.result)
+        }else{
+          api.showToast('error','fail')
+        };
       }
     })  
   },
@@ -163,39 +164,45 @@ Page({
     const callback = (res)=>{
       self.data.FlowLogData = res;
       if(self.data.FlowLogData.info.data.length>0){
-          api.showToast('该学生已上课','none');
-          return
-        };
-        const c_callback = (child_res)=>{       
-          var price = child_res.info.FlowLog.pricesum/child_res.info.FlowLog.countsum;
-          const postData = {
-            token:wx.getStorageSync('token'),
-            data:{
-              user_no:result,
-              type:6,
-              price:price,
-              count:-1,
-              trade_info:'已上课',
-              product_no:self.data.mainData.info.data[0].product_no,
-            
-            },
-            searchItem:{
-              user_type:0
-            }
-          };
-          const cc_callback = (res)=>{
-            console.log(res)
-            if(res.solely_code==100000){
-              api.showToast('扫码成功','none');
-              self.getMainData(true)
-            }else{
-              api.showToast('未知错误','none');
-            } 
-          }               
-          api.flowLogAdd(postData,cc_callback)
-        };
-        self.getComputeData(res.result,c_callback); 
+        api.showToast('该学生已上课','none');
+        return;
       };
+      const c_callback = (child_res)=>{     
+        
+        if(!child_res.info.FlowLog.countsum>0){
+          api.showToast('课时不足','none');
+          return;
+        };
+        var price = child_res.info.FlowLog.pricesum/child_res.info.FlowLog.countsum;
+        const postData = {
+          token:wx.getStorageSync('token'),
+          data:{
+            user_no:result,
+            type:6,
+            price:price,
+            count:-1,
+            trade_info:'已上课',
+            product_no:self.data.mainData.info.data[0].product_no,
+          
+          },
+          searchItem:{
+            user_type:0
+          }
+        };
+        
+        const cc_callback = (res)=>{
+          console.log(res)
+          if(res.solely_code==100000){
+            api.showToast('扫码成功','none');
+            self.getMainData(true)
+          }else{
+            api.showToast('未知错误','none');
+          } 
+        }               
+        api.flowLogAdd(postData,cc_callback)
+      };
+      self.getComputeData(result,c_callback); 
+    };
     api.flowLogGet(postData,callback);
   },
 

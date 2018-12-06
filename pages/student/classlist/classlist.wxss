@@ -1,0 +1,63 @@
+/* pages/teacher/classlist.wxss */
+.int_menu{
+	width:20%;
+	line-height:45px;
+	text-align:center;
+	font-size:15px;
+	color:#2e2e2e
+	
+	
+}
+.int_menuactive{
+	width:20%;
+	line-height:45px;
+	text-align:center;
+	font-size:15px;
+	color:#FFCC1A;
+	
+}
+
+.picker_group {
+  height: 85rpx;
+  line-height: 85rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  color: #888;
+  border-bottom: 1rpx solid #efefef;
+
+}
+
+.picker_group picker {
+  /* background-color: yellow; */
+  color: #64bff1;
+  height: 55rpx;
+  line-height: 55rpx;
+  margin: 0 2%;
+  padding: 0 2%;
+  border: 1rpx solid #64bff1;
+  border-radius: 30rpx;
+}
+
+
+
+
+.c-state1{
+
+   display:block;
+   
+   width:100%;height:auto;background:#2e2e2e;position:fixed; bottom:0rpx;opacity: 0;
+   transition: all .3s ease-in .1s;
+   transform: translateY(200px);
+   
+ }  
+
+ .c-state2{
+
+   transform: translateY(0px);
+   opacity: 1;
+   
+ }  
+ 
+
