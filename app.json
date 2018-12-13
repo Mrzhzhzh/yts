@@ -23,30 +23,6 @@
     "navigationBarBackgroundColor": "#FFCC1A",
     "navigationBarTitleText": "英泰学校",
     "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "borderStyle": "#d7d7d7",
-    "position": "bottom",
-    "selectedColor": "#FF9800",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/home-active.png"
-      },
-      {
-        "pagePath": "pages/teacher/teacher",
-        "text": "教师",
-        "iconPath": "images/teacher.png",
-        "selectedIconPath": "images/teacher-active.png"
-      },
-      {
-        "pagePath": "pages/student/student",
-        "text": "学生",
-        "iconPath": "images/student.png",
-        "selectedIconPath": "images/student-active.png"
-      }
-    ]
   }
+
 }

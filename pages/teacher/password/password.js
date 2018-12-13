@@ -81,13 +81,15 @@ Page({
       api.showToast('原密码错误','none');
       return;
     };
-    const pass = api.checkComplete(self.data.submitData);
-    if(pass){
-      wx.showLoading();
-      self.passwordUpdate();      
-    }else{
-      api.showToast('请补全信息','none');
-    };   
+    setTimeout(function(){
+      const pass = api.checkComplete(self.data.submitData);
+      if(pass){
+        wx.showLoading();
+        self.passwordUpdate();      
+      }else{
+        api.showToast('请补全信息','none');
+      }; 
+    },100);
   },
   
 

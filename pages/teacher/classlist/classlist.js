@@ -114,6 +114,7 @@ Page({
     };
     const postData = {};
     postData.paginate = api.cloneForm(self.data.paginate);
+    postData.token = wx.getStorageSync('token');
     postData.searchItem = api.cloneForm(self.data.searchItem);
     postData.searchItem.passage1 = wx.getStorageSync('info').user_no;
     postData.getAfter = {

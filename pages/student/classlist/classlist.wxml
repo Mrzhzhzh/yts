@@ -48,7 +48,7 @@
 <view style="height:10rpx;width:100%;background:#e5e5e5"></view>
 
 <block wx:for="{{web_mainData}}" wx:key="id">
-	<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5" data-path= "/pages/teacher/classlist/classdetail/classdetail?id={{item.id}}"  bindtap="intoPath">
+	<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5">
 		<view style="width:20%;display:flex;align-items:center;justify-content:center">
 			<image src="{{item.mainImg[0].url}}" style="width:120rpx;height:120rpx;border-radius:50%" />
 		</view>
