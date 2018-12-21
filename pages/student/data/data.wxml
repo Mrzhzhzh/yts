@@ -13,7 +13,7 @@
 </view>
 <view style="width:93.4%;height:100rpx;margin:0 auto;border-bottom:1px solid #e5e5e5;">
 	<view style="font-size:15px;color:#2e2e2e;line-height:100rpx;float:left">所属分校</view>
-	<input style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" bindblur="changeBind" data-key="passage1" value="{{web_sForm.passage1}}" placeholder="请输入所属分校" ></input>
+	<input style="font-size:15px;height:100rpx;line-height:100rpx;color:#999999;float:right;text-align:right" bindblur="changeBind" data-key="passage1" value="{{web_sForm.passage1}}" placeholder="请输入所属分校" disabled="true"></input>
 </view>
 
 

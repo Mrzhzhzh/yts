@@ -11,7 +11,7 @@ Page({
     searchItem:{
       thirdapp_id:['=','70'],
       category_id:['=','356'],  
-      
+      passage3:2
     },
     join:{},
  
