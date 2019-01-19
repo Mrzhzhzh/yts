@@ -9,7 +9,6 @@ Page({
       name:'',
       phone:'',
       email:'',
-      passage1:'',    
     },
 
     mainData:{},
@@ -39,12 +38,12 @@ Page({
     postData.token = wx.getStorageSync('token');
     const callback = (res)=>{
       console.log(res)
-      self.data.mainData = res;
+      self.data.mainData = res.info.data[0];
       self.data.sForm.name = res.info.data[0].info.name;
       self.data.sForm.phone = res.info.data[0].info.phone;
       self.data.sForm.email = res.info.data[0].info.email;
-      self.data.sForm.passage1 = res.info.data[0].info.passage1;
       self.setData({
+        web_mainData:self.data.mainData,
         web_sForm:self.data.sForm,
       });
       wx.hideLoading();

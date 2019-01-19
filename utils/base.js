@@ -277,11 +277,11 @@ class Base extends Token{
     };
 
 
-    showToast(title,type,func){
+    showToast(title,type,duration,func){
         wx.showToast({
             title:title,
             icon:type,
-            duration:1000,
+            duration:duration?duration:1000,
             mask:true,
             complete:func
         })

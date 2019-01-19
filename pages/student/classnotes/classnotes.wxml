@@ -61,7 +61,7 @@
 <block wx:for="{{web_mainData}}" wx:key="id">
 	<view style="height:160rpx;width:100%;display:flex;align-items:center;border-bottom:1px solid #e5e5e5" >
 		<view style="width:20%;display:flex;align-items:center;justify-content:center">
-			<image src="/images/pic-3.jpg" style="width:120rpx;height:120rpx;border-radius:50%" />
+			<image src="{{item.mainImg[0].url}}" style="width:120rpx;height:120rpx;border-radius:50%" />
 		</view>
 		<view style="width:40%">
 			<view style="font-size:15px;color:#2e2e2e;line-height:60rpx">{{item.title}}</view>

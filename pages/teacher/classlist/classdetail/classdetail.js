@@ -130,16 +130,43 @@ Page({
 
   scan(){
     const self = this;
+    wx.showLoading();
     wx.scanCode({
       success: (res) => {
         console.log(res.result);
         if(res.result){
+          //self.getUserData(res.result);
           self.getFlowLogData(res.result)
         }else{
           api.showToast('error','fail')
         };
+      },
+      fail: (res) => {
+        wx.hideLoading();
       }
+
     })  
+  },
+
+  getUserData(result){
+    const self = this;
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    postData.searchItem = {};
+    postData.searchItem.user_no = result;
+    const callback = (res)=>{
+      if(res.info.data.length>0){
+        self.data.userData = res.info.data[0];
+      }else{
+        api.showToast('网络故障')
+      }
+      self.setData({
+        web_user:self.data.userData,
+      });
+     
+      wx.hideLoading();
+    };
+    api.userGet(postData,callback);   
   },
 
   changeBind(e){
@@ -173,33 +200,47 @@ Page({
           api.showToast('课时不足','none');
           return;
         };
-        var price = child_res.info.FlowLog.pricesum/child_res.info.FlowLog.countsum;
-        const postData = {
-          token:wx.getStorageSync('token'),
-          data:{
-            user_no:result,
-            type:6,
-            price:price,
-            count:-1,
-            trade_info:'已上课',
-            product_no:self.data.mainData.info.data[0].product_no,
-          
-          },
-          searchItem:{
-            user_type:0
-          }
-        };
+         
         
-        const cc_callback = (res)=>{
-          console.log(res)
-          if(res.solely_code==100000){
-            api.showToast('扫码成功','none');
-            self.getMainData(true)
-          }else{
-            api.showToast('未知错误','none');
-          } 
-        }               
-        api.flowLogAdd(postData,cc_callback)
+         /* console.log(self.data.userData.info.name)
+          wx.showModal({
+          title: '上课确认',
+          content: '请确认该学员是否上课\r\n学员姓名:'+self.data.userData.info.name+'\r\n所属校区:'+self.data.userData.info.passage1+'\r\n剩余课时:'+self.data.userData.info.balance,
+          confirmColor:'#ffa11a',
+          success(res) {
+            if (res.confirm) {*/
+              var price = child_res.info.FlowLog.pricesum/child_res.info.FlowLog.countsum;
+              const postData = {
+                token:wx.getStorageSync('token'),
+                data:{
+                  user_no:result,
+                  type:6,
+                  price:price,
+                  count:-1,
+                  trade_info:'已上课',
+                  product_no:self.data.mainData.info.data[0].product_no,
+                },
+                searchItem:{
+                  user_type:0
+                }
+              }; 
+              const cc_callback = (res)=>{
+                console.log(res)
+                if(res.solely_code==100000){
+                  api.showToast('扫码成功','none');
+                  self.getMainData(true)
+
+                }else{
+                  api.showToast('未知错误','none');
+                } 
+              }               
+              api.flowLogAdd(postData,cc_callback) 
+      /*      }else if (res.cancel) {
+              api.showToast('取消扫码','none');
+            }
+          }
+        })  */
+        
       };
       self.getComputeData(result,c_callback); 
     };
@@ -211,17 +252,42 @@ Page({
 
   changeCourseStatus(e){
     const self = this;
-    const postData = {
-      token:wx.getStorageSync('token'),
-      passage3:api.getDataSet(e,'passage'),
-      product_no:self.data.mainData.info.data[0].product_no,
-      allowance:self.data.sForm.allowance
-    };
-    const callback = (res)=>{
-      api.dealRes(res);
-      self.getMainData(true)
-    };
-    api.changeCourseStatus(postData,callback);  
+    if(api.getDataSet(e,'passage')==3){
+        wx.showModal({
+          title: '已完成确认',
+          content: '确认是否完成此课程\r\n(确认后将不能继续扫码)',
+          confirmColor:'#ffa11a',
+          success(res) {
+            if (res.confirm) {
+                const postData = {
+                token:wx.getStorageSync('token'),
+                passage3:api.getDataSet(e,'passage'),
+                product_no:self.data.mainData.info.data[0].product_no,
+                allowance:self.data.sForm.allowance
+              };
+              const callback = (res)=>{
+                api.dealRes(res);
+                self.getMainData(true)
+              };
+              api.changeCourseStatus(postData,callback); 
+            }else if (res.cancel) {
+              api.showToast('已取消','none');
+            }
+        }
+      })       
+    }else{
+   	  const postData = {
+        token:wx.getStorageSync('token'),
+        passage3:api.getDataSet(e,'passage'),
+        product_no:self.data.mainData.info.data[0].product_no,
+        allowance:self.data.sForm.allowance
+      };
+      const callback = (res)=>{
+        api.dealRes(res);
+        self.getMainData(true)
+      };
+      api.changeCourseStatus(postData,callback); 
+    }
   },
 
   intoPath(e){
